@@ -1,6 +1,7 @@
-import { AbilityName, IAbilities } from "../abilities";
+import { AbilityName, IAbilities } from "../iabilities.interface";
 import { ClassName } from "../classes/classname.enum";
 import { RaceName } from "./racename.enum";
+import { SavingThrowName } from "../isaving-throws.interface";
 
 export interface IRace {
     name: RaceName;
@@ -8,5 +9,5 @@ export interface IRace {
     abilityRequirements: {[ability in AbilityName as string]: number};
     weaponRestrictions: string[];
     specialAbilities: string[];
-    savingThrowMods: {[save: string]: number};
+    savingThrowMods: {[save in SavingThrowName as string]: number};
 }

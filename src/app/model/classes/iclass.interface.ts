@@ -1,4 +1,5 @@
-import { AbilityName, IAbilities } from "../abilities";
+import { AbilityName, IAbilities } from "../iabilities.interface";
+import { ISavingThrows } from "../isaving-throws.interface";
 import { ClassName } from "./classname.enum";
 
 export default interface IClass {
@@ -7,6 +8,6 @@ export default interface IClass {
     ab: number;
     abilityRequirements: {[ability in AbilityName as string]: number};
     weaponRestrictions: string[];
-    savingThrow: { poison: number, wands: number, paralysis: number, dragonBreath: number, spells: number };
+    savingThrow: ISavingThrows;
     specialAbility?: any;
 }

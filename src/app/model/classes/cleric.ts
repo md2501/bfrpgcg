@@ -1,12 +1,13 @@
-import { AbilityName } from "../abilities";
+import { AbilityName } from "../iabilities.interface";
+import { SavingThrowName } from "../isaving-throws.interface";
 import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class Cleric implements IClass {
     name= ClassName.Cleric;
     savingThrow = {
-        poison: 11, wands: 12, paralysis: 14, dragonBreath: 16,
-        spells: 15
+        [SavingThrowName.POISON]: 11, [SavingThrowName.WANDS]: 12, [SavingThrowName.PARALYSIS]: 14, [SavingThrowName.DRAGONBREATH]: 16,
+        [SavingThrowName.SPELLS]: 15
     };
     abilityRequirements = { [AbilityName.WISDOM]: 9 };
     hd = 6;
