@@ -5,5 +5,5 @@ export class Fighter implements Class {
     hd = 8;
     ab = 1;
     abilityRequirements = { strength: 9 };
-    weaponRestrictions = ["may wear any armor", "may use any weapon"]
+    weaponRestrictions = []
 }
