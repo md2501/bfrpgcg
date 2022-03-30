@@ -1,4 +1,4 @@
-import { Ability } from "./ability.interface";
+import { Ability } from "./ability";
 import { Class } from "./classes/class.interface";
 import { Race } from "./races/race.interface";
 

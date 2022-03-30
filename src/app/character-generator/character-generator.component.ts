@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ability } from '../model/ability.interface';
+import { Ability } from '../model/ability';
 
 @Component({
   selector: 'app-character-generator',
