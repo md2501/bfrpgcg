@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { CharacterComponent } from './character/character.component';
+import { CharacterGeneratorComponent } from './character-generator/character-generator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterComponent
+    CharacterGeneratorComponent,
   ],
   imports: [
     BrowserModule
