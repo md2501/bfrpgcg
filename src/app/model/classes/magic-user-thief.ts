@@ -1,6 +1,6 @@
-import { Class } from "./class.interface";
+import IClass from "./iclass.interface";
 
-export class MagicUserThief implements Class {
+export class MagicUserThief implements IClass {
     hd = 4;
     ab = 1;
     abilityRequirements = { dexterity: 9, strength: 9 };

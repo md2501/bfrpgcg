@@ -1,10 +1,10 @@
-import { Class } from "../classes/class.interface";
+import IClass from "../classes/iclass.interface";
 import { Cleric } from "../classes/cleric";
 import { Fighter } from "../classes/fighter";
 import { Thief } from "../classes/thief";
-import { Race } from "./race.interface";
+import { IRace } from "./irace.interface";
 
-export class Halfling implements Race {
+export class Halfling implements IRace {
     abilityRequirements= { dexterity: 9, strength: -17 };
     classes= [new Thief, new Cleric, new Fighter];
     weaponRestrictions= ["may not use large weapons", "must wield medium weapons with both hands", "never roll larger than six-sided dice (d6) for hit points regardless of class"];

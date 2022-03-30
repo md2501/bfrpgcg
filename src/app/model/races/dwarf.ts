@@ -1,10 +1,10 @@
-import { Class } from "../classes/class.interface";
+import Class from "../classes/iclass.interface";
 import { Cleric } from "../classes/cleric";
 import { Fighter } from "../classes/fighter";
 import { Thief } from "../classes/thief";
-import { Race } from "./race.interface";
+import { IRace } from "./irace.interface";
 
-export class Dwarf implements Race {
+export class Dwarf implements IRace {
     specialAbilities= ["Darkvision 60'", "detect slanting passages, traps, shifting walls, new construction: 2/6"];
     abilityRequirements = { constitution: 9, charisma: -17 };
     classes = [new Cleric, new Fighter, new Thief];

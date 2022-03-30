@@ -1,6 +1,6 @@
-import { Class } from "./class.interface";
+import IClass from "./iclass.interface";
 
-export class Cleric implements Class {
+export class Cleric implements IClass {
     savingThrow = {
         poison: 11, wands: 12, paralysis: 14, dragonBreath: 16,
         spells: 15

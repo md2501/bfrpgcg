@@ -8,7 +8,7 @@ import { Ability } from '../model/ability';
 })
 export class CharacterGeneratorComponent implements OnInit {
 
-  abilities: { [ability: string]: Ability };
+  abilities!: { [ability: string]: Ability; };
 
   constructor() { }
 

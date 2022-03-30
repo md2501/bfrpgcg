@@ -1,19 +1,15 @@
+import { IAbilities } from "./abilities.interface";
 import { Ability } from "./ability";
-import { Class } from "./classes/class.interface";
-import { Race } from "./races/race.interface";
+import IClass from "./classes/iclass.interface";
+import { IRace } from "./races/irace.interface";
 
-export interface Character {
+export interface ICharacter {
     name: string;
-    race: Race;
-    class: Class;
+    race: IRace;
+    class: IClass;
     ac: number;
     ab: number;
-    strength: Ability;
-    dexterity: Ability;
-    intelligence: Ability;
-    wisdom: Ability;
-    constitution: Ability;
-    charisma: Ability;
+    abilities: IAbilities;
     gold: number;
     //equipment: string[];
 

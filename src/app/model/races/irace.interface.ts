@@ -1,7 +1,7 @@
-import { Class } from "../classes/class.interface";
+import IClass from "../classes/iclass.interface";
 
-export interface Race {
-    classes: Class[];
+export interface IRace {
+    classes: IClass[];
     abilityRequirements: {[ability: string]: number};
     weaponRestrictions: string[];
     specialAbilities: string[];

@@ -1,11 +1,13 @@
-import { Class } from "../classes/class.interface";
+import IClass from "../classes/iclass.interface";
 import { Cleric } from "../classes/cleric";
 import { Fighter } from "../classes/fighter";
 import { MagicUser } from "../classes/magic-user";
+import { MagicUserFighter } from "../classes/magic-user-fighter";
+import { MagicUserThief } from "../classes/magic-user-thief";
 import { Thief } from "../classes/thief";
-import { Race } from "./race.interface";
+import { IRace } from "./irace.interface";
 
-export class Elf implements Race {
+export class Elf implements IRace {
     abilityRequirements = { intelligence: 9, constitution: -17 };
     classes = [new Cleric, new Fighter, new MagicUser, new Thief, new MagicUserThief, new MagicUserFighter]
     weaponRestrictions = [];

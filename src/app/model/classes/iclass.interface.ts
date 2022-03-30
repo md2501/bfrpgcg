@@ -1,4 +1,4 @@
-export interface Class {
+export default interface IClass {
     hd: number;
     ab: number;
     abilityRequirements: { [ability: string]: number };
