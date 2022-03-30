@@ -1,9 +1,10 @@
+import { AbilityName } from "../abilities";
 import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class MagicUser implements IClass {
     name = ClassName.MagicUser;
-    abilityRequirements = { intelligence: 9 };
+    abilityRequirements = { [AbilityName.INTELLIGENCE]: 9 };
     savingThrow = { poison: 13, wands: 14, paralysis: 13, dragonBreath: 16, spells: 15 };
     specialAbility = "read magic" // +1 level 1 spell of course
     hd = 4;

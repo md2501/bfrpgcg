@@ -1,9 +1,10 @@
+import { AbilityName } from "../abilities";
 import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class Thief implements IClass {
     name = ClassName.Thief;
-    abilityRequirements = { dexterity: 9 };
+    abilityRequirements = { [AbilityName.DEXTERITY]: 9 };
     savingThrow = { poison: 13, wands: 14, paralysis: 13, dragonBreath: 16, spells: 15 };
     specialAbility = { "Open Locks": 20, "Remove Traps": 20, "Pick Pockets": 30, "Move Silently": 25, "Climb Walls": 80, "Hide": 10, "Listen": 30 };
     hd = 4;
