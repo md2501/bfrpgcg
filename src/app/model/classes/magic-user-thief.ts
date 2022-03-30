@@ -1,6 +1,8 @@
+import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class MagicUserThief implements IClass {
+    name= ClassName.MagicUserThief;
     hd = 4;
     ab = 1;
     abilityRequirements = { dexterity: 9, strength: 9 };

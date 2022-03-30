@@ -1,13 +1,11 @@
 import { IRace } from "./irace.interface";
-import IClass from "../classes/iclass.interface";
-import { Thief } from "../classes/thief";
-import { Cleric } from "../classes/cleric";
-import { Fighter } from "../classes/fighter";
-import { MagicUser } from "../classes/magic-user";
+import { ClassName } from "../classes/classname.enum";
+import { RaceName } from "./racename.enum";
 
 export class Human implements IRace {
+    name = RaceName.Human;
     abilityRequirements = {};
-    classes = [new Thief, new Cleric, new Fighter, new MagicUser];
+    classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter, ClassName.MagicUser];
     weaponRestrictions = [];
     specialAbilities = ["+10% XP"];
     savingThrowMods = {};

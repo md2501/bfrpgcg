@@ -1,6 +1,8 @@
+import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class Cleric implements IClass {
+    name= ClassName.Cleric;
     savingThrow = {
         poison: 11, wands: 12, paralysis: 14, dragonBreath: 16,
         spells: 15
