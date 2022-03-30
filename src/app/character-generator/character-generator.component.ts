@@ -55,14 +55,15 @@ export class CharacterGeneratorComponent implements OnInit {
     var possibleRaces: IRace[] = [];
     for (var race of races) {
       var valid = true;
-      for (var req: AbilityName in race.abilityRequirements)
-        if (race.abilityRequirements[req] >= 0 && !race.abilityRequirements[req] > this.abilities[req]) {
-          
+      for (var req in race.abilityRequirements)
+        if (race.abilityRequirements[req] >= 0 && !(race.abilityRequirements[req] > this.abilities[req].score)) {
+          valid = false;
+        } else if (race.abilityRequirements[req] < 0 && !(race.abilityRequirements[req] < this.abilities[req].score)) {
+          valid = false
         }
-
-      for (var ability in this.abilities) {
-
-      }
+        if (valid){
+          possibleRaces.push(race);
+        }
     }
     return possibleRaces;
   }

@@ -8,6 +8,6 @@ export class Fighter implements IClass {
     savingThrow= { poison: 13, wands: 14, paralysis: 15, dragonBreath: 16, spells: 18, };
     hd = 8;
     ab = 1;
-    abilityRequirements = { [AbilityName.STRENGTH]: 9 };
+    abilityRequirements = { [AbilityName.Strength]: 9 };
     weaponRestrictions = []
 }
