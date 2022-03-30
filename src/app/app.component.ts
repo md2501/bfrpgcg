@@ -60,13 +60,19 @@ export class AppComponent implements OnInit {
   getRaces(): IRace[] {
     var possibleRaces: IRace[] = [];
     for (var race of races) {
-      for (var req in race.abilityRequirements)
+      var valid = true;
+      for (var req in race.abilityRequirements) {
         // check if requirements are met: a positive requirement value means the score needs to be higher or equal
-        if (!(race.abilityRequirements[req] >= 0 && !(race.abilityRequirements[req] > this.abilities[req].score))
+        if (race.abilityRequirements[req] >= 0 && race.abilityRequirements[req] > this.abilities[req].score) {
+          valid = false;
           //  a negative requirement value indicates that the score has to be lower or equal
-          && !((race.abilityRequirements[req] < 0 && !(race.abilityRequirements[req] < this.abilities[req].score)))) {
-          possibleRaces.push(race);
+        } else if (race.abilityRequirements[req] < 0 && race.abilityRequirements[req] * -1 < this.abilities[req].score) {
+          valid = false;
         }
+      }
+      if (valid) {
+        possibleRaces.push(race);
+      }
     }
     return possibleRaces;
   }
@@ -76,14 +82,18 @@ export class AppComponent implements OnInit {
     var possibleClasses: IClass[] = [];
     for (var cc of classes) {
       if (race.classes.includes(cc.name)) {
+        var valid = true;
         for (var req in cc.abilityRequirements) {
           // check if requirements are met: a positive requirement value means the score needs to be higher or equal
-          if (cc.abilityRequirements[req] >= 0 && (cc.abilityRequirements[req] <= this.abilities[req].score)
+          if (cc.abilityRequirements[req] >= 0 && cc.abilityRequirements[req] > this.abilities[req].score) {
+            valid = false;
             //  a negative requirement value indicates that the score has to be lower or equal
-            || ((cc.abilityRequirements[req] < 0 && (cc.abilityRequirements[req] >= this.abilities[req].score)))) {
-            possibleClasses.push(cc);
+          } else if (cc.abilityRequirements[req] < 0 && cc.abilityRequirements[req] * -1 < this.abilities[req].score) {
+            valid = false;
           }
-
+        }
+        if (valid) {
+          possibleClasses.push(cc);
         }
       }
     }
@@ -109,7 +119,6 @@ export class AppComponent implements OnInit {
 
     if (!characterClass) {
       var possibleClasses = this.getCharacterClasses(race);
-      console.log(possibleClasses);
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
