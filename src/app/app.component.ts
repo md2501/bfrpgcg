@@ -46,8 +46,8 @@ export class AppComponent implements OnInit {
   genNewCharacter(): void {
     this.genAbilities();
     this.genCharacter();
-    this.characterForm.get('raceFC')?.setValue(this.character.race);
-    this.characterForm.get('classFC')?.setValue(this.character.characterClass);
+    this.characterForm.get('raceFC')?.setValue(this.character.race, {emitViewToModelChange: false});
+    this.characterForm.get('classFC')?.setValue(this.character.characterClass, {emitViewToModelChange: false});
   }
 
   // roll a die a number of times and return the sum
@@ -169,6 +169,5 @@ export class AppComponent implements OnInit {
       savingThrows: this.calcSavingThrows(characterClass, race),
       gold: this.genGold(),
     }
-
   }
 }
