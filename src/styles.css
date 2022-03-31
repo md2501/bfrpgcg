@@ -4,15 +4,59 @@
     src: url(assets/fonts/Soutane/Soutane-Regular_41720.ttf) format("truetype");
 }
 
-html, body, form, fieldset, table, tr, td, img {
+html, body  {
     margin: 0;
     padding: 0;
     font: 100% soutane,calibri,helvetica,sans-serif;
+    background-color: #252525;
 }
 
-input, button, select, textarea, optgroup, option {
+.content-sheet {
+    width: fit-content;
+    margin: auto;
+    line-height: 120%;
+    margin-top: 2%;
+    padding: 2%;
+    padding-top: 1%;
+    background-color: ghostwhite; 
+    box-shadow: 10px, 10px, 5px, 12px;
+}
+
+
+input, button, select, textarea, optgroup, option, table, tr, td, img, form, fieldset{
     font-family: inherit;
     font-size: inherit;
     font-style: inherit;
     font-weight: inherit;
+    margin: .1%;
+    padding: .1%;
+}
+
+#nameSelect {
+    width: fit-content;
+    max-width: fit-content;
+    size: 100%;
+}
+
+#container {
+    width: 100%;
+    margin: auto;
+}
+
+#abilities {
+    width: 50%;
+    float: left;
+}
+
+#saving-throws {
+    width: 50%;
+    float: right;
+}
+
+#clear {
+    clear:both
+}
+
+table, th, td {
+    border: 1px solid;
 }

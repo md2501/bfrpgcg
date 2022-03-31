@@ -1,67 +1,76 @@
-<h1>Basic Fantasy RPG Character Generator</h1>
-<div><input value="Roll new abilities" type="button" (click)="genNewCharacter()"></div>
-<div>
-  <!-- NAME -->
+<div class="content-sheet">
+  <h1>Basic Fantasy RPG Character Generator</h1>
+  <div><input value="Roll new abilities" type="button" (click)="genNewCharacter()"></div>
   <div>
-    <label for="nameSelect"><b>Name: </b></label>
-    <input type="text" id="nameSelect" [(ngModel)]="name">
-    <label for="useRandomName">use random name</label>
-    <input type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
-  </div>
+    <!-- NAME -->
+    <div>
+      <b>Name: </b>
+      <span><input type="text" id="nameSelect" [(ngModel)]="name"></span>
+      <input type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
+      random
+    </div>
 
-  <!-- RACE -->
-  <div [formGroup]="characterForm">
-    <label for="raceSelect"><b>Race: </b></label>
-    <select name="raceSelect" id="raceSelect" (ngModelChange)="genCharacter($event)" formControlName="raceFC">
-      <option *ngFor="let race of getRaces()" [ngValue]="race">{{race.name}}</option>
-    </select>
-  </div>
-
-  <!-- CLASS -->
-  <div [formGroup]="characterForm">
-    <label for="classSelect"><b>Class: </b></label>
-    <select name="classSelect" id="classSelect" (ngModelChange)="genCharacter(character.race, $event)"
-      formControlName="classFC">
-      <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">{{class.name}}</option>
-    </select>
-  </div>
-
-  <!-- HP -->
-  <div><b>HP:</b>{{character.hp}}</div>
-
-  <!-- GOLD -->
-  <div><b>Gold:</b> {{character.gold}} GP </div>
-
-  <!-- ABILITIES -->
-  <h3>Abilites</h3>
-  <div *ngFor="let ability of character.abilities | keyvalue"><b>{{ability.key}}:</b> {{ability.value.score}} <span
-      *ngIf="ability.value.mod > 0">+</span>{{ability.value.mod}}</div>
-
-  <!-- SAVING THROWS -->
-  <h3>Saving Throws</h3>
-  <div *ngFor="let save of character.savingThrows | keyvalue"><b>{{save.key}}</b>: {{save.value}}</div>
-
-  <!-- CLASS ABILITIES -->
-  <div *ngIf="character.characterClass.classAbilities">
-    <h3>Class Abilities</h3>
-  </div>
-  <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue"><b>{{ability.key}}</b>
-    {{ability.value}}</div>
-
-  <!-- SPELLS -->
-  <div *ngIf="character.characterClass.spells">
-    <h3>Spells</h3>
-    <div>{{character.characterClass.spells[0]}}</div>
-    <div [formGroup]="spellForm">
-      <select name="spellSelect" id="spellSelect" (change)="setStarterSpell($event)" formControlName="spellFC">
-        <option *ngFor="let spell of magicUserSpells" [value]="spell">{{spell}}</option>
+    <!-- RACE -->
+    <div [formGroup]="characterForm">
+      <b>Race: </b>
+      <select name="raceSelect" id="raceSelect" (ngModelChange)="genCharacter($event)" formControlName="raceFC">
+        <option *ngFor="let race of getRaces()" [ngValue]="race">{{race.name}}</option>
       </select>
     </div>
-  </div>
 
-  <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
-  <h3>Notes</h3>
-  <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
-  <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
-  <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
+    <!-- CLASS -->
+    <div [formGroup]="characterForm">
+      <b>Class: </b>
+      <select name="classSelect" id="classSelect" (ngModelChange)="genCharacter(character.race, $event)"
+        formControlName="classFC">
+        <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">{{class.name}}</option>
+      </select>
+    </div>
+
+    <!-- HP -->
+    <div><b>HP: </b>{{character.hp}}</div>
+
+    <!-- GOLD -->
+    <div><b>Gold: </b> {{character.gold}} GP </div>
+
+    <!-- ABILITIES -->
+    <div class="container">
+      <div id="abilities">
+        <h3>Abilites</h3>
+        <div *ngFor="let ability of character.abilities | keyvalue"><b>{{ability.key}}:</b> {{ability.value.score}}
+          <span *ngIf="ability.value.mod > 0">+</span>{{ability.value.mod}}</div>
+      </div>
+
+      <!-- SAVING THROWS -->
+      <div id="saving-throws">
+        <h3>Saving Throws</h3>
+        <div *ngFor="let save of character.savingThrows | keyvalue"><b>{{save.key}}</b>: {{save.value}}</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <!-- CLASS ABILITIES -->
+    <div *ngIf="character.characterClass.classAbilities">
+      <h3>Class Abilities</h3>
+    </div>
+    <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue"><b>{{ability.key}}</b>
+      {{ability.value}}</div>
+
+    <!-- SPELLS -->
+    <div *ngIf="character.characterClass.spells">
+      <h3>Spells</h3>
+      <div>{{character.characterClass.spells[0]}}</div>
+      <div [formGroup]="spellForm">
+        <select name="spellSelect" id="spellSelect" (change)="setStarterSpell($event)" formControlName="spellFC">
+          <option *ngFor="let spell of magicUserSpells" [value]="spell">{{spell}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
+    <h3>Notes</h3>
+    <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
+    <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
+    <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
+  </div>
 </div>
