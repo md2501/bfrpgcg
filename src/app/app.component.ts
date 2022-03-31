@@ -130,7 +130,7 @@ export class AppComponent implements OnInit {
 
   // calculate the saving throws from class values and race modifiers
   private calcSavingThrows(characterClass: IClass, race: IRace): ISavingThrows {
-    var savingThrows = characterClass.savingThrow;
+    var savingThrows = Object.assign({}, characterClass.savingThrow);
     for (var mod in race.savingThrowMods) {
       savingThrows[mod] -= race.savingThrowMods[mod];
     }
