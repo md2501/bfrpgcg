@@ -44,7 +44,6 @@ export class AppComponent implements OnInit {
   }
 
   genNewCharacter(): void {
-    console.log("hello")
     this.genAbilities();
     this.genCharacter();
     this.characterForm.get('raceFC')?.setValue(this.character.race);
@@ -171,7 +170,5 @@ export class AppComponent implements OnInit {
       gold: this.genGold(),
     }
 
-    console.log(race.name)
-    console.log(characterClass.name)
   }
 }
