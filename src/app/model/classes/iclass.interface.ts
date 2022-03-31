@@ -9,5 +9,6 @@ export default interface IClass {
     abilityRequirements: { [ability in AbilityName as string]: number };
     weaponRestrictions: string[];
     savingThrow: ISavingThrows;
-    specialAbility?: { [ability: string]: string | number };
+    classAbilities?: { [ability: string]: string | number };
+    spells?: string[];
 }

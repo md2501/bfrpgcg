@@ -52,9 +52,8 @@ export class AppComponent implements OnInit {
     this.abilities = abilities;
   }*/
 
-  //TODO: return a race appropriate fantasy name (maybe provided by service)
-  private genName(race: RaceName): string {
-    return "Atlas Doe"
+  private genName(race: IRace): string {
+    return race.names[Math.floor(Math.random() * race.names.length)];
   }
 
   // get all possible races for the rolled abilities
@@ -127,7 +126,7 @@ export class AppComponent implements OnInit {
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
     this.character = {
-      name: name ?? this.genName(race.name),
+      name: name ?? this.genName(race),
       race: race,
       characterClass: characterClass,
       hp: this.dieRoll(1, hd),

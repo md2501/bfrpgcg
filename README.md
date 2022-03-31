@@ -8,7 +8,7 @@ Made with Angular.
 - [ ] allow user input for name  
 - [ ] allow user input for race  
 - [ ] allow user input for class  
-- [ ] proper random names  
+- [x] proper random names  
 - [ ] make it pretty  
 - [ ] proper pdf export  
 - [ ] optional start equipment  

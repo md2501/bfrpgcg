@@ -10,4 +10,5 @@ export interface IRace {
     weaponRestrictions: string[];
     specialAbilities: string[];
     savingThrowMods: {[save in SavingThrowName as string]: number};
+    names: string[];
 }
