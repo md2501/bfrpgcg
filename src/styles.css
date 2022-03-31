@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Soutane";
+    src: url(assets/fonts/Soutane/Soutane-Regular_41720.ttf) format("truetype");
+}
+
+html, body, form, fieldset, table, tr, td, img {
+    margin: 0;
+    padding: 0;
+    font: 100% soutane,calibri,helvetica,sans-serif;
+}
+
+input, button, select, textarea, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
