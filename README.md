@@ -12,7 +12,7 @@ Made with Angular.
 - [ ] make it pretty  
 - [ ] proper pdf export  
 - [ ] optional start equipment  
+- [ ] implement generating characters of specific level
 - [ ] guide on how to add new races/classes  
 - [ ] multilanguage support  
-- [ ] implement generating characters of specific level
 - [ ] add some portraits
