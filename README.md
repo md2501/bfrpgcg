@@ -14,5 +14,5 @@ Made with Angular.
 - [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
 - [ ] multilanguage support  
-- [ ] implement generating characters of variable level
+- [ ] implement generating characters of specific level
 - [ ] add some portraits
