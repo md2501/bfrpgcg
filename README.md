@@ -12,8 +12,8 @@ Made with Angular.
 - [x] proper random names  
 - [ ] make it pretty  
 - [ ] proper pdf export  
-- [ ] optional start equipment  
 - [ ] implement generating characters of specific level
+- [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
 - [ ] multilanguage support  
 - [ ] add some portraits

@@ -33,19 +33,22 @@ export class AppComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.genNewCharacter();
     this.characterForm = this.fb.group({
-      raceFC: [this.character.race],
-      classFC: [this.character.characterClass]
+      raceFC: [''],
+      classFC: ['']
     })
     this.spellForm = this.fb.group({
       spellFC: [magicUserSpells[0]],
     })
+    this.genNewCharacter();
   }
 
   genNewCharacter(): void {
+    console.log("hello")
     this.genAbilities();
     this.genCharacter();
+    this.characterForm.get('raceFC')?.setValue(this.character.race);
+    this.characterForm.get('classFC')?.setValue(this.character.characterClass);
   }
 
   // roll a die a number of times and return the sum
@@ -148,6 +151,7 @@ export class AppComponent implements OnInit {
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
+
     if (this.name == '' || this.genRandomName) {
       this.genName(race);
     }
@@ -166,5 +170,8 @@ export class AppComponent implements OnInit {
       savingThrows: this.calcSavingThrows(characterClass, race),
       gold: this.genGold(),
     }
+
+    console.log(race.name)
+    console.log(characterClass.name)
   }
 }
