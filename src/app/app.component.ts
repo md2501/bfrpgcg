@@ -24,11 +24,13 @@ export class AppComponent implements OnInit {
   character!: ICharacter;
   name: string ='';
   genRandomName: boolean = true;
+  
 
   constructor() { }
 
   ngOnInit(): void {
     this.genNewCharacter();
+
   }
 
   genNewCharacter(): void {
