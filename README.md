@@ -6,8 +6,8 @@ Made with Angular.
 
 ## TODO
 - [x] allow user input for name  
-- [ ] allow user input for race  
-- [ ] allow user input for class  
+- [x] allow user input for race  
+- [x] allow user input for class  
 - [ ] allow choosing a spell for magic user classes
 - [x] proper random names  
 - [ ] make it pretty  

@@ -2,14 +2,28 @@
 <div><input value="Generate a new character" type="button" (click)="genNewCharacter()"></div>
 <div>
   <!-- NAME -->
-  <div><b>Name:</b><input type="text" id="name" [(ngModel)]="name"><input type="checkbox" name="useRandomName"
-      [(ngModel)]="genRandomName"><label for="useRandomName">use random name</label></div>
+  <div>
+    <label for="nameSelect"><b>Name: </b></label>
+    <input type="text" id="nameSelect" [(ngModel)]="name">
+    <label for="useRandomName">use random name</label>
+    <input type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
+  </div>
 
   <!-- RACE -->
-  <div><b>Race:</b><select [(ngModel)]="character.race" name="raceSelect" id="raceSelect" class="form-control" >{{character.race.name}}</select></div>
+  <div [formGroup]="characterForm">
+    <label for="raceSelect"><b>Race: </b></label>
+    <select name="raceSelect" id="raceSelect" (ngModelChange)="genCharacter($event)" formControlName="raceFC">
+      <option *ngFor="let race of getRaces()" [ngValue]="race">{{race.name}}</option>
+    </select>
+  </div>
 
   <!-- CLASS -->
-  <div><b>Class:</b>{{character.characterClass.name}}</div>
+  <div [formGroup]="characterForm">
+    <label for="classSelect"><b>Class: </b></label>
+    <select name="classSelect" id="classSelect" (ngModelChange)="genCharacter(character.race, $event)" formControlName="classFC">
+      <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">{{class.name}}</option>
+    </select>
+  </div>
 
   <!-- HP -->
   <div><b>HP:</b>{{character.hp}}</div>

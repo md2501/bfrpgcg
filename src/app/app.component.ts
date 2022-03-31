@@ -9,7 +9,7 @@ import { ISavingThrows } from './model/isaving-throws.interface';
 import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
@@ -24,13 +24,17 @@ export class AppComponent implements OnInit {
   character!: ICharacter;
   name: string ='';
   genRandomName: boolean = true;
+  characterForm!: FormGroup;
   
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.genNewCharacter();
-
+    this.characterForm = this.fb.group({
+      raceFC: [this.character.race],
+      classFC: [this.character.characterClass]
+    })
   }
 
   genNewCharacter(): void {
