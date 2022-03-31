@@ -13,5 +13,5 @@ export class Cleric implements IClass {
     hd = 6;
     ab = 1;
     weaponRestrictions = ["may wear any armor", "may only use blunt weapons (specifically including warhammer, mace, maul, club, quarterstaff, and sling)"];
-    specialAbility="Turn the Undead";
+    specialAbility={"Turn the Undead": ""};
 }

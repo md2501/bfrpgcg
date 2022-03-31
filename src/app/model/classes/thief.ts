@@ -10,5 +10,5 @@ export class Thief implements IClass {
     specialAbility = { "Open Locks": 20, "Remove Traps": 20, "Pick Pockets": 30, "Move Silently": 25, "Climb Walls": 80, "Hide": 10, "Listen": 30 };
     hd = 4;
     ab = 1;
-    weaponRestrictions = ["may not use metal armor or shields", "may use any weapon"];
+    weaponRestrictions = ["may not use metal armor or shields"];
 }

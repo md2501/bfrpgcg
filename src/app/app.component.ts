@@ -123,7 +123,8 @@ export class AppComponent implements OnInit {
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
-    var hd = race.name == RaceName.Halfling && characterClass.name == ClassName.Fighter ? 6 : characterClass.hd
+    // Use class hd for HP generation, but cap halfling hd at 6
+    var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
     this.character = {
       name: name ?? this.genName(race.name),

@@ -6,8 +6,8 @@ export default interface IClass {
     name: ClassName;
     hd: number;
     ab: number;
-    abilityRequirements: {[ability in AbilityName as string]: number};
+    abilityRequirements: { [ability in AbilityName as string]: number };
     weaponRestrictions: string[];
     savingThrow: ISavingThrows;
-    specialAbility?: any;
+    specialAbility?: { [ability: string]: string | number };
 }
