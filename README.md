@@ -8,7 +8,7 @@ Made with Angular.
 - [x] allow user input for name  
 - [x] allow user input for race  
 - [x] allow user input for class  
-- [ ] allow choosing a spell for magic user classes
+- [x] allow choosing a spell for magic user classes
 - [x] proper random names  
 - [ ] make it pretty  
 - [ ] proper pdf export  

@@ -10,6 +10,7 @@ import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { magicUserSpells } from './model/spells';
 
 
 @Component({
@@ -22,10 +23,12 @@ export class AppComponent implements OnInit {
 
   abilities!: IAbilities;
   character!: ICharacter;
-  name: string ='';
+  name: string = '';
   genRandomName: boolean = true;
   characterForm!: FormGroup;
-  
+  spellForm!: FormGroup;
+  magicUserSpells = magicUserSpells;
+
 
   constructor(private fb: FormBuilder) { }
 
@@ -34,6 +37,9 @@ export class AppComponent implements OnInit {
     this.characterForm = this.fb.group({
       raceFC: [this.character.race],
       classFC: [this.character.characterClass]
+    })
+    this.spellForm = this.fb.group({
+      spellFC: [magicUserSpells[0]],
     })
   }
 
@@ -68,6 +74,12 @@ export class AppComponent implements OnInit {
 
   private genName(race: IRace): void {
     this.name = race.names[Math.floor(Math.random() * race.names.length)];
+  }
+
+  setStarterSpell(e: any): void {
+    if (this.character.characterClass.spells) {
+      this.character.characterClass.spells[1] = e.target.value;
+    }
   }
 
   // get all possible races for the rolled abilities
