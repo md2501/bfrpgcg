@@ -8,6 +8,7 @@ export interface ICharacter {
     name: string;
     race: IRace;
     characterClass: IClass;
+    hp: number;
     ac: number;
     ab: number;
     abilities: IAbilities;

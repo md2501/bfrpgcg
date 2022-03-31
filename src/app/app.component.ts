@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ability } from './model/ability';
 import { ICharacter } from './model/character.interface';
 import { classes } from './model/classes/classes';
+import { ClassName } from './model/classes/classname.enum';
 import IClass from './model/classes/iclass.interface';
 import { AbilityName, IAbilities } from './model/iabilities.interface';
 import { ISavingThrows } from './model/isaving-throws.interface';
@@ -122,10 +123,13 @@ export class AppComponent implements OnInit {
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
+    var hd = race.name == RaceName.Halfling && characterClass.name == ClassName.Fighter ? 6 : characterClass.hd
+
     this.character = {
       name: name ?? this.genName(race.name),
       race: race,
       characterClass: characterClass,
+      hp: this.dieRoll(1, hd),
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
       ab: characterClass.ab,
       abilities: this.abilities,

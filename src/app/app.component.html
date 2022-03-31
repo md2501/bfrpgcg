@@ -3,6 +3,7 @@
   <div><b>Name:</b>{{character.name}} </div>
   <div><b>Race:</b>{{character.race.name}} </div>
   <div><b>Class:</b>{{character.characterClass.name}}</div>
+  <div><b>HP:</b>{{character.hp}}</div>
   <div><b>Gold:</b> {{character.gold}} GP </div>
   <h3>Abilites</h3>
   <div *ngFor="let ability of character.abilities | keyvalue"><b>{{ability.key}}:</b> {{ability.value.score}} <span *ngIf="ability.value.mod > 0">+</span>{{ability.value.mod}}</div>
@@ -10,5 +11,7 @@
   <div *ngFor="let save of character.savingThrows | keyvalue"><b>{{save.key}}</b>: {{save.value}}</div>
   <h3>Notes</h3>
   <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
+  <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
+  <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
   <div *ngFor="let note of character.characterClass.specialAbility">{{note}}</div>
 </div>
