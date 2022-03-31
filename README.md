@@ -5,7 +5,7 @@ A character generator for the [Basic Fantasy Role-Playing Game](https://basicfan
 Made with Angular.
 
 ## TODO
-- [ ] allow user input for name  
+- [x] allow user input for name  
 - [ ] allow user input for race  
 - [ ] allow user input for class  
 - [x] proper random names  

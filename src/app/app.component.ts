@@ -9,6 +9,8 @@ import { ISavingThrows } from './model/isaving-throws.interface';
 import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -20,10 +22,16 @@ export class AppComponent implements OnInit {
 
   abilities!: IAbilities;
   character!: ICharacter;
+  name: string ='';
+  genRandomName: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.genNewCharacter();
+  }
+
+  genNewCharacter(): void {
     this.genAbilities();
     this.genCharacter();
   }
@@ -52,8 +60,8 @@ export class AppComponent implements OnInit {
     this.abilities = abilities;
   }*/
 
-  private genName(race: IRace): string {
-    return race.names[Math.floor(Math.random() * race.names.length)];
+  private genName(race: IRace): void {
+    this.name = race.names[Math.floor(Math.random() * race.names.length)];
   }
 
   // get all possible races for the rolled abilities
@@ -110,7 +118,7 @@ export class AppComponent implements OnInit {
   }
 
   // generate and set a full character
-  genCharacter(race?: IRace, characterClass?: IClass, name?: string): void {
+  genCharacter(race?: IRace, characterClass?: IClass): void {
 
     if (!race) {
       var possibleRaces = this.getRaces();
@@ -122,11 +130,15 @@ export class AppComponent implements OnInit {
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
+    if (this.name == '' || this.genRandomName) {
+      this.genName(race);
+    }
+
     // Use class hd for HP generation, but cap halfling hd at 6
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
     this.character = {
-      name: name ?? this.genName(race),
+      name: this.name,
       race: race,
       characterClass: characterClass,
       hp: this.dieRoll(1, hd),
