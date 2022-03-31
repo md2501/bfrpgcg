@@ -10,7 +10,7 @@ Made with Angular.
 - [x] allow user input for class  
 - [x] allow choosing a spell for magic user classes
 - [x] proper random names  
-- [ ] make it pretty  
+- [x] make it not completely hideous  
 - [ ] proper pdf export  
 - [ ] implement generating characters of specific level
 - [ ] optional start equipment  
