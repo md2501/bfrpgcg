@@ -78,3 +78,27 @@ select {
 #optionals {
     padding-top: 27%;
 }
+
+#reroll-button {
+    border: none;
+    color: whitesmoke;
+    background-color: #252525;
+    padding:12%;
+    cursor: pointer;
+    height: auto;
+    border-radius: 20%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#download-button {
+    border: none;
+    color: whitesmoke;
+    background-color: #252525;
+    float: right;
+    margin-bottom: 200%;
+    padding: 1%;
+    width: 10%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
