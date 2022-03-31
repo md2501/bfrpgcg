@@ -41,7 +41,7 @@ fieldset {
     font-style: inherit;
     font-weight: inherit;
     margin: .1%;
-    padding: .1%;
+    padding: .2%;
 }
 
 #nameSelect {
@@ -55,7 +55,7 @@ fieldset {
 }
 
 .child {
-    width:50%    ;
+    width: 50%;
     float: left;
     vertical-align: top;
 }
@@ -68,6 +68,11 @@ table,
 th,
 td {
     border: 1px solid;
+}
+
+
+select {
+    background-color: inherit;
 }
 
 #optionals {
