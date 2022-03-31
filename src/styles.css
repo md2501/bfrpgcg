@@ -20,7 +20,7 @@ body {
     padding: 2%;
     padding-top: 1%;
     background-color: ghostwhite;
-    box-shadow: 10px, 10px, 5px, 12px;
+    box-shadow: 8px 8px 16px 4px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -86,8 +86,8 @@ select {
     padding:12%;
     cursor: pointer;
     height: auto;
-    border-radius: 20%;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 0%;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
 #download-button {
