@@ -8,4 +8,7 @@
   <div *ngFor="let ability of character.abilities | keyvalue"><b>{{ability.key}}:</b> {{ability.value.score}} <span *ngIf="ability.value.mod > 0">+</span>{{ability.value.mod}}</div>
   <h3>Saving Throws</h3>
   <div *ngFor="let save of character.savingThrows | keyvalue"><b>{{save.key}}</b>: {{save.value}}</div>
+  <h3>Notes</h3>
+  <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
+  <div *ngFor="let note of character.characterClass.specialAbility">{{note}}</div>
 </div>
