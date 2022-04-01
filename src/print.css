@@ -1,0 +1,25 @@
+@import url(styles.css);
+
+@media print {
+
+    input {
+        border: none;
+    }
+
+    select {
+        appearance: none;
+        border: none;
+    }
+
+    .content-sheet {
+        background-color: white;
+        box-shadow: none;
+        display: inline
+    }
+
+    .noprint {
+        display: none;
+    }
+
+
+}

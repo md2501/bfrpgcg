@@ -11,12 +11,14 @@ import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { magicUserSpells } from './model/spells';
-import { jsPDF } from 'jspdf';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas'
+import { nonWhiteSpace } from 'html2canvas/dist/types/css/syntax/parser';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', '../print.css']
 })
 export class AppComponent implements OnInit {
   title = 'bfrpgcg';
@@ -29,7 +31,7 @@ export class AppComponent implements OnInit {
   spellForm!: FormGroup;
   magicUserSpells = magicUserSpells;
 
-  @ViewChild('exportcontent') exportcontent!:ElementRef;
+  @ViewChild('exportcontent') exportcontent!: ElementRef;
 
   constructor(private fb: FormBuilder) { }
 
@@ -47,8 +49,8 @@ export class AppComponent implements OnInit {
   genNewCharacter(): void {
     this.genAbilities();
     this.genCharacter();
-    this.characterForm.get('raceFC')?.setValue(this.character.race, {emitViewToModelChange: false});
-    this.characterForm.get('classFC')?.setValue(this.character.characterClass, {emitViewToModelChange: false});
+    this.characterForm.get('raceFC')?.setValue(this.character.race, { emitViewToModelChange: false });
+    this.characterForm.get('classFC')?.setValue(this.character.characterClass, { emitViewToModelChange: false });
   }
 
   // roll a die a number of times and return the sum
@@ -140,8 +142,7 @@ export class AppComponent implements OnInit {
 
   // generate pdf from html
   genPDF() {
-    const doc = new jsPDF();
-    doc.html(document.getElementById('exportcontent') ?? '', {callback: (doc) => {doc.save();}})
+    window.print()
   }
 
   // generate and set a full character
