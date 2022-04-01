@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ability } from './model/ability';
-import { ICharacter } from './model/character.interface';
+import { ICharacter } from './model/icharacter.interface';
 import { classes } from './model/classes/classes';
 import { ClassName } from './model/classes/classname.enum';
 import IClass from './model/classes/iclass.interface';
@@ -165,6 +165,7 @@ export class AppComponent implements OnInit {
       hp: this.dieRoll(1, hd),
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
       ab: characterClass.ab,
+      level: 1,
       abilities: this.abilities,
       savingThrows: this.calcSavingThrows(characterClass, race),
       gold: this.genGold(),

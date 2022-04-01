@@ -11,6 +11,7 @@ export interface ICharacter {
     hp: number;
     ac: number;
     ab: number;
+    level: number;
     abilities: IAbilities;
     gold: number;
     savingThrows: ISavingThrows;

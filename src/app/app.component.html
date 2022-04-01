@@ -11,6 +11,11 @@
       <div style="float: right"><button id="reroll-button" (click)="genNewCharacter()">reroll</button></div>
       </div>
 
+      <!-- LEVEL -->
+      <div>
+        <b>Level: </b>
+        {{character.level}}
+      </div>
 
       <!-- RACE -->
       <div [formGroup]="characterForm">
