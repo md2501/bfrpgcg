@@ -9,7 +9,7 @@ Made with Angular.
 - [x] allow user input for race  
 - [x] allow user input for class  
 - [x] allow choosing a spell for magic user classes
-- [x] proper random names  
+- [x] proper random names (mostly provided by https://www.fantasynamegenerators.com/)
 - [x] make it not completely hideous  
 - [x] proper pdf export  
 - [ ] implement generating characters of specific level
