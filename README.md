@@ -11,7 +11,7 @@ Made with Angular.
 - [x] allow choosing a spell for magic user classes
 - [x] proper random names  
 - [x] make it not completely hideous  
-- [ ] proper pdf export  
+- [x] proper pdf export  
 - [ ] implement generating characters of specific level
 - [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
