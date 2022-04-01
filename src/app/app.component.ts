@@ -158,14 +158,16 @@ export class AppComponent implements OnInit {
     // Use class hd for HP generation, but cap halfling hd at 6
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
+    var level = 1
+
     this.character = {
       name: this.name,
       race: race,
       characterClass: characterClass,
-      hp: this.dieRoll(1, hd),
+      level: level,
+      hp: this.dieRoll(level, hd),
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
       ab: characterClass.ab,
-      level: 1,
       abilities: this.abilities,
       savingThrows: this.calcSavingThrows(characterClass, race),
       gold: this.genGold(),
