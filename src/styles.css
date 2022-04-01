@@ -45,9 +45,8 @@ fieldset {
 }
 
 #nameSelect {
-    width: fit-content;
-    max-width: fit-content;
-    size: 100%;
+    width: 35%;
+    overflow: visible;
 }
 
 .container {
