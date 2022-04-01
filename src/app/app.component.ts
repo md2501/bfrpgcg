@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Ability } from './model/ability';
 import { ICharacter } from './model/icharacter.interface';
 import { classes } from './model/classes/classes';
@@ -11,7 +11,7 @@ import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { magicUserSpells } from './model/spells';
-
+import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
   spellForm!: FormGroup;
   magicUserSpells = magicUserSpells;
 
+  @ViewChild('exportcontent') exportcontent!:ElementRef;
 
   constructor(private fb: FormBuilder) { }
 
@@ -135,6 +136,12 @@ export class AppComponent implements OnInit {
       savingThrows[mod] -= race.savingThrowMods[mod];
     }
     return savingThrows;
+  }
+
+  // generate pdf from html
+  genPDF() {
+    const doc = new jsPDF();
+    doc.html(document.getElementById('exportcontent') ?? '', {callback: (doc) => {doc.save();}})
   }
 
   // generate and set a full character

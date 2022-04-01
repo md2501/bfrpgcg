@@ -1,14 +1,16 @@
 <div class="content-sheet">
   <h1>Basic Fantasy RPG Character Generator</h1>
-  <div>
+  <input type="checkbox" name="useRandomName" [(ngModel)]="genRandomName"><label for="useRandomName">
+    Generate random name</label>
+  <div style="float: right;"><button id="reroll-button" (click)="genNewCharacter()">reroll</button></div>
+  <div style="float: right; margin-right: 3%"><button id="dl-button" (click)="genPDF()">download</button></div>
+  <div id="exportcontent">
     <!-- NAME -->
     <div>
       <div>
         <b>Name: </b>
         <input type="text" id="nameSelect" [(ngModel)]="name">
-        <input type="checkbox" name="useRandomName" [(ngModel)]="genRandomName"><label for="useRandomName">
-          random</label>
-      <div style="float: right"><button id="reroll-button" (click)="genNewCharacter()">reroll</button></div>
+
       </div>
 
       <!-- LEVEL -->

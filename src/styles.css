@@ -90,15 +90,13 @@ select {
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
-#download-button {
+#dl-button {
     border: none;
     color: whitesmoke;
     background-color: #252525;
-    float: right;
-    margin-bottom: 200%;
-    padding: 1%;
-    width: 10%;
+    padding: 6%;
+    cursor: pointer;
     height: auto;
-    border-radius: 50%;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 0%;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
