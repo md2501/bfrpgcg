@@ -11,5 +11,5 @@ export class MagicUserFighter implements IClass {
     weaponRestrictions = []
     savingThrow = { [SavingThrowName.POISON]: 13, [SavingThrowName.WANDS]: 14, [SavingThrowName.PARALYSIS]: 13, [SavingThrowName.DRAGONBREATH]: 16, [SavingThrowName.SPELLS]: 15 };
     // an empty string signifies an open spell slot
-    spells = ["Read Magic", ""];
+    spells = [["Read Magic"]];
 }

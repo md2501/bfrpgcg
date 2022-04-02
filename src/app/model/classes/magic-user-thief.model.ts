@@ -11,6 +11,5 @@ export class MagicUserThief implements IClass {
     weaponRestrictions = ["may only wear leather armor"];
     savingThrow = { [SavingThrowName.POISON]: 13, [SavingThrowName.WANDS]: 14, [SavingThrowName.PARALYSIS]: 13, [SavingThrowName.DRAGONBREATH]: 16, [SavingThrowName.SPELLS]: 15 };
     classAbilities = { "Open Locks": 20, "Remove Traps": 20, "Pick Pockets": 30, "Move Silently": 25, "Climb Walls": 80, "Hide": 10, "Listen": 30};
-    // an empty string signifies an open spell slot
-    spells = ["Read Magic", ""];
+    spells = [["Read Magic"]];
 }

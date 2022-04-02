@@ -10,5 +10,5 @@ export default interface IClass {
     weaponRestrictions: string[];
     savingThrow: ISavingThrows;
     classAbilities?: { [ability: string]: string | number };
-    spells?: string[];
+    spells?: string[][];
 }

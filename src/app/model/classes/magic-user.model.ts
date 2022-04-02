@@ -10,6 +10,5 @@ export class MagicUser implements IClass {
     hd = 4;
     ab = 1;
     weaponRestrictions = ["may not wear armor nor use a shield", "may use no weapon besides dagger, staff or cudgel"];
-    // an empty string signifies an open spell slot
-    spells = ["Read Magic", ""];
+    spells = [["Read Magic"]];
 }
