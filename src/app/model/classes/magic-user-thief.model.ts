@@ -10,7 +10,13 @@ export class MagicUserThief implements IClass {
     ab = 1;
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9, [AbilityName.DEXTERITY]: 9 };
     weaponRestrictions = ["may only wear leather armor"];
-    savingThrow = { [SavingThrowName.POISON]: 13, [SavingThrowName.WANDS]: 14, [SavingThrowName.PARALYSIS]: 13, [SavingThrowName.DRAGONBREATH]: 16, [SavingThrowName.SPELLS]: 15 };
+        savingThrow = {
+        [SavingThrowName.POISON]: [13, 12, 11, 11, 10, 9, 9, 8, 7, 7, 6],
+        [SavingThrowName.WANDS]: [14, 14, 13, 12, 11, 10, 10, 9, 8, 7, 6],
+        [SavingThrowName.PARALYSIS]: [13, 12, 12, 11, 10, 9, 9, 8, 7, 6, 5],
+        [SavingThrowName.DRAGONBREATH]: [16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6],
+        [SavingThrowName.SPELLS]: [15, 14, 13, 13, 12, 11, 11, 10, 9, 9, 8]
+    };
     classAbilities = {
         "Open Locks": [25, 30, 35, 40, 45, 50, 55, 60, 65, 68, 71, 74, 77, 80, 83, 84, 85, 86, 87, 88],
         "Remove Traps": [20, 25, 30, 35, 40, 45, 50, 55, 60, 63, 66, 69, 72, 75, 78, 79, 80, 81, 82, 83],
