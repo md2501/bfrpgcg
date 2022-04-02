@@ -9,7 +9,7 @@ export class MagicUserFighter implements IClass {
     ab = 1;
     abilityRequirements = { [AbilityName.STRENGTH]: 9, [AbilityName.INTELLIGENCE]: 9 };
     weaponRestrictions = []
-    savingThrow = { [SavingThrowName.POISON]: 13, [SavingThrowName.WANDS]: 14, [SavingThrowName.PARALYSIS]: 13, [SavingThrowName.DRAGONBREATH]: 16, [SavingThrowName.SPELLS]: 15 };
+    savingThrow= { [SavingThrowName.POISON]: 12, [SavingThrowName.WANDS]: 13, [SavingThrowName.PARALYSIS]: 13, [SavingThrowName.DRAGONBREATH]: 15, [SavingThrowName.SPELLS]: 15, };
     // an empty string signifies an open spell slot
     spells = ["Read Magic", ""];
 }

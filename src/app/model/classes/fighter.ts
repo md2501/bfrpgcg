@@ -5,7 +5,7 @@ import IClass from "./iclass.interface";
 
 export class Fighter implements IClass {
     name= ClassName.Fighter;
-    savingThrow= { [SavingThrowName.POISON]: 13, [SavingThrowName.WANDS]: 14, [SavingThrowName.PARALYSIS]: 15, [SavingThrowName.DRAGONBREATH]: 16, [SavingThrowName.SPELLS]: 18, };
+    savingThrow= { [SavingThrowName.POISON]: 12, [SavingThrowName.WANDS]: 13, [SavingThrowName.PARALYSIS]: 14, [SavingThrowName.DRAGONBREATH]: 15, [SavingThrowName.SPELLS]: 17, };
     hd = 8;
     ab = 1;
     abilityRequirements = { [AbilityName.STRENGTH]: 9 };
