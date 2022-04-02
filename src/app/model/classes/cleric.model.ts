@@ -5,6 +5,7 @@ import IClass from "./iclass.interface";
 
 export class Cleric implements IClass {
     name= ClassName.Cleric;
+    hpBonus = {10: 1, 11: 2, 12: 3, 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 18: 9, 19: 10, 20: 11};
     savingThrow = {
         [SavingThrowName.POISON]: 11, [SavingThrowName.WANDS]: 12, [SavingThrowName.PARALYSIS]: 14, [SavingThrowName.DRAGONBREATH]: 16,
         [SavingThrowName.SPELLS]: 15

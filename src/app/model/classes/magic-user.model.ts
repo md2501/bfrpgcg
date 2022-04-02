@@ -6,6 +6,7 @@ import IClass from "./iclass.interface";
 export class MagicUser implements IClass {
     name = ClassName.MagicUser;
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9 };
+    hpBonus = {10: 1, 11: 2, 12: 3, 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 18: 9, 19: 10, 20: 11};
     savingThrow = { [SavingThrowName.POISON]: 13, [SavingThrowName.WANDS]: 14, [SavingThrowName.PARALYSIS]: 13, [SavingThrowName.DRAGONBREATH]: 16, [SavingThrowName.SPELLS]: 15 };
     hd = 4;
     ab = 1;
