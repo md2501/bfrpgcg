@@ -88,26 +88,68 @@ export const magicUserSpells: string[][] = [[
 export const clericSpells: string[][] = [
     // 1. Level
     [
-
+        "Cure Light Wounds*",
+        "Detect Evil*",
+        "Detect Magic",
+        "Light*",
+        "Protection from Evil*",
+        "Purify Food and Water",
+        "Remove Fear*",
+        "Resist Cold",
     ],
     // 2. Level
     [
-
+        "Bless*",
+        "Charm Animal",
+        "Find Traps",
+        "Hold Person",
+        "Resist Fire",
+        "Silence 15' radius",
+        "Speak with Animals",
+        "Spiritual Hammer",
     ],
     // 3. Level
     [
-
+        "Continual Light*",
+        "Cure Blindness",
+        "Cure Disease*",
+        "Growth of Animals",
+        "Locate Object",
+        "Remove Curse*",
+        "Speak with Dead",
+        "Striking",
     ],
     // 4. Level
     [
-
+        "Animate Dead",
+        "Create Water",
+        "Cure Serious Wounds*",
+        "Dispel Magic",
+        "Neutralize Poison*",
+        "Protection from Evil 10' radius*",
+        "Speak with Plants",
+        "Sticks to Snakes",
     ],
     // 5. Level
     [
-
+        "Commune",
+        "Create Food",
+        "Dispel Evil",
+        "Insect Plague",
+        "Quest*",
+        "Raise Dead*",
+        "True Seeing",
+        "Wall of Fire",
     ],
     // 6. Level
     [
-
+        "Animate Objects",
+        "Blade Barrier",
+        "Find the Path",
+        "Heal*",
+        "Regenerate",
+        "Restoration",
+        "Speak with Monsters",
+        "Word of Recall",
     ],
 ]
