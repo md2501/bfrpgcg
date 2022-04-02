@@ -2,6 +2,8 @@
 
 A character generator for the [Basic Fantasy Role-Playing Game](https://basicfantasy.org).
 
+Try it [here](https://md2501.github.io/bfrpgcg). 🐉
+
 Made with Angular.
 
 ## TODO
