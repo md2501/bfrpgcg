@@ -11,9 +11,6 @@ import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { magicUserSpells } from './model/spells';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas'
-import { nonWhiteSpace } from 'html2canvas/dist/types/css/syntax/parser';
 
 @Component({
   selector: 'app-root',
