@@ -7,7 +7,13 @@ export class Thief implements IClass {
     name = ClassName.Thief;
     hpBonus = { 10: 2, 11: 4, 12: 6, 13: 8, 14: 10, 15: 12, 16: 14, 17: 16, 18: 18, 19: 20, 20: 22 };
     abilityRequirements = { [AbilityName.DEXTERITY]: 9 };
-    savingThrow = { [SavingThrowName.POISON]: 13, [SavingThrowName.WANDS]: 14, [SavingThrowName.PARALYSIS]: 13, [SavingThrowName.DRAGONBREATH]: 16, [SavingThrowName.SPELLS]: 15 };
+    savingThrow = {
+        [SavingThrowName.POISON]: [13, 12, 11, 11, 10, 9, 9, 8, 7, 7, 6],
+        [SavingThrowName.WANDS]: [14, 14, 13, 13, 12, 12, 10, 10, 9, 9, 8],
+        [SavingThrowName.PARALYSIS]: [13, 12, 12, 11, 11, 10, 10, 9, 9, 8, 8],
+        [SavingThrowName.DRAGONBREATH]: [16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6],
+        [SavingThrowName.SPELLS]: [15, 14 ,13, 13, 12, 11, 11, 10, 9, 9, 8]
+    };
     classAbilities = {
         "Open Locks": [25, 30, 35, 40, 45, 50, 55, 60, 65, 68, 71, 74, 77, 80, 83, 84, 85, 86, 87, 88],
         "Remove Traps": [20, 25, 30, 35, 40, 45, 50, 55, 60, 63, 66, 69, 72, 75, 78, 79, 80, 81, 82, 83],

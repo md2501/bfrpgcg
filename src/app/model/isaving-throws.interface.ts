@@ -6,4 +6,4 @@ export enum SavingThrowName {
     SPELLS = "Spells"
 }
 
-export type ISavingThrows = {[save in SavingThrowName as string]: number};
+export type ISavingThrows = {[save in SavingThrowName as string]: number[]};
