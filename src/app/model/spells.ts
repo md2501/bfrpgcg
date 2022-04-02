@@ -1,4 +1,4 @@
-export const magicUserSpells: string[] = [
+export const magicUserSpells: string[][] = [[
     "Charm Person",
     "Detect Magic",
     "Floating Disc",
@@ -10,4 +10,4 @@ export const magicUserSpells: string[] = [
     "Read Languages",
     "Shield",
     "Sleep",
-    "Ventriloquism"];
+    "Ventriloquism"]];
