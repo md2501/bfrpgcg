@@ -1,4 +1,4 @@
-import { Ability } from "./ability";
+import { Ability } from "./ability.model";
 
 export enum AbilityName {
     STRENGTH = "Strength",

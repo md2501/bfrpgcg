@@ -1,5 +1,5 @@
 import { IAbilities } from "./iabilities.interface";
-import { Ability } from "./ability";
+import { Ability } from "./ability.model";
 import IClass from "./classes/iclass.interface";
 import { IRace } from "./races/irace.interface";
 import { ISavingThrows } from "./isaving-throws.interface";

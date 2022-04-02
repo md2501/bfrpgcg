@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Ability } from './model/ability';
+import { Ability } from './model/ability.model';
 import { ICharacter } from './model/icharacter.interface';
 import { classes } from './model/classes/classes';
 import { ClassName } from './model/classes/classname.enum';
