@@ -9,7 +9,7 @@ export class MagicUserThief implements IClass {
     hd = 4;
     ab = 1;
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9, [AbilityName.DEXTERITY]: 9 };
-    weaponRestrictions = ["may only wear leather armor"];
+    weaponRestrictions = ["may not use metal armor or shields"];
         savingThrow = {
         [SavingThrowName.POISON]: [13, 12, 11, 11, 10, 9, 9, 8, 7, 7, 6],
         [SavingThrowName.WANDS]: [14, 14, 13, 12, 11, 10, 10, 9, 8, 7, 6],
