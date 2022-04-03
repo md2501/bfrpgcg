@@ -1,5 +1,6 @@
 import { AbilityName } from "../iabilities.interface";
 import { SavingThrowName } from "../isaving-throws.interface";
+import { magicUserSpells } from "../spells";
 import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
@@ -27,7 +28,7 @@ export class MagicUserThief implements IClass {
         "Listen": [30, 34, 38, 42, 46, 50, 54, 58, 62, 65, 68, 71, 74, 77, 80, 83, 86, 89, 92, 95]
     };
     // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
-    spells = {
+    spellProgression = {
         1: [1],
         2: [2],
         3: [2,1],
@@ -48,5 +49,6 @@ export class MagicUserThief implements IClass {
         18: [6,5,4,4,3,3],
         19: [6,5,5,4,3,3],
         20: [6,5,5,4,4,3]
-    }
+    };
+    spells = magicUserSpells;
 }
