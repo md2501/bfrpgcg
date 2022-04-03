@@ -93,12 +93,12 @@
         </div>
 
         <!-- SPELLS -->
-        <div style="clear:both" *ngIf="character.characterClass.spells">
+        <div style="clear:both" *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
           <h3>Spells</h3>
           <form [formGroup]="spellForm">
             <form formArrayName="spellArray"
               *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i">
-              <b>Level {{i+1}}</b><br>
+              <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
               <label [formArrayName]="i" *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
                 <input type="checkbox" [formControlName]="j">
                   {{character.characterClass.spells[i][j]}}<br>
