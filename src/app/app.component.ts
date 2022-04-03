@@ -9,7 +9,7 @@ import { ISavingThrows, SavingThrowName } from './model/isaving-throws.interface
 import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
-import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { magicUserSpells } from './model/spells';
 
 @Component({
@@ -84,10 +84,46 @@ export class AppComponent implements OnInit {
     }
   }
 
-  setSpells(): void {
-    console.log("setSpells");
+  private setSpells(): void {
+    if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
+      var spells: string[][] = [];
+      for (var i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
+        spells.push([]);
+      }
+      for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+
+        var selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
+
+        // get the selected spells and add them to our characters spells
+        for (var j = 0; j < selected.length; j++) {
+          if (selected[j]) {
+            spells[i].push(this.character.characterClass.spells[i][j]);
+          }
+        }
+      }
+      this.character.spells = spells;
+    }
   }
 
+  checkSpells(): void {
+    for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+
+      var selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
+
+      // disable all unselected checkboxes if max amount of spells for spelllevel has been selected
+      if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level][i]) {
+        for (var fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
+          if (!fc.value) {
+            fc.disable();
+          }
+        }
+      } else {
+        for (var fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
+          fc.enable();
+        }
+      }
+    }
+  }
 
   private createNewSpellSelect(): FormControl {
     return new FormControl({ spellSelect: [''] });

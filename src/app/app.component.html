@@ -92,28 +92,30 @@
             {{ability.value[character.level-1]}}</div>
         </div>
 
-        <!-- SPELLS -->
-        <div style="clear:both" *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
+        <!-- SPELLS (checkboxes)-->
+        <div style="clear:both"
+          *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
           <h3>Spells</h3>
-          <form [formGroup]="spellForm">
-            <form formArrayName="spellArray"
+          <div [formGroup]="spellForm">
+            <div formArrayName="spellArray"
               *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i">
               <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
-              <label [formArrayName]="i" *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-                <input type="checkbox" [formControlName]="j">
-                  {{character.characterClass.spells[i][j]}}<br>
+              <label for="spell-box" class="spell-label" [formArrayName]="i"
+                *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
+                <input name="spell-box" class="spell-box" type="checkbox" (change)="checkSpells()" [formControlName]="j">
+                <span class="spell-span">{{character.characterClass.spells[i][j]}}</span><br>
               </label>
-            </form>
-        </form>
-      </div>
+            </div>
+          </div>
+        </div>
 
-      <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
-      <div style="clear:both">
-        <h3>Notes</h3>
-        <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
-        <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
-        <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
+        <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
+        <div style="clear:both">
+          <h3>Notes</h3>
+          <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
+          <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
+          <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
+        </div>
       </div>
     </div>
   </div>
-</div>

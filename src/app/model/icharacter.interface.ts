@@ -15,6 +15,7 @@ export interface ICharacter {
     abilities: IAbilities;
     gold: number;
     savingThrows: {[key in SavingThrowName as string]: number};
+    spells?: string[][];
     //equipment: string[];
 
 }
