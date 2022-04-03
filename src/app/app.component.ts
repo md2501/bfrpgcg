@@ -80,8 +80,8 @@ export class AppComponent implements OnInit {
   }
 
   setStarterSpell(e: any): void {
-    if (this.character.characterClass.spells) {
-      this.character.characterClass.spells[1] = e.target.value;
+    if (this.character.characterClass.spellProgression) {
+      this.character.characterClass.spellProgression[1] = e.target.value;
     }
   }
 
@@ -173,7 +173,7 @@ export class AppComponent implements OnInit {
       level: level,
       hp: this.dieRoll(rolls, hd) + hpBonus,
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
-      ab: characterClass.ab[level],
+      ab: characterClass.ab[level-1],
       abilities: this.abilities,
       savingThrows: this.calcSavingThrows(characterClass, race, level),
       gold: this.genGold(),

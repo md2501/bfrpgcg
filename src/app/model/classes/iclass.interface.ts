@@ -6,7 +6,7 @@ export default interface IClass {
     name: ClassName;
     hd: number;
     hpBonus: {[characterLevel: number]: number};
-    ab: {[characterLevel: number]: number};
+    ab: number[];
     abilityRequirements: { [ability in AbilityName as string]: number };
     weaponRestrictions: string[];
     savingThrow: ISavingThrows;
