@@ -21,6 +21,7 @@ export class Cleric implements IClass {
     classAbilities = { "Turn the Undead": "" };
     // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
     spellProgression = {
+        1: [],
         2: [1],
         3: [2],
         4: [2, 1],

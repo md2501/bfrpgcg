@@ -9,7 +9,7 @@ import { ISavingThrows, SavingThrowName } from './model/isaving-throws.interface
 import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { magicUserSpells } from './model/spells';
 
 @Component({
@@ -26,8 +26,7 @@ export class AppComponent implements OnInit {
   genRandomName: boolean = true;
   characterForm!: FormGroup;
   spellForm!: FormGroup;
-  magicUserSpells = magicUserSpells;
-
+  spellArray!: FormArray;
   @ViewChild('exportcontent') exportcontent!: ElementRef;
 
   constructor(private fb: FormBuilder) { }
@@ -39,8 +38,8 @@ export class AppComponent implements OnInit {
       classFC: ['']
     })
     this.spellForm = this.fb.group({
-      spellFC: [magicUserSpells[0]],
-    })
+      spellArray: this.fb.array([])
+    });
     this.genNewCharacter();
   }
 
@@ -83,6 +82,15 @@ export class AppComponent implements OnInit {
     if (this.character.characterClass.spellProgression) {
       this.character.characterClass.spellProgression[1] = e.target.value;
     }
+  }
+
+  setSpells(): void {
+    console.log("setSpells");
+  }
+
+
+  private createNewSpellSelect(): FormControl {
+    return new FormControl({ spellSelect: [''] });
   }
 
   // get all possible races for the rolled abilities
@@ -130,10 +138,10 @@ export class AppComponent implements OnInit {
   }
 
   // calculate the saving throws from class values and race modifiers
-  private calcSavingThrows(characterClass: IClass, race: IRace, level: number): {[key in SavingThrowName as string]: number} {
-    var savingThrows: {[key in SavingThrowName as string]: number} = {};
+  private calcSavingThrows(characterClass: IClass, race: IRace, level: number): { [key in SavingThrowName as string]: number } {
+    var savingThrows: { [key in SavingThrowName as string]: number } = {};
     for (var save in characterClass.savingThrow) {
-      savingThrows[save] = characterClass.savingThrow[save][Math.floor(level/2)] - (race.savingThrowMods[save] ?? 0);
+      savingThrows[save] = characterClass.savingThrow[save][Math.floor(level / 2)] - (race.savingThrowMods[save] ?? 0);
     }
     return savingThrows;
   }
@@ -146,17 +154,19 @@ export class AppComponent implements OnInit {
   // generate and set a full character
   genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
 
+    // get a random race suitable for the abilities if none given
     if (!race) {
       var possibleRaces = this.getRaces();
       race = possibleRaces[Math.floor(Math.random() * possibleRaces.length)];
     }
 
+    // get a random characterClass suitable for the abilities and race if none given
     if (!characterClass) {
       var possibleClasses = this.getCharacterClasses(race);
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
-
+    // Use a random name?
     if (this.name == '' || this.genRandomName) {
       this.genName(race);
     }
@@ -164,8 +174,20 @@ export class AppComponent implements OnInit {
     // Use class hd for HP generation, but cap halfling hd at 6
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
+    // Get amount of hd rolled and hp class bonus for hp gen
     var rolls = level < 9 ? level : 9;
     var hpBonus = characterClass.hpBonus[level] ?? 0;
+
+    // Prepare Spellform if needed
+    this.spellForm.controls['spellArray'] = this.fb.array([]);
+    if (characterClass.spellProgression && characterClass.spells) {
+      for (var i = 0; i < characterClass.spellProgression[level].length; i++) {
+        (this.spellForm.get('spellArray') as FormArray).push(new FormArray([]));
+        for (var spell of characterClass.spells[i])
+          ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).push(new FormControl());
+      }
+    }
+
     this.character = {
       name: this.name,
       race: race,
@@ -173,7 +195,7 @@ export class AppComponent implements OnInit {
       level: level,
       hp: this.dieRoll(rolls, hd) + hpBonus,
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
-      ab: characterClass.ab[level-1],
+      ab: characterClass.ab[level - 1],
       abilities: this.abilities,
       savingThrows: this.calcSavingThrows(characterClass, race, level),
       gold: this.genGold(),
