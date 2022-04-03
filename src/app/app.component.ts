@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.characterForm = this.fb.group({
+      levelFC: [1],
       raceFC: [''],
       classFC: ['']
     })
@@ -143,7 +144,7 @@ export class AppComponent implements OnInit {
   }
 
   // generate and set a full character
-  genCharacter(race?: IRace, characterClass?: IClass): void {
+  genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
 
     if (!race) {
       var possibleRaces = this.getRaces();
@@ -162,8 +163,6 @@ export class AppComponent implements OnInit {
 
     // Use class hd for HP generation, but cap halfling hd at 6
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
-
-    var level = 1;
 
     var rolls = level < 9 ? level : 9;
     var hpBonus = characterClass.hpBonus[level] ?? 0;

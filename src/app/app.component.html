@@ -17,15 +17,17 @@
       </div>
 
       <!-- LEVEL -->
-      <div>
+      <div [formGroup]="characterForm">
         <b>Level: </b>
-        {{character.level}}
+        <select name="levelSelect" id="levelSelect" (ngModelChange)="genCharacter(character.race, character.characterClass, $event)" formControlName="levelFC">
+          <option *ngFor="let lvl of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13, 14, 15 ,16, 17, 18, 19, 20]" [ngValue]="lvl">{{lvl}}</option>
+        </select>
       </div>
 
       <!-- RACE -->
       <div [formGroup]="characterForm">
         <b>Race: </b>
-        <select name="raceSelect" id="raceSelect" (ngModelChange)="genCharacter($event)" formControlName="raceFC">
+        <select name="raceSelect" id="raceSelect" (ngModelChange)="genCharacter($event, undefined, character.level)" formControlName="raceFC">
           <option *ngFor="let race of getRaces()" [ngValue]="race">{{race.name}}</option>
         </select>
       </div>
@@ -33,7 +35,7 @@
       <!-- CLASS -->
       <div [formGroup]="characterForm">
         <b>Class: </b>
-        <select name="classSelect" id="classSelect" (ngModelChange)="genCharacter(character.race, $event)"
+        <select name="classSelect" id="classSelect" (ngModelChange)="genCharacter(character.race, $event, character.level)"
           formControlName="classFC">
           <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">{{class.name}}</option>
         </select>
