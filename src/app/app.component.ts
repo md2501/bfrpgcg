@@ -178,6 +178,10 @@ export class AppComponent implements OnInit {
     var rolls = level < 9 ? level : 9;
     var hpBonus = characterClass.hpBonus[level] ?? 0;
 
+    // Make sure hp are at least 1
+    var hp = this.dieRoll(rolls, hd) + hpBonus + this.abilities[AbilityName.CONSTITUTION].mod;
+    hp = hp < 1 ? 1 : hp;
+
     // Prepare Spellform if needed
     this.spellForm.controls['spellArray'] = this.fb.array([]);
     if (characterClass.spellProgression && characterClass.spells) {
@@ -193,7 +197,7 @@ export class AppComponent implements OnInit {
       race: race,
       characterClass: characterClass,
       level: level,
-      hp: this.dieRoll(rolls, hd) + hpBonus,
+      hp: hp,
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
       ab: characterClass.ab[level - 1],
       abilities: this.abilities,
