@@ -15,7 +15,7 @@ export class Cleric implements IClass {
     };
     abilityRequirements = { [AbilityName.WISDOM]: 9 };
     hd = 6;
-    ab = 1;
+    ab = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3, 7: 4, 8: 4, 9: 5, 10: 5, 11: 5, 12: 6, 13: 6, 14: 6, 15: 7, 16: 7, 17: 7, 18: 8, 19: 8, 20: 8}
     weaponRestrictions = ["may only use blunt weapons"];
     classAbilities = { "Turn the Undead": "" };
     // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
