@@ -90,7 +90,7 @@
           <div>{{character.characterClass.spells[0]}}</div>
           <div [formGroup]="spellForm">
             <select name="spellSelect" id="spellSelect" (change)="setStarterSpell($event)" formControlName="spellFC">
-              <option *ngFor="let spell of magicUserSpells" [value]="spell">{{spell}}</option>
+              <option *ngFor="let spell of magicUserSpells[character.level-1]" [value]="spell">{{spell}}</option>
             </select>
           </div>
         </div>

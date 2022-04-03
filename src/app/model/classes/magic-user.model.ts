@@ -8,6 +8,7 @@ export class MagicUser implements IClass {
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9 };
     hpBonus = { 10: 1, 11: 2, 12: 3, 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 18: 9, 19: 10, 20: 11 };
     savingThrow = {
+        //                   [1,2-3,4-5,6-7,8-9,10-11,12-13,14-15,16-17,18-19,20]
         [SavingThrowName.POISON]: [13, 13, 12, 12, 11, 11, 10, 10, 9, 9, 8],
         [SavingThrowName.WANDS]: [14, 14, 13, 12, 11, 10, 10, 9, 8, 7, 6],
         [SavingThrowName.PARALYSIS]: [13, 13, 12, 11, 10, 9, 9, 8, 7, 6, 5],

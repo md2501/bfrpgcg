@@ -5,7 +5,7 @@ import { classes } from './model/classes/classes';
 import { ClassName } from './model/classes/classname.enum';
 import IClass from './model/classes/iclass.interface';
 import { AbilityName, IAbilities } from './model/iabilities.interface';
-import { ISavingThrows } from './model/isaving-throws.interface';
+import { ISavingThrows, SavingThrowName } from './model/isaving-throws.interface';
 import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
@@ -129,10 +129,10 @@ export class AppComponent implements OnInit {
   }
 
   // calculate the saving throws from class values and race modifiers
-  private calcSavingThrows(characterClass: IClass, race: IRace): ISavingThrows {
-    var savingThrows: ISavingThrows = {};
+  private calcSavingThrows(characterClass: IClass, race: IRace, level: number): {[key in SavingThrowName as string]: number} {
+    var savingThrows: {[key in SavingThrowName as string]: number} = {};
     for (var save in characterClass.savingThrow) {
-      savingThrows[save] = characterClass.savingThrow[save] - (race.savingThrowMods[save] ?? 0);
+      savingThrows[save] = characterClass.savingThrow[save][Math.floor(level/2)] - (race.savingThrowMods[save] ?? 0);
     }
     return savingThrows;
   }
@@ -163,18 +163,20 @@ export class AppComponent implements OnInit {
     // Use class hd for HP generation, but cap halfling hd at 6
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
-    var level = 1
+    var level = 1;
 
+    var rolls = level < 9 ? level : 9;
+    var hpBonus = characterClass.hpBonus[level] ?? 0;
     this.character = {
       name: this.name,
       race: race,
       characterClass: characterClass,
       level: level,
-      hp: this.dieRoll(level, hd),
+      hp: this.dieRoll(rolls, hd) + hpBonus,
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
-      ab: characterClass.ab,
+      ab: characterClass.ab[level],
       abilities: this.abilities,
-      savingThrows: this.calcSavingThrows(characterClass, race),
+      savingThrows: this.calcSavingThrows(characterClass, race, level),
       gold: this.genGold(),
     }
   }
