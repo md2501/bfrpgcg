@@ -81,7 +81,7 @@
         <div style="clear:both" *ngIf="character.characterClass.classAbilities">
           <h3>Class Abilities</h3>
           <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue"><b>{{ability.key}}</b>
-            {{ability.value}}</div>
+            {{ability.value[character.level-1]}}</div>
         </div>
 
         <!-- SPELLS -->
