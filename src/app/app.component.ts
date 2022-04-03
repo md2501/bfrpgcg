@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
   genNewCharacter(): void {
     this.genAbilities();
-    this.genCharacter();
+    this.genCharacter(undefined, undefined, this.characterForm.get('levelFC')?.value);
     this.characterForm.get('raceFC')?.setValue(this.character.race, { emitViewToModelChange: false });
     this.characterForm.get('classFC')?.setValue(this.character.characterClass, { emitViewToModelChange: false });
   }
