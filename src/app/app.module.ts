@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { TranslocoRootModule } from './transloco-root.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslocoRootModule
   ],
   providers: [],
   bootstrap: [AppComponent]
