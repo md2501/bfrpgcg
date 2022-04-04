@@ -17,5 +17,7 @@ Made with Angular.
 - [ ] implement generating characters of specific level
 - [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
-- [ ] multilanguage support  
+- [x] multilanguage support  
+  - [ ] add german translations
+  - [ ] add german and english translations for race specifics like 'weaponRestrictions'
 - [ ] add some portraits
