@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,10 +11,11 @@ import { TranslocoRootModule } from './transloco-root.module';
     AppComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslocoRootModule
+    TranslocoRootModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,14 +11,14 @@
     <!-- NAME -->
     <div>
       <div>
-        <b>Name: </b>
+        <b>{{ t('name') }}: </b>
         <input type="text" id="nameSelect" [(ngModel)]="name">
 
       </div>
 
       <!-- LEVEL -->
       <div [formGroup]="characterForm">
-        <b>Level: </b>
+        <b>{{ t('level') }}: </b>
         <select name="levelSelect" id="levelSelect"
           (ngModelChange)="genCharacter(character.race, character.characterClass, $event)" formControlName="levelFC">
           <option *ngFor="let lvl of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13, 14, 15 ,16, 17, 18, 19, 20]"
@@ -28,7 +28,7 @@
 
       <!-- RACE -->
       <div [formGroup]="characterForm">
-        <b>Race: </b>
+        <b>{{ t('race') }}: </b>
         <select name="raceSelect" id="raceSelect" (ngModelChange)="genCharacter($event, undefined, character.level)"
           formControlName="raceFC">
           <option *ngFor="let race of getRaces()" [ngValue]="race">{{race.name}}</option>
@@ -37,7 +37,7 @@
 
       <!-- CLASS -->
       <div [formGroup]="characterForm">
-        <b>Class: </b>
+        <b>{{ t('race') }}: </b>
         <select name="classSelect" id="classSelect"
           (ngModelChange)="genCharacter(character.race, $event, character.level)" formControlName="classFC">
           <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">{{class.name}}</option>
@@ -56,7 +56,7 @@
       <!-- ABILITIES -->
       <div class="container">
         <div class="child">
-          <h3>Abilites</h3>
+          <h3>{{ t('abilities') }}</h3>
           <div><b>Strength: </b>{{character.abilities["Strength"].score}} <span
               *ngIf="character.abilities['Strength'].mod > 0">+</span>{{character.abilities['Strength'].mod}}</div>
           <div><b>Intelligence: </b>{{character.abilities["Intelligence"].score}} <span
@@ -75,7 +75,7 @@
 
         <!-- SAVING THROWS -->
         <div class="child" style="float:right; width:50%;">
-          <h3>Saving Throws</h3>
+          <h3>{{ t('savingThrows') }}</h3>
           <div><b>Death Ray or Poison: </b>{{character.savingThrows["Death Ray or Poison"]}}</div>
           <div><b>Magic Wands: </b>{{character.savingThrows["Magic Wands"]}}</div>
           <div><b>Paralysis or Petrify: </b>{{character.savingThrows["Paralysis or Petrify"]}}</div>
@@ -87,7 +87,7 @@
       <div id="optionals">
         <!-- CLASS ABILITIES -->
         <div style="clear:both" *ngIf="character.characterClass.classAbilities">
-          <h3>Class Abilities</h3>
+          <h3>{{ t('class') }} {{ t('abilities') }}</h3>
           <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue"><b>{{ability.key}}</b>
             {{ability.value[character.level-1]}}</div>
         </div>
@@ -111,7 +111,7 @@
 
         <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
         <div style="clear:both">
-          <h3>Notes</h3>
+          <h3>{{ t('notes') }}</h3>
           <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
           <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
           <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
