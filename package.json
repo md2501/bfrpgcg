@@ -18,6 +18,8 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@ngneat/transloco": "^3.2.0",
+    "@ngneat/transloco-messageformat": "^3.0.1",
     "jspdf": "^2.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
