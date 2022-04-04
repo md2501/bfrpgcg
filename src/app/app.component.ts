@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
 
   abilities!: IAbilities;
   character!: ICharacter;
+  spells!: Spell[][] | null;
   name: string = '';
   genRandomName: boolean = true;
   characterForm!: FormGroup;
@@ -84,28 +85,33 @@ export class AppComponent implements OnInit {
     }
   }
 
-  private setSpells(): void {
-    if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
-      var spells: Spell[][] = [];
-      for (var i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
-        spells.push([]);
-      }
-      for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+  onSetSpells(): void {
+    this.checkSpells();
 
-        var selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
+    this.spells = [];
+
+    if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
+
+      // add empty array for each spell level the character can have spells of
+      for (var i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
+        this.spells.push([]);
+      }
 
         // get the selected spells and add them to our characters spells
+      for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+
+        var selected = ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls ;
+
         for (var j = 0; j < selected.length; j++) {
-          if (selected[j]) {
-            spells[i].push(this.character.characterClass.spells[i][j]);
+          if (selected[j].value) {
+            this.spells[i].push(this.character.characterClass.spells[i][j]);
           }
         }
       }
-      this.character.spells = spells;
     }
   }
 
-  checkSpells(): void {
+  private checkSpells(): void {
     for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
 
       var selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
@@ -184,11 +190,13 @@ export class AppComponent implements OnInit {
 
   // generate pdf from html
   genPDF() {
-    window.print()
+    window.print();
   }
 
   // generate and set a full character
   genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
+
+    this.spells = null;
 
     // get a random race suitable for the abilities if none given
     if (!race) {

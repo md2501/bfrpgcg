@@ -21,16 +21,7 @@
         display: none;
     }
 
-
-    label .spell-box {
-        display: none;
-    }
-
-    label .spell-span {
-        display: none;
-    }
-
-    label .spell-box:checked + span {
+    .onlyprint {
         display: inline;
     }
 }
