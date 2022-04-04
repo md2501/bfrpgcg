@@ -103,3 +103,13 @@ select {
 .onlyprint {
     display: none;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 1em;
+    row-gap: 1em;
+}
+
+.grid-item{
+}

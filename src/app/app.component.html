@@ -97,14 +97,17 @@
           *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
           <h3>Spells</h3>
           <div [formGroup]="spellForm">
-            <div formArrayName="spellArray"
-              *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i">
-              <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
-              <label for="spell-box" class="spell-label" [formArrayName]="i"
-                *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-                <input name="spell-box" class="spell-box" type="checkbox" (change)="checkSpells()" [formControlName]="j">
-                <span class="spell-span">{{character.characterClass.spells[i][j]}}</span><br>
-              </label>
+            <div class="grid-container">
+              <div formArrayName="spellArray" class="grid-item"
+                *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i" class="spell-level">
+                <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
+                <label for="spell-box" [formArrayName]="i"
+                  *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
+                    <input name="spell-box" class="spell-box" type="checkbox" (change)="checkSpells()"
+                      [formControlName]="j">
+                    <span class="spell-span"> {{character.characterClass.spells[i][j]}}</span><br>
+                </label>
+              </div>
             </div>
           </div>
         </div>
