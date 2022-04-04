@@ -10,7 +10,7 @@ import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { magicUserSpells } from './model/spells';
+import { magicUserSpells, Spell } from './model/spells';
 
 @Component({
   selector: 'app-root',
@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
 
   private setSpells(): void {
     if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
-      var spells: string[][] = [];
+      var spells: Spell[][] = [];
       for (var i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
         spells.push([]);
       }
