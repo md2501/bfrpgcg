@@ -21,24 +21,7 @@
         display: none;
     }
 
-
-    label .spell-box {
-        display: none;
-    }
-
-    label .spell-span {
-        display: none;
-    }
-
-    input[type="checkbox"] ~ .spell-level {
-        display: none;
-    }
-
-    label .spell-level {
-        display: none;
-    }
-
-    label .spell-box:checked + span {
+    .onlyprint {
         display: inline;
     }
 }

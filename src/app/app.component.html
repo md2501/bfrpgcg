@@ -93,7 +93,7 @@
         </div>
 
         <!-- SPELLS (checkboxes)-->
-        <div style="clear:both"
+        <div style="clear:both" class="noprint"
           *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
           <h3>Spells</h3>
           <div [formGroup]="spellForm">
@@ -101,12 +101,27 @@
               <div formArrayName="spellArray"
                 *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i" class="spell-level">
                 <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
-                <label for="spell-box" [formArrayName]="i"
+                <ng-container class="spell-container" [formArrayName]="i"
                   *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-                    <input name="spell-box" class="spell-box" type="checkbox" (change)="checkSpells()"
-                      [formControlName]="j">
-                    <span class="spell-span"> {{character.characterClass.spells[i][j]}}</span><br>
-                </label>
+                  <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()"
+                    [formControlName]="j">
+                  <span class="spell-span"> {{character.characterClass.spells[i][j]}}</span><br>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPELLS (for printing)-->
+        <div class="onlyprint" style="clear:both"
+          *ngIf="this.spells">
+          <h3>Spells</h3>
+            <div class="grid-container">
+                <div *ngFor="let spellLevel of spells; index as i">
+                <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
+                <ng-container *ngFor="let selSpell of spellLevel">
+                  <span> {{selSpell}}</span><br>
+                </ng-container>
               </div>
             </div>
           </div>
