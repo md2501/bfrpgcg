@@ -98,7 +98,7 @@
           <h3>Spells</h3>
           <div [formGroup]="spellForm">
             <div class="grid-container">
-              <div formArrayName="spellArray" class="grid-item"
+              <div formArrayName="spellArray"
                 *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i" class="spell-level">
                 <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
                 <label for="spell-box" [formArrayName]="i"
