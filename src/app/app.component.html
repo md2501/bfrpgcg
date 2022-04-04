@@ -53,87 +53,85 @@
       <!-- GOLD -->
       <div><b>Gold: </b> {{character.gold}} GP </div>
 
-      <!-- ABILITIES -->
-      <div class="container">
-        <div class="child">
-          <h3>Abilites</h3>
-          <div><b>Strength: </b>{{character.abilities["Strength"].score}} <span
-              *ngIf="character.abilities['Strength'].mod > 0">+</span>{{character.abilities['Strength'].mod}}</div>
-          <div><b>Intelligence: </b>{{character.abilities["Intelligence"].score}} <span
-              *ngIf="character.abilities['Intelligence'].mod > 0">+</span>{{character.abilities['Intelligence'].mod}}
+      <div class="grid-container">
+        <!-- ABILITIES -->
+        <div class="container">
+          <div class="child">
+            <h3>Abilites</h3>
+            <div><b>Strength: </b>{{character.abilities["Strength"].score}} <span
+                *ngIf="character.abilities['Strength'].mod > 0">+</span>{{character.abilities['Strength'].mod}}</div>
+            <div><b>Intelligence: </b>{{character.abilities["Intelligence"].score}} <span
+                *ngIf="character.abilities['Intelligence'].mod > 0">+</span>{{character.abilities['Intelligence'].mod}}
+            </div>
+            <div><b>Wisdom: </b>{{character.abilities["Wisdom"].score}} <span
+                *ngIf="character.abilities['Wisdom'].mod > 0">+</span>{{character.abilities['Wisdom'].mod}}</div>
+            <div><b>Dexterity: </b>{{character.abilities["Dexterity"].score}} <span
+                *ngIf="character.abilities['Dexterity'].mod > 0">+</span>{{character.abilities['Dexterity'].mod}}</div>
+            <div><b>Constitution: </b>{{character.abilities["Constitution"].score}} <span
+                *ngIf="character.abilities['Constitution'].mod > 0">+</span>{{character.abilities['Constitution'].mod}}
+            </div>
+            <div><b>Charisma: </b>{{character.abilities["Charisma"].score}} <span
+                *ngIf="character.abilities['Charisma'].mod > 0">+</span>{{character.abilities['Charisma'].mod}}</div>
           </div>
-          <div><b>Wisdom: </b>{{character.abilities["Wisdom"].score}} <span
-              *ngIf="character.abilities['Wisdom'].mod > 0">+</span>{{character.abilities['Wisdom'].mod}}</div>
-          <div><b>Dexterity: </b>{{character.abilities["Dexterity"].score}} <span
-              *ngIf="character.abilities['Dexterity'].mod > 0">+</span>{{character.abilities['Dexterity'].mod}}</div>
-          <div><b>Constitution: </b>{{character.abilities["Constitution"].score}} <span
-              *ngIf="character.abilities['Constitution'].mod > 0">+</span>{{character.abilities['Constitution'].mod}}
+
+          <!-- SAVING THROWS -->
+          <div class="child" style="float:right; width:50%;">
+            <h3>Saving Throws</h3>
+            <div><b>Death Ray or Poison: </b>{{character.savingThrows["Death Ray or Poison"]}}</div>
+            <div><b>Magic Wands: </b>{{character.savingThrows["Magic Wands"]}}</div>
+            <div><b>Paralysis or Petrify: </b>{{character.savingThrows["Paralysis or Petrify"]}}</div>
+            <div><b>Dragon Breath: </b>{{character.savingThrows["Dragon Breath"]}}</div>
+            <div><b>Spells: </b>{{character.savingThrows["Spells"]}}</div>
           </div>
-          <div><b>Charisma: </b>{{character.abilities["Charisma"].score}} <span
-              *ngIf="character.abilities['Charisma'].mod > 0">+</span>{{character.abilities['Charisma'].mod}}</div>
         </div>
 
-        <!-- SAVING THROWS -->
-        <div class="child" style="float:right; width:50%;">
-          <h3>Saving Throws</h3>
-          <div><b>Death Ray or Poison: </b>{{character.savingThrows["Death Ray or Poison"]}}</div>
-          <div><b>Magic Wands: </b>{{character.savingThrows["Magic Wands"]}}</div>
-          <div><b>Paralysis or Petrify: </b>{{character.savingThrows["Paralysis or Petrify"]}}</div>
-          <div><b>Dragon Breath: </b>{{character.savingThrows["Dragon Breath"]}}</div>
-          <div><b>Spells: </b>{{character.savingThrows["Spells"]}}</div>
-        </div>
-      </div>
-      <br>
-      <div id="optionals">
         <!-- CLASS ABILITIES -->
         <div style="clear:both" *ngIf="character.characterClass.classAbilities">
           <h3>Class Abilities</h3>
           <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue"><b>{{ability.key}}</b>
             {{ability.value[character.level-1]}}</div>
         </div>
-
-        <!-- SPELLS (checkboxes)-->
-        <div style="clear:both" class="noprint"
-          *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
-          <h3>Spells</h3>
-          <div [formGroup]="spellForm">
-            <div class="grid-container">
-              <div formArrayName="spellArray"
-                *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i" class="spell-level">
-                <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
-                <ng-container class="spell-container" [formArrayName]="i"
-                  *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-                  <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()"
-                    [formControlName]="j">
-                  <span class="spell-span"> {{character.characterClass.spells[i][j]}}</span><br>
-                </ng-container>
-              </div>
+      </div>
+      <!-- SPELLS (checkboxes)-->
+      <div style="clear:both" class="noprint"
+        *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
+        <h3>Spells</h3>
+        <div [formGroup]="spellForm">
+          <div class="grid-container">
+            <div formArrayName="spellArray"
+              *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i" class="spell-level">
+              <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
+              <ng-container class="spell-container" [formArrayName]="i"
+                *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
+                <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()"
+                  [formControlName]="j">
+                <span class="spell-span"> {{character.characterClass.spells[i][j]}}</span><br>
+              </ng-container>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- SPELLS (for printing)-->
-        <div class="onlyprint" style="clear:both"
-          *ngIf="this.spells">
-          <h3>Spells</h3>
-            <div class="grid-container">
-                <div *ngFor="let spellLevel of spells; index as i">
-                <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
-                <ng-container *ngFor="let selSpell of spellLevel">
-                  <span> {{selSpell}}</span><br>
-                </ng-container>
-              </div>
-            </div>
+      <!-- SPELLS (for printing)-->
+      <div class="onlyprint" style="clear:both" *ngIf="this.spells">
+        <h3>Spells</h3>
+        <div class="grid-container">
+          <div *ngFor="let spellLevel of spells; index as i">
+            <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
+            <ng-container *ngFor="let selSpell of spellLevel">
+              <span> {{selSpell}}</span><br>
+            </ng-container>
           </div>
-        </div>
-
-        <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
-        <div style="clear:both">
-          <h3>Notes</h3>
-          <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
-          <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
-          <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
         </div>
       </div>
     </div>
+
+    <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
+    <div style="clear:both">
+      <h3>Notes</h3>
+      <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
+      <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
+      <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
+    </div>
   </div>
+</div>

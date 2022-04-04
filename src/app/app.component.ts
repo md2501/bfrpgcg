@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   abilities!: IAbilities;
   character!: ICharacter;
-  spells!: string[][];
+  spells!: string[][] | null;
   name: string = '';
   genRandomName: boolean = true;
   characterForm!: FormGroup;
@@ -195,6 +195,8 @@ export class AppComponent implements OnInit {
 
   // generate and set a full character
   genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
+
+    this.spells = null;
 
     // get a random race suitable for the abilities if none given
     if (!race) {
