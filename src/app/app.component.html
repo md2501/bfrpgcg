@@ -184,8 +184,14 @@
                   (change)="checkSpells()"
                   [formControlName]="j"
                 >
-                <span class="spell-span">{{ t('game.spells.' + character.characterClass.spells[i][j].name) }}{{ character.characterClass.spells[i][j].reversible ? "*" : "" }}</span><br>
+                <span class="spell-span">
+                  {{ t('game.spells.' + character.characterClass.spells[i][j].name) }}
+                  {{ character.characterClass.spells[i][j].reversible ? "*" : "" }}
+                </span><br>
               </label>
+              <div style="margin-top: 1rem; font-size: small;">
+                {{ t('game.spells.info.reversible') }}
+              </div>
             </div>
           </div>
         </div>

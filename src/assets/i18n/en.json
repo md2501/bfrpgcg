@@ -32,6 +32,9 @@
         },
         "spells": {
             "self": "Spells",
+            "info": {
+                "reversible": "Reversible spells are marked with an asterisk (*)"
+            },
             "charmPerson": "Charm Person",
             "detectMagic": "Detect Magic",
             "floatingDisc": "Floating Disc",
