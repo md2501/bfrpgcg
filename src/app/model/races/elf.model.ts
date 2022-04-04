@@ -1,7 +1,7 @@
 import { IRace } from "./irace.interface";
 import { ClassName } from "../classes/classname.enum";
 import { RaceName } from "./racename.enum";
-import { Ability } from "../ability";
+import { Ability } from "../ability.model";
 import { AbilityName } from "../iabilities.interface";
 import { SavingThrowName } from "../isaving-throws.interface";
 

@@ -2,6 +2,8 @@
 
 A character generator for the [Basic Fantasy Role-Playing Game](https://basicfantasy.org).
 
+Try it [here](https://md2501.github.io/bfrpgcg). 🐉
+
 Made with Angular.
 
 ## TODO
@@ -12,7 +14,8 @@ Made with Angular.
 - [x] proper random names (mostly provided by https://www.fantasynamegenerators.com/)
 - [x] make it not completely hideous  
 - [x] proper pdf export  
-- [ ] implement generating characters of specific level
+- [x] implement generating characters of specific level
+- [ ] allow full hp at first level
 - [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
 - [ ] multilanguage support  

@@ -1,19 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Ability } from './model/ability';
+import { Ability } from './model/ability.model';
 import { ICharacter } from './model/icharacter.interface';
 import { classes } from './model/classes/classes';
 import { ClassName } from './model/classes/classname.enum';
 import IClass from './model/classes/iclass.interface';
 import { AbilityName, IAbilities } from './model/iabilities.interface';
-import { ISavingThrows } from './model/isaving-throws.interface';
+import { ISavingThrows, SavingThrowName } from './model/isaving-throws.interface';
 import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { magicUserSpells } from './model/spells';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas'
-import { nonWhiteSpace } from 'html2canvas/dist/types/css/syntax/parser';
 
 @Component({
   selector: 'app-root',
@@ -25,30 +22,31 @@ export class AppComponent implements OnInit {
 
   abilities!: IAbilities;
   character!: ICharacter;
+  spells!: string[][] | null;
   name: string = '';
   genRandomName: boolean = true;
   characterForm!: FormGroup;
   spellForm!: FormGroup;
-  magicUserSpells = magicUserSpells;
-
+  spellArray!: FormArray;
   @ViewChild('exportcontent') exportcontent!: ElementRef;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.characterForm = this.fb.group({
+      levelFC: [1],
       raceFC: [''],
       classFC: ['']
     })
     this.spellForm = this.fb.group({
-      spellFC: [magicUserSpells[0]],
-    })
+      spellArray: this.fb.array([])
+    });
     this.genNewCharacter();
   }
 
   genNewCharacter(): void {
     this.genAbilities();
-    this.genCharacter();
+    this.genCharacter(undefined, undefined, this.characterForm.get('levelFC')?.value);
     this.characterForm.get('raceFC')?.setValue(this.character.race, { emitViewToModelChange: false });
     this.characterForm.get('classFC')?.setValue(this.character.characterClass, { emitViewToModelChange: false });
   }
@@ -82,9 +80,59 @@ export class AppComponent implements OnInit {
   }
 
   setStarterSpell(e: any): void {
-    if (this.character.characterClass.spells) {
-      this.character.characterClass.spells[1] = e.target.value;
+    if (this.character.characterClass.spellProgression) {
+      this.character.characterClass.spellProgression[1] = e.target.value;
     }
+  }
+
+  onSetSpells(): void {
+    this.checkSpells();
+
+    this.spells = [];
+
+    if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
+
+      // add empty array for each spell level the character can have spells of
+      for (var i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
+        this.spells.push([]);
+      }
+
+        // get the selected spells and add them to our characters spells
+      for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+
+        var selected = ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls ;
+
+        for (var j = 0; j < selected.length; j++) {
+          if (selected[j].value) {
+            this.spells[i].push(this.character.characterClass.spells[i][j]);
+          }
+        }
+      }
+    }
+  }
+
+  private checkSpells(): void {
+    for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+
+      var selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
+
+      // disable all unselected checkboxes if max amount of spells for spelllevel has been selected
+      if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level][i]) {
+        for (var fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
+          if (!fc.value) {
+            fc.disable();
+          }
+        }
+      } else {
+        for (var fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
+          fc.enable();
+        }
+      }
+    }
+  }
+
+  private createNewSpellSelect(): FormControl {
+    return new FormControl({ spellSelect: [''] });
   }
 
   // get all possible races for the rolled abilities
@@ -132,33 +180,37 @@ export class AppComponent implements OnInit {
   }
 
   // calculate the saving throws from class values and race modifiers
-  private calcSavingThrows(characterClass: IClass, race: IRace): ISavingThrows {
-    var savingThrows: ISavingThrows = {};
+  private calcSavingThrows(characterClass: IClass, race: IRace, level: number): { [key in SavingThrowName as string]: number } {
+    var savingThrows: { [key in SavingThrowName as string]: number } = {};
     for (var save in characterClass.savingThrow) {
-      savingThrows[save] = characterClass.savingThrow[save] - (race.savingThrowMods[save] ?? 0);
+      savingThrows[save] = characterClass.savingThrow[save][Math.floor(level / 2)] - (race.savingThrowMods[save] ?? 0);
     }
     return savingThrows;
   }
 
   // generate pdf from html
   genPDF() {
-    window.print()
+    window.print();
   }
 
   // generate and set a full character
-  genCharacter(race?: IRace, characterClass?: IClass): void {
+  genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
 
+    this.spells = null;
+
+    // get a random race suitable for the abilities if none given
     if (!race) {
       var possibleRaces = this.getRaces();
       race = possibleRaces[Math.floor(Math.random() * possibleRaces.length)];
     }
 
+    // get a random characterClass suitable for the abilities and race if none given
     if (!characterClass) {
       var possibleClasses = this.getCharacterClasses(race);
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
-
+    // Use a random name?
     if (this.name == '' || this.genRandomName) {
       this.genName(race);
     }
@@ -166,18 +218,34 @@ export class AppComponent implements OnInit {
     // Use class hd for HP generation, but cap halfling hd at 6
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
-    var level = 1
+    // Get amount of hd rolled and hp class bonus for hp gen
+    var rolls = level < 9 ? level : 9;
+    var hpBonus = characterClass.hpBonus[level] ?? 0;
+
+    // Make sure hp are at least 1
+    var hp = this.dieRoll(rolls, hd) + hpBonus + this.abilities[AbilityName.CONSTITUTION].mod;
+    hp = hp < 1 ? 1 : hp;
+
+    // Prepare Spellform if needed
+    this.spellForm.controls['spellArray'] = this.fb.array([]);
+    if (characterClass.spellProgression && characterClass.spells) {
+      for (var i = 0; i < characterClass.spellProgression[level].length; i++) {
+        (this.spellForm.get('spellArray') as FormArray).push(new FormArray([]));
+        for (var spell of characterClass.spells[i])
+          ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).push(new FormControl());
+      }
+    }
 
     this.character = {
       name: this.name,
       race: race,
       characterClass: characterClass,
       level: level,
-      hp: this.dieRoll(level, hd),
+      hp: hp,
       ac: this.abilities[AbilityName.DEXTERITY].mod >= 1 ? this.abilities[AbilityName.DEXTERITY].mod : 0,
-      ab: characterClass.ab,
+      ab: characterClass.ab[level - 1],
       abilities: this.abilities,
-      savingThrows: this.calcSavingThrows(characterClass, race),
+      savingThrows: this.calcSavingThrows(characterClass, race, level),
       gold: this.genGold(),
     }
   }

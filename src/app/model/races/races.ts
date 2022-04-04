@@ -1,7 +1,7 @@
-import { Dwarf } from "./dwarf";
-import { Elf } from "./elf";
-import { Halfling } from "./halfling";
-import { Human } from "./human";
+import { Dwarf } from "./dwarf.model";
+import { Elf } from "./elf.model";
+import { Halfling } from "./halfling.model";
+import { Human } from "./human.model";
 import { IRace } from "./irace.interface";
 import { RaceName } from "./racename.enum";
 

@@ -99,3 +99,14 @@ select {
     border-radius: 0%;
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
+
+.onlyprint {
+    display: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 1em;
+    row-gap: 1em;
+}
