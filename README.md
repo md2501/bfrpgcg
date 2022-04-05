@@ -21,7 +21,8 @@ Made with Angular.
 - [x] multilanguage support  
   - [ ] add drop down to select language
   - [x] add german translations
-  - [ ] add translations (en, de) for race and class specifics like 'weaponRestrictions', 'specialAbilities' and 'classRestrictions'
+  - [x] add translations (en, de) for race specifics like (weapon restrictions and special abilities)
+  - [ ] add translations (en, de) for class specifics (class restrictions and abilities) NOTE: This will be a bit harder
   - [x] add translations (en, de) for races
   - [ ] add translations for classes
 - [ ] add some portraits
