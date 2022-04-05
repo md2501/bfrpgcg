@@ -69,6 +69,35 @@ td {
     border: 1px solid;
 }
 
+hr {
+    height: 3em;
+    background: url('assets/imgs/sword.png') no-repeat top center;
+    background-size: contain;
+    display: block;
+    border: 0;
+    position: relative;
+}
+
+hr:before, hr:after {
+    content:'';
+    display: block;
+    position: absolute;
+    background: ghostwhite;
+    height: 1px;
+    top: 1.5em;
+}
+hr:before {
+    left: 0;
+    right: 50%;
+    margin-right: 6em;
+    background-color: #252525;
+}
+hr:after {
+    right: 0;
+    left: 50%;
+    margin-left: 6em;
+    background-color: #252525;
+}
 
 select {
     background-color: inherit;
