@@ -1,6 +1,10 @@
 {
     "app": {
-        "description": "Basic Fantasy RPG Character Generator"
+        "description": "Basic Fantasy RPG Character Generator",
+        "lang": {
+            "en": "English",
+            "de": "Deutsch"
+        }
     },
 
     "game": {

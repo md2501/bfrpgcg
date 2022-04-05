@@ -20,6 +20,11 @@ export class TranslocoHttpLoader implements TranslocoLoader {
   }
 }
 
+export const LANGS = [
+  { langKey: 'app.lang.en', value: 'en' },
+  { langKey: 'app.lang.de', value: 'de' },
+]
+
 @NgModule({
   imports: [ TranslocoMessageFormatModule.forRoot() ],
   exports: [ TranslocoModule ],
@@ -27,9 +32,9 @@ export class TranslocoHttpLoader implements TranslocoLoader {
     {
       provide: TRANSLOCO_CONFIG,
       useValue: translocoConfig({
-        availableLangs: ['en', 'de'],
+        availableLangs: LANGS.map((langObj) => langObj.value),
         defaultLang: 'en',
-        fallbackLang: 'en',
+        fallbackLang: ['en', 'de'],
         // Remove this option if your application
         // doesn't support changing language in runtime.
         reRenderOnLangChange: true,

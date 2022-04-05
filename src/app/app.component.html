@@ -1,4 +1,14 @@
 <div class="content-sheet" *transloco="let t">
+  <form class="noprint" [formGroup]="langForm">
+    <select formControlName="langSelect">
+      <option 
+        *ngFor="let lang of langs"
+        [ngValue]="lang.value"
+      >
+        {{ t(lang.langKey) }}
+      </option>
+    </select>
+  </form>
   <h1 class="noprint">{{ t('app.description') }}</h1>
   <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
     <label class="noprint" for="useRandomName">

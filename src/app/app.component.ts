@@ -11,6 +11,8 @@ import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { magicUserSpells, Spell } from './model/spells';
+import { LANGS } from './transloco-root.module';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,9 @@ import { magicUserSpells, Spell } from './model/spells';
 })
 export class AppComponent implements OnInit {
   title = 'bfrpgcg';
+  // Array of languages
+  langs = LANGS;
+  langForm!: FormGroup;
 
   abilities!: IAbilities;
   character!: ICharacter;
@@ -30,7 +35,7 @@ export class AppComponent implements OnInit {
   spellArray!: FormArray;
   @ViewChild('exportcontent') exportcontent!: ElementRef;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private langService: TranslocoService) { }
 
   ngOnInit(): void {
     this.characterForm = this.fb.group({
@@ -42,6 +47,22 @@ export class AppComponent implements OnInit {
       spellArray: this.fb.array([])
     });
     this.genNewCharacter();
+    // Setting up form with select for translation
+    this.langForm = this.fb.group({
+      langSelect: ['en']
+    });
+    this.setOnLangChangeListener();
+    // Fallback language does not work properly. There is already an issue on github
+    this.langService.setFallbackLangForMissingTranslation({ fallbackLang: 'en' })
+  }
+
+  private setOnLangChangeListener(): void {
+    this.langForm.get('langSelect')?.valueChanges
+      .subscribe(langKey => this.changeLanguage(langKey))
+  }
+
+  changeLanguage(lang: string): void {
+    this.langService.setActiveLang(lang)
   }
 
   genNewCharacter(): void {
