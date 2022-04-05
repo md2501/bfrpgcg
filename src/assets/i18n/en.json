@@ -11,7 +11,7 @@
         "gold": "Gold",
         "notes": "Notes",
         "attackBonus": "{IN, select, short {AB} other {Attack Bonus}}",
-        "healthPoints": "{IN, select, short {HP} other {Health Points}}",
+        "healthPoints": "{IN, select, short {HP} other {Hit Points}}",
         "goldPieces": "{IN, select, short {GP} other {Gold Pieces}}",
         "abilities": {
             "self": "Abilities",
@@ -111,7 +111,7 @@
             "charmAnimal": "Charm Animal",
             "findTraps": "Find Traps",
             "resistFire": "Resist Fire",
-            "silenceRadius15": "Silence 15' radius",
+            "silenceRadius15": "Silence 15’ radius",
             "speakWithAnimals": "Speak with Animals",
             "spiritualHammer": "Spiritual Hammer",
             "cureBlindness": "Cure Blindness",
