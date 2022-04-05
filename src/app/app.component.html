@@ -58,14 +58,14 @@
           <option *ngFor="let race of getRaces()"
             [ngValue]="race"
           >
-            {{race.name}}
+            {{ t('game.races.' + race.name.toLowerCase() + '.self') }}
           </option>
         </select>
       </div>
 
       <!-- CLASS -->
       <div [formGroup]="characterForm">
-        <b>{{ t('game.race') }}: </b>
+        <b>{{ t('game.class') }}: </b>
         <select
           name="classSelect"
           id="classSelect"
@@ -225,7 +225,7 @@
     <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
     <div style="clear:both">
       <h3>{{ t('game.notes') }}</h3>
-      <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
+      <div *ngFor="let note of character.race.specialAbilities">{{ t(note.translationKey, note.params) }}</div>
       <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
       <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
     </div>

@@ -13,6 +13,49 @@
         "attackBonus": "{IN, select, short {AB} other {Attack Bonus}}",
         "healthPoints": "{IN, select, short {HP} other {Hit Points}}",
         "goldPieces": "{IN, select, short {GP} other {Gold Pieces}}",
+        "experiencePoints": "{IN, select, short {XP} other {Experience Points}}",
+        "races": {
+            "dwarf": {
+                "self": "Dwarf",
+                "specifics": {
+                    "specialAbilities": {
+                        "darkvision": "Darkvision {VALUE}’",
+                        "detectSurroundings": "Detect slanting passages, traps, shifting walls, new construction: {VALUE}"
+                    }
+                }
+            },
+            "elf": {
+                "self": "Elf",
+                "specifics": {
+                    "specialAbilities": {
+                        "darkvision": "Darkvision {VALUE}’",
+                        "findSecretDoors": "Find secret doors more often than normal ({VALUE1}, {VALUE2})",
+                        "immuneToGhoulAcid": "Immune to paralyzing acid of ghouls", 
+                        "surprise": "Reduced chance of surprise: {VALUE}"
+                    }
+                }
+            },
+            "halfling": {
+                "self": "Halfling",
+                "specifics": {
+                    "specialAbilities": {
+                        "rangedWeaponBonus": "+{VALUE} attack bonus on ranged weapons",
+                        "armorBonus": "+{VALUE} armor class when attacked in melee by creatures larger than man-sized",
+                        "initiative": "+{VALUE} initiative",
+                        "hideOutdoors": "Hide outdoors: {VALUE}",
+                        "hideIndoors": "Hide indoors: {VALUE}"
+                    }
+                }
+            },
+            "human": {
+                "self": "Human",
+                "specifics": {
+                    "specialAbilities": {
+                        "extraXp": "+{VALUE}% XP"
+                    }
+                }
+            }
+        },
         "abilities": {
             "self": "Abilities",
             "strength": "Strength",

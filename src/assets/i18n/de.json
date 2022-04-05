@@ -13,6 +13,49 @@
         "attackBonus": "{IN, select, short {AB} other {Angriffsbonus}}",
         "healthPoints": "{IN, select, short {TP} other {Trefferpunkte}}",
         "goldPieces": "{IN, select, short {GM} other {Goldmünzen}}",
+        "experiencePoints": "{IN, select, short {EP} other {Erfahrungspunkte}}",
+        "races": {
+            "dwarf": {
+                "self": "Zwerg",
+                "specifics": {
+                    "specialAbilities": {
+                        "darkvision": "Dunkelsicht {VALUE}’",
+                        "detectSurroundings": "Aufspüren von auf- oder absteigende Tunneln, Fallen, bewegliche Wände und Veränderungen an Bauwerken: {VALUE}"
+                    }
+                }
+            },
+            "elf": {
+                "self": "Elf",
+                "specifics": {
+                    "specialAbilities": {
+                        "darkvision": "Dunkelsicht {VALUE}’",
+                        "findSecretDoors": "Finde geheime Türen häufiger als normal ({VALUE1}, {VALUE2})",
+                        "immuneToGhoulAcid": "Immun gegen den paralysierenden Angriff von Ghulen", 
+                        "surprise": "Reduzierte Chance auf Überraschung: {VALUE}"
+                    }
+                }
+            },
+            "halfling": {
+                "self": "Halbling",
+                "specifics": {
+                    "specialAbilities": {
+                        "rangedWeaponBonus": "+{VALUE} Angriffsbonus auf Fernkampfwaffen",
+                        "armorBonus": "+{VALUE} Bonus auf Rüstungsklasse, wenn sie in einem Kampf mit einer Kreatur größer als ein Mensch sind",
+                        "initiative": "+{VALUE} Initiative",
+                        "hideOutdoors": "Verstecken in Waldgegenden: {VALUE}",
+                        "hideIndoors": "Verstecken in Gebäuden: {VALUE}"
+                    }
+                }
+            },
+            "human": {
+                "self": "Mensch",
+                "specifics": {
+                    "specialAbilities": {
+                        "extraXp": "+{VALUE}% EP"
+                    }
+                }
+            }
+        },
         "abilities": {
             "self": "Eigenschaften",
             "strength": "Kraft",

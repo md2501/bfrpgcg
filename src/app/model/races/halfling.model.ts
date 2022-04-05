@@ -4,12 +4,36 @@ import { RaceName } from "./racename.enum";
 import { AbilityName } from "../iabilities.interface";
 import { SavingThrowName } from "../isaving-throws.interface";
 
+const HALFLING_SPECIFICS_KEY = "game.races.halfling.specifics"
+
 export class Halfling implements IRace {
     name = RaceName.Halfling;
     abilityRequirements = { [AbilityName.DEXTERITY]: 9, [AbilityName.STRENGTH]: -17 };
     classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter];
     weaponRestrictions = ["may not use large weapons", "must wield medium weapons with both hands"];
-    specialAbilities = ["+1 attack bonus on ranged weapons", "+2 armor class when attacked in melee by creatures larger than man-sized", "+1 initiative", "hide outdoors: 90", "hide indoors: 70"];
+    // specialAbilities = ["+1 attack bonus on ranged weapons", "+2 armor class when attacked in melee by creatures larger than man-sized", "+1 initiative", "hide outdoors: 90", "hide indoors: 70"];
+    specialAbilities = [
+        { 
+            translationKey: `${HALFLING_SPECIFICS_KEY}.specialAbilities.rangedWeaponBonus`,
+            params: { VALUE: 1 }
+        },
+        { 
+            translationKey: `${HALFLING_SPECIFICS_KEY}.specialAbilities.armorBonus`,
+            params: { VALUE: 2 }
+        },
+        { 
+            translationKey: `${HALFLING_SPECIFICS_KEY}.specialAbilities.initiative`,
+            params: { VALUE: 1 }
+        },
+        { 
+            translationKey: `${HALFLING_SPECIFICS_KEY}.specialAbilities.hideOutdoors`,
+            params: { VALUE: 90 }
+        },
+        { 
+            translationKey: `${HALFLING_SPECIFICS_KEY}.specialAbilities.hideIndoors`,
+            params: { VALUE: 70 }
+        }
+    ];
     savingThrowMods = { [SavingThrowName.POISON]: 4, [SavingThrowName.WANDS]: 4, [SavingThrowName.PARALYSIS]: 4, [SavingThrowName.SPELLS]: 4, [SavingThrowName.DRAGONBREATH]: 3 };
     names = ["Sadoc Whitfoot",
         "Marco Whitbottom",
