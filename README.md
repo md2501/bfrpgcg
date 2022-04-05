@@ -15,7 +15,7 @@ Made with Angular.
 - [x] make it not completely hideous  
 - [x] proper pdf export  
 - [x] implement generating characters of specific level
-- [ ] allow full hp at first level
+- [x] allow full hp at first level
 - [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
 - [ ] multilanguage support  

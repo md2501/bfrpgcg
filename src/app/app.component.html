@@ -1,11 +1,17 @@
 <div class="content-sheet">
   <h1 class="noprint">Basic Fantasy RPG Character Generator</h1>
-  <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
-  <label class="noprint" for="useRandomName">
-    Generate random name</label>
   <div class="noprint" style="float: right;"><button id="reroll-button" (click)="genNewCharacter()">reroll</button>
   </div>
   <div class="noprint" style="float: right; margin-right: 3%"><button id="dl-button" (click)="genPDF()">print</button>
+  </div>
+  <div>
+    <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
+    <label class="noprint" for="useRandomName"> Use random name</label>
+  </div>
+  <div>
+    <input class="noprint" type="checkbox" name="firstLevelFullHp" [(ngModel)]="firstLevelFullHp">
+    <label class="noprint" for="firstLevelFullHp">
+      Full HP at first Level</label>
   </div>
   <hr class="noprint">
   <div id="exportcontent">
@@ -84,52 +90,53 @@
           <div><b>Spells: </b>{{character.savingThrows["Spells"]}}</div>
         </div>
 
-      <!-- CLASS ABILITIES -->
-      <div style="clear:both" *ngIf="character.characterClass.classAbilities">
-        <h3>Class Abilities</h3>
-        <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue"><b>{{ability.key}}</b>
-          {{ability.value[character.level-1]}}</div>
+        <!-- CLASS ABILITIES -->
+        <div style="clear:both" *ngIf="character.characterClass.classAbilities">
+          <h3>Class Abilities</h3>
+          <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue"><b>{{ability.key}}</b>
+            {{ability.value[character.level-1]}}</div>
+        </div>
       </div>
-    </div>
-    <!-- SPELLS (checkboxes)-->
-    <div style="clear:both" class="noprint"
-      *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
-      <h3>Spells</h3>
-      <div [formGroup]="spellForm">
+      <!-- SPELLS (checkboxes)-->
+      <div style="clear:both" class="noprint"
+        *ngIf="character.characterClass.spellProgression && character.characterClass.spellProgression[character.level].length > 0">
+        <h3>Spells</h3>
+        <div [formGroup]="spellForm">
+          <div class="grid-container">
+            <div formArrayName="spellArray"
+              *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i" class="spell-level">
+              <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
+              <ng-container class="spell-container" [formArrayName]="i"
+                *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
+                <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()"
+                  [formControlName]="j">
+                <span class="spell-span"> {{character.characterClass.spells[i][j]}}</span><br>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPELLS (for printing)-->
+      <div class="onlyprint" style="clear:both" *ngIf="this.spells">
+        <h3>Spells</h3>
         <div class="grid-container">
-          <div formArrayName="spellArray" *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i"
-            class="spell-level">
+          <div *ngFor="let spellLevel of spells; index as i">
             <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
-            <ng-container class="spell-container" [formArrayName]="i"
-              *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-              <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()" [formControlName]="j">
-              <span class="spell-span"> {{character.characterClass.spells[i][j]}}</span><br>
+            <ng-container *ngFor="let selSpell of spellLevel">
+              <span> {{selSpell}}</span><br>
             </ng-container>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SPELLS (for printing)-->
-    <div class="onlyprint" style="clear:both" *ngIf="this.spells">
-      <h3>Spells</h3>
-      <div class="grid-container">
-        <div *ngFor="let spellLevel of spells; index as i">
-          <b>Level {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
-          <ng-container *ngFor="let selSpell of spellLevel">
-            <span> {{selSpell}}</span><br>
-          </ng-container>
-        </div>
-      </div>
+    <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
+    <div style="clear:both">
+      <h3>Notes</h3>
+      <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
+      <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
+      <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
     </div>
   </div>
-
-  <!-- RACE ABILITIES WEAPON RESTRICTIONS ETC -->
-  <div style="clear:both">
-    <h3>Notes</h3>
-    <div *ngFor="let note of character.race.specialAbilities">{{note}}</div>
-    <div *ngFor="let restriction of character.race.weaponRestrictions">{{restriction}}</div>
-    <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
-  </div>
-</div>
 </div>

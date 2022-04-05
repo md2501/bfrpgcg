@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   spells!: string[][] | null;
   name: string = '';
   genRandomName: boolean = true;
+  firstLevelFullHp: boolean = false;
   characterForm!: FormGroup;
   spellForm!: FormGroup;
   spellArray!: FormArray;
@@ -219,8 +220,12 @@ export class AppComponent implements OnInit {
     var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
     // Get amount of hd rolled and hp class bonus for hp gen
+    // if firstLevelFullHp is set replace one roll with a full hd worth of hpBonus
     var rolls = level < 9 ? level : 9;
+    rolls = this.firstLevelFullHp ? rolls - 1: rolls;
+
     var hpBonus = characterClass.hpBonus[level] ?? 0;
+    hpBonus = this.firstLevelFullHp ? hpBonus + hd : hpBonus;
 
     // Make sure hp are at least 1
     var hp = this.dieRoll(rolls, hd) + hpBonus + this.abilities[AbilityName.CONSTITUTION].mod;
