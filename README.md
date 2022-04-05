@@ -20,6 +20,6 @@ Made with Angular.
 - [ ] guide on how to add new races/classes  
 - [x] multilanguage support  
   - [ ] add drop down to select language
-  - [ ] add german translations
+  - [x] add german translations
   - [ ] add german and english translations for race specifics like 'weaponRestrictions'
 - [ ] add some portraits
