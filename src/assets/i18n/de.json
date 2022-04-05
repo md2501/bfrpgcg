@@ -21,6 +21,9 @@
                     "specialAbilities": {
                         "darkvision": "Dunkelsicht {VALUE}’",
                         "detectSurroundings": "Aufspüren von auf- oder absteigende Tunneln, Fallen, bewegliche Wände und Veränderungen an Bauwerken: {VALUE}"
+                    },
+                    "weaponRestrictions": {
+                        "noLargeWeapons": "Sie dürfen keine großen Waffen, die länger als vier Fuß sind, führen"
                     }
                 }
             },
@@ -32,7 +35,8 @@
                         "findSecretDoors": "Finde geheime Türen häufiger als normal ({VALUE1}, {VALUE2})",
                         "immuneToGhoulAcid": "Immun gegen den paralysierenden Angriff von Ghulen", 
                         "surprise": "Reduzierte Chance auf Überraschung: {VALUE}"
-                    }
+                    },
+                    "weaponRestrictions": {}
                 }
             },
             "halfling": {
@@ -44,6 +48,10 @@
                         "initiative": "+{VALUE} Initiative",
                         "hideOutdoors": "Verstecken in Waldgegenden: {VALUE}",
                         "hideIndoors": "Verstecken in Gebäuden: {VALUE}"
+                    },
+                    "weaponRestrictions": {
+                        "noLargeWeapons": "Kann keine großen Waffen führen",
+                        "mediumWeaponsTwoHanded": "Kann mittelgroße Waffen nur beidhändig führen"
                     }
                 }
             },
@@ -52,7 +60,8 @@
                 "specifics": {
                     "specialAbilities": {
                         "extraXp": "+{VALUE}% EP"
-                    }
+                    },
+                    "weaponRestrictions": {}
                 }
             }
         },

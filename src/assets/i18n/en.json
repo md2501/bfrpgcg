@@ -21,6 +21,9 @@
                     "specialAbilities": {
                         "darkvision": "Darkvision {VALUE}’",
                         "detectSurroundings": "Detect slanting passages, traps, shifting walls, new construction: {VALUE}"
+                    },
+                    "weaponRestrictions": {
+                        "noLargeWeapons": "May not use Large weapons more than four feet in length"
                     }
                 }
             },
@@ -32,7 +35,8 @@
                         "findSecretDoors": "Find secret doors more often than normal ({VALUE1}, {VALUE2})",
                         "immuneToGhoulAcid": "Immune to paralyzing acid of ghouls", 
                         "surprise": "Reduced chance of surprise: {VALUE}"
-                    }
+                    },
+                    "weaponRestrictions": {}
                 }
             },
             "halfling": {
@@ -44,6 +48,10 @@
                         "initiative": "+{VALUE} initiative",
                         "hideOutdoors": "Hide outdoors: {VALUE}",
                         "hideIndoors": "Hide indoors: {VALUE}"
+                    },
+                    "weaponRestrictions": {
+                        "noLargeWeapons": "May not use large weapons",
+                        "mediumWeaponsTwoHanded": "Must wield medium weapons with both hands"
                     }
                 }
             },
@@ -52,7 +60,8 @@
                 "specifics": {
                     "specialAbilities": {
                         "extraXp": "+{VALUE}% XP"
-                    }
+                    },
+                    "weaponRestrictions": {}
                 }
             }
         },

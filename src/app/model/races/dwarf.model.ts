@@ -22,7 +22,10 @@ export class Dwarf implements IRace {
     ];
     abilityRequirements = { [AbilityName.CONSTITUTION]: 9, [AbilityName.CHARISMA]: -17 };
     classes = [ClassName.Cleric, ClassName.Fighter, ClassName.Thief];
-    weaponRestrictions = ["may not use Large weapons more than four feet in length"];
+    // weaponRestrictions = ["may not use Large weapons more than four feet in length"];
+    weaponRestrictions = [
+        `${DWARF_SPECIFICS_KEY}.weaponRestrictions.noLargeWeapons`
+    ];
     savingThrowMods = { [SavingThrowName.POISON]: 4, [SavingThrowName.WANDS]: 4, [SavingThrowName.PARALYSIS]: 4, [SavingThrowName.SPELLS]: 4, [SavingThrowName.DRAGONBREATH]: 3 };
     names = ["Jakwohilda Redstone",
         "Doudmeaginn Dimbrand",

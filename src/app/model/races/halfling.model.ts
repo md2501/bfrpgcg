@@ -10,7 +10,11 @@ export class Halfling implements IRace {
     name = RaceName.Halfling;
     abilityRequirements = { [AbilityName.DEXTERITY]: 9, [AbilityName.STRENGTH]: -17 };
     classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter];
-    weaponRestrictions = ["may not use large weapons", "must wield medium weapons with both hands"];
+    // weaponRestrictions = ["may not use large weapons", "must wield medium weapons with both hands"];
+    weaponRestrictions = [
+        `${HALFLING_SPECIFICS_KEY}.weaponRestrictions.noLargeWeapons`,
+        `${HALFLING_SPECIFICS_KEY}.weaponRestrictions.mediumWeaponsTwoHanded`,
+    ];
     // specialAbilities = ["+1 attack bonus on ranged weapons", "+2 armor class when attacked in melee by creatures larger than man-sized", "+1 initiative", "hide outdoors: 90", "hide indoors: 70"];
     specialAbilities = [
         { 
