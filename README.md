@@ -15,9 +15,12 @@ Made with Angular.
 - [x] make it not completely hideous  
 - [x] proper pdf export  
 - [x] implement generating characters of specific level
-- [ ] allow full hp at first level
+- [x] allow full hp at first level
+- [ ] add turn undead stats
+- [ ] cleaner code
 - [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
+- [ ] option to preselect random spells
 - [x] multilanguage support  
   - [x] add drop down to select language
   - [x] add german translations
