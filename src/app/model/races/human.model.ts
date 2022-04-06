@@ -2,12 +2,20 @@ import { IRace } from "./irace.interface";
 import { ClassName } from "../classes/classname.enum";
 import { RaceName } from "./racename.enum";
 
+const HUMAN_SPECIFICS_KEY = "game.races.human.specifics"
+
 export class Human implements IRace {
     name = RaceName.Human;
     abilityRequirements = {};
     classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter, ClassName.MagicUser];
     weaponRestrictions = [];
-    specialAbilities = ["+10% XP"];
+    // specialAbilities = ["+10% XP"];
+    specialAbilities = [
+        { 
+            translationKey: `${HUMAN_SPECIFICS_KEY}.specialAbilities.extraXp`, 
+            params: { VALUE: 10 } 
+        }
+    ];
     savingThrowMods = {};
     names = ["Gatugha Helbeard",
         "Abeoh Longrobe",

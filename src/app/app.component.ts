@@ -10,7 +10,9 @@ import { IRace } from './model/races/irace.interface';
 import { RaceName } from './model/races/racename.enum';
 import { races } from './model/races/races';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { magicUserSpells } from './model/spells';
+import { magicUserSpells, Spell } from './model/spells';
+import { LANGS } from './transloco-root.module';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +21,13 @@ import { magicUserSpells } from './model/spells';
 })
 export class AppComponent implements OnInit {
   title = 'bfrpgcg';
+  // Array of languages
+  langs = LANGS;
+  langForm!: FormGroup;
 
   abilities!: IAbilities;
   character!: ICharacter;
-  spells!: string[][] | null;
+  spells!: Spell[][] | null;
   name: string = '';
   genRandomName: boolean = true;
   characterForm!: FormGroup;
@@ -30,7 +35,7 @@ export class AppComponent implements OnInit {
   spellArray!: FormArray;
   @ViewChild('exportcontent') exportcontent!: ElementRef;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private langService: TranslocoService) { }
 
   ngOnInit(): void {
     this.characterForm = this.fb.group({
@@ -42,6 +47,22 @@ export class AppComponent implements OnInit {
       spellArray: this.fb.array([])
     });
     this.genNewCharacter();
+    // Setting up form with select for translation
+    this.langForm = this.fb.group({
+      langSelect: ['en']
+    });
+    this.setOnLangChangeListener();
+    // Fallback language does not work properly. There is already an issue on github
+    this.langService.setFallbackLangForMissingTranslation({ fallbackLang: 'en' })
+  }
+
+  private setOnLangChangeListener(): void {
+    this.langForm.get('langSelect')?.valueChanges
+      .subscribe(langKey => this.changeLanguage(langKey))
+  }
+
+  changeLanguage(lang: string): void {
+    this.langService.setActiveLang(lang)
   }
 
   genNewCharacter(): void {
@@ -53,8 +74,8 @@ export class AppComponent implements OnInit {
 
   // roll a die a number of times and return the sum
   private dieRoll(rolls: number, sides: number): number {
-    var res: number = 0;
-    for (var i = 0; i < rolls; i++) {
+    let res: number = 0;
+    for (let i = 0; i < rolls; i++) {
       res += Math.floor(Math.random() * sides + 1)
     }
     return res;
@@ -93,16 +114,16 @@ export class AppComponent implements OnInit {
     if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
 
       // add empty array for each spell level the character can have spells of
-      for (var i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
+      for (let i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
         this.spells.push([]);
       }
 
         // get the selected spells and add them to our characters spells
-      for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+      for (let i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
 
-        var selected = ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls ;
+        let selected = ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls ;
 
-        for (var j = 0; j < selected.length; j++) {
+        for (let j = 0; j < selected.length; j++) {
           if (selected[j].value) {
             this.spells[i].push(this.character.characterClass.spells[i][j]);
           }
@@ -112,19 +133,19 @@ export class AppComponent implements OnInit {
   }
 
   private checkSpells(): void {
-    for (var i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
+    for (let i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
 
-      var selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
+      let selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
 
       // disable all unselected checkboxes if max amount of spells for spelllevel has been selected
       if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level][i]) {
-        for (var fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
+        for (let fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
           if (!fc.value) {
             fc.disable();
           }
         }
       } else {
-        for (var fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
+        for (let fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
           fc.enable();
         }
       }
@@ -137,10 +158,10 @@ export class AppComponent implements OnInit {
 
   // get all possible races for the rolled abilities
   getRaces(): IRace[] {
-    var possibleRaces: IRace[] = [];
-    for (var race of races) {
-      var valid = true;
-      for (var req in race.abilityRequirements) {
+    let possibleRaces: IRace[] = [];
+    for (let race of races) {
+      let valid = true;
+      for (let req in race.abilityRequirements) {
         // check if requirements are met: a positive requirement value means the score needs to be higher or equal
         if (race.abilityRequirements[req] >= 0 && race.abilityRequirements[req] > this.abilities[req].score) {
           valid = false;
@@ -158,11 +179,11 @@ export class AppComponent implements OnInit {
 
   // get all possible character classes for the rolled abilites and given race
   getCharacterClasses(race: IRace): IClass[] {
-    var possibleClasses: IClass[] = [];
-    for (var cc of classes) {
+    let possibleClasses: IClass[] = [];
+    for (let cc of classes) {
       if (race.classes.includes(cc.name)) {
-        var valid = true;
-        for (var req in cc.abilityRequirements) {
+        let valid = true;
+        for (let req in cc.abilityRequirements) {
           // check if requirements are met: a positive requirement value means the score needs to be higher or equal
           if (cc.abilityRequirements[req] >= 0 && cc.abilityRequirements[req] > this.abilities[req].score) {
             valid = false;
@@ -181,8 +202,8 @@ export class AppComponent implements OnInit {
 
   // calculate the saving throws from class values and race modifiers
   private calcSavingThrows(characterClass: IClass, race: IRace, level: number): { [key in SavingThrowName as string]: number } {
-    var savingThrows: { [key in SavingThrowName as string]: number } = {};
-    for (var save in characterClass.savingThrow) {
+    let savingThrows: { [key in SavingThrowName as string]: number } = {};
+    for (let save in characterClass.savingThrow) {
       savingThrows[save] = characterClass.savingThrow[save][Math.floor(level / 2)] - (race.savingThrowMods[save] ?? 0);
     }
     return savingThrows;
@@ -200,13 +221,13 @@ export class AppComponent implements OnInit {
 
     // get a random race suitable for the abilities if none given
     if (!race) {
-      var possibleRaces = this.getRaces();
+      let possibleRaces = this.getRaces();
       race = possibleRaces[Math.floor(Math.random() * possibleRaces.length)];
     }
 
     // get a random characterClass suitable for the abilities and race if none given
     if (!characterClass) {
-      var possibleClasses = this.getCharacterClasses(race);
+      let possibleClasses = this.getCharacterClasses(race);
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
     }
 
@@ -216,22 +237,22 @@ export class AppComponent implements OnInit {
     }
 
     // Use class hd for HP generation, but cap halfling hd at 6
-    var hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
+    let hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
 
     // Get amount of hd rolled and hp class bonus for hp gen
-    var rolls = level < 9 ? level : 9;
-    var hpBonus = characterClass.hpBonus[level] ?? 0;
+    let rolls = level < 9 ? level : 9;
+    let hpBonus = characterClass.hpBonus[level] ?? 0;
 
     // Make sure hp are at least 1
-    var hp = this.dieRoll(rolls, hd) + hpBonus + this.abilities[AbilityName.CONSTITUTION].mod;
+    let hp = this.dieRoll(rolls, hd) + hpBonus + this.abilities[AbilityName.CONSTITUTION].mod;
     hp = hp < 1 ? 1 : hp;
 
     // Prepare Spellform if needed
     this.spellForm.controls['spellArray'] = this.fb.array([]);
     if (characterClass.spellProgression && characterClass.spells) {
-      for (var i = 0; i < characterClass.spellProgression[level].length; i++) {
+      for (let i = 0; i < characterClass.spellProgression[level].length; i++) {
         (this.spellForm.get('spellArray') as FormArray).push(new FormArray([]));
-        for (var spell of characterClass.spells[i])
+        for (let spell of characterClass.spells[i])
           ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).push(new FormControl());
       }
     }
