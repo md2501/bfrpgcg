@@ -201,6 +201,7 @@
     "func": {
         "generateRandomName": "Generate random name",
         "reroll": "Reroll",
-        "print": "Print"
+        "print": "Print",
+        "fullHpOnFirstLevel": "Full HP at first level"
     }
 }

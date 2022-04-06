@@ -201,6 +201,7 @@
     "func": {
         "generateRandomName": "Zufälligen Namen generieren",
         "reroll": "Würfeln",
-        "print": "Drucken"
+        "print": "Drucken",
+        "fullHpOnFirstLevel": "Volle TP auf Level 1"
     }
 }
