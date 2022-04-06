@@ -119,10 +119,10 @@ export class AppComponent implements OnInit {
         this.spells.push([]);
       }
 
-        // get the selected spells and add them to our characters spells
+      // get the selected spells and add them to our characters spells
       for (let i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
 
-        let selected = ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls ;
+        let selected = ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls;
 
         for (let j = 0; j < selected.length; j++) {
           if (selected[j].value) {
@@ -215,6 +215,18 @@ export class AppComponent implements OnInit {
     window.print();
   }
 
+  // this rolls each hd individually, applies the Constitution Modifier and ensures the total is at least 1
+  private rollHp(rolls: number, hd: number, conMod: number): number {
+    let sum = 0;
+
+    for (let i = 0; i < rolls; i++) {
+      sum += this.dieRoll(1, hd) + conMod;
+      sum = sum < 1 ? 1 : sum;
+    }
+
+    return sum
+  }
+
   // generate and set a full character
   genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
 
@@ -242,15 +254,14 @@ export class AppComponent implements OnInit {
 
     // Get amount of hd rolled and hp class bonus for hp gen
     // if firstLevelFullHp is set replace one roll with a full hd worth of hpBonus
-    var rolls = level < 9 ? level : 9;
-    rolls = this.firstLevelFullHp ? rolls - 1: rolls;
+    let rolls = level < 9 ? level : 9;
+    rolls = this.firstLevelFullHp ? rolls - 1 : rolls;
 
-    var hpBonus = characterClass.hpBonus[level] ?? 0;
+    let hpBonus = characterClass.hpBonus[level] ?? 0;
     hpBonus = this.firstLevelFullHp ? hpBonus + hd : hpBonus;
 
     // Make sure hp are at least 1
-    let hp = this.dieRoll(rolls, hd) + hpBonus + this.abilities[AbilityName.CONSTITUTION].mod;
-    hp = hp < 1 ? 1 : hp;
+    let hp = this.rollHp(rolls, hd, this.abilities[AbilityName.CONSTITUTION].mod) + hpBonus;
 
     // Prepare Spellform if needed
     this.spellForm.controls['spellArray'] = this.fb.array([]);
