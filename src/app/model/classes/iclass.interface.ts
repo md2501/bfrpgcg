@@ -1,5 +1,6 @@
 import { AbilityName, IAbilities } from "../iabilities.interface";
 import { ISavingThrows } from "../isaving-throws.interface";
+import { Spell } from "../spells";
 import { ClassName } from "./classname.enum";
 
 export default interface IClass {
@@ -12,5 +13,5 @@ export default interface IClass {
     savingThrow: ISavingThrows;
     classAbilities?: { [ability: string]: string | number[] };
     spellProgression?: {[characterlevel: number]: number[]};
-    spells?: string[][];
+    spells?: Spell[][];
 }

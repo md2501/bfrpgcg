@@ -5,12 +5,31 @@ import { Ability } from "../ability.model";
 import { AbilityName } from "../iabilities.interface";
 import { SavingThrowName } from "../isaving-throws.interface";
 
+const ELF_SPECIFICS_KEY = "game.races.elf.specifics"
+
 export class Elf implements IRace {
     name = RaceName.Elf;
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9, [AbilityName.CONSTITUTION]: -17 };
     classes = [ClassName.Cleric, ClassName.Fighter, ClassName.MagicUser, ClassName.Thief, ClassName.MagicUserThief, ClassName.MagicUserFighter]
     weaponRestrictions = [];
-    specialAbilities = ["darkvision 60'", "find secret doors 2/6, 1/6 without searching", "immune to paralyzing acid of ghouls", "surprise 1/6"]
+    // specialAbilities = ["darkvision 60'", "find secret doors 2/6, 1/6 without searching", "immune to paralyzing acid of ghouls", "surprise 1/6"]
+    specialAbilities = [
+        { 
+            translationKey: `${ELF_SPECIFICS_KEY}.specialAbilities.darkvision`, 
+            params: { VALUE: 60 }
+        },
+        { 
+            translationKey: `${ELF_SPECIFICS_KEY}.specialAbilities.findSecretDoors`, 
+            params: { VALUE1: "2/6", VALUE2: "1/6" }
+        },
+        { 
+            translationKey: `${ELF_SPECIFICS_KEY}.specialAbilities.immuneToGhoulAcid`, 
+        },
+        { 
+            translationKey: `${ELF_SPECIFICS_KEY}.specialAbilities.surprise`, 
+            params: { VALUE: "1/6" }
+        }
+    ];
     savingThrowMods = { [SavingThrowName.PARALYSIS]: 1, [SavingThrowName.WANDS]: 2, [SavingThrowName.SPELLS]: 2 };
     names = ["Falenas Shapetor",
         "Kindreth Quithana",

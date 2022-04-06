@@ -3,6 +3,7 @@ import { Ability } from "./ability.model";
 import IClass from "./classes/iclass.interface";
 import { IRace } from "./races/irace.interface";
 import { ISavingThrows, SavingThrowName } from "./isaving-throws.interface";
+import { Spell } from "./spells";
 
 export interface ICharacter {
     name: string;
@@ -15,7 +16,7 @@ export interface ICharacter {
     abilities: IAbilities;
     gold: number;
     savingThrows: {[key in SavingThrowName as string]: number};
-    spells?: string[][];
+    spells?: Spell[][];
     //equipment: string[];
 
 }

@@ -1,0 +1,206 @@
+{
+    "app": {
+        "description": "Basic Fantasy RPG Character Generator",
+        "lang": {
+            "en": "English",
+            "de": "Deutsch"
+        }
+    },
+
+    "game": {
+        "name": "Name",
+        "level": "Level",
+        "race": "Race",
+        "class": "Class",
+        "gold": "Gold",
+        "notes": "Notes",
+        "attackBonus": "{IN, select, short {AB} other {Attack Bonus}}",
+        "healthPoints": "{IN, select, short {HP} other {Hit Points}}",
+        "goldPieces": "{IN, select, short {GP} other {Gold Pieces}}",
+        "experiencePoints": "{IN, select, short {XP} other {Experience Points}}",
+        "races": {
+            "dwarf": {
+                "self": "Dwarf",
+                "specifics": {
+                    "specialAbilities": {
+                        "darkvision": "Darkvision {VALUE}’",
+                        "detectSurroundings": "Detect slanting passages, traps, shifting walls, new construction: {VALUE}"
+                    },
+                    "weaponRestrictions": {
+                        "noLargeWeapons": "May not use Large weapons more than four feet in length"
+                    }
+                }
+            },
+            "elf": {
+                "self": "Elf",
+                "specifics": {
+                    "specialAbilities": {
+                        "darkvision": "Darkvision {VALUE}’",
+                        "findSecretDoors": "Find secret doors more often than normal ({VALUE1}, {VALUE2})",
+                        "immuneToGhoulAcid": "Immune to paralyzing acid of ghouls", 
+                        "surprise": "Reduced chance of surprise: {VALUE}"
+                    },
+                    "weaponRestrictions": {}
+                }
+            },
+            "halfling": {
+                "self": "Halfling",
+                "specifics": {
+                    "specialAbilities": {
+                        "rangedWeaponBonus": "+{VALUE} attack bonus on ranged weapons",
+                        "armorBonus": "+{VALUE} armor class when attacked in melee by creatures larger than man-sized",
+                        "initiative": "+{VALUE} initiative",
+                        "hideOutdoors": "Hide outdoors: {VALUE}",
+                        "hideIndoors": "Hide indoors: {VALUE}"
+                    },
+                    "weaponRestrictions": {
+                        "noLargeWeapons": "May not use large weapons",
+                        "mediumWeaponsTwoHanded": "Must wield medium weapons with both hands"
+                    }
+                }
+            },
+            "human": {
+                "self": "Human",
+                "specifics": {
+                    "specialAbilities": {
+                        "extraXp": "+{VALUE}% XP"
+                    },
+                    "weaponRestrictions": {}
+                }
+            }
+        },
+        "abilities": {
+            "self": "Abilities",
+            "strength": "Strength",
+            "intelligence": "Intelligence",
+            "wisdom": "Wisdom",
+            "dexterity": "Dexterity",
+            "constitution": "Constitution",
+            "charisma": "Charisma"
+        },
+        "savingThrows": {
+            "self": "Saving Throws",
+            "deathRayOrPoison": "Death Ray or Poison",
+            "magicWands": "Magic Wands",
+            "paralysisOrPetrify": "Paralysis or Petrify",
+            "dragonBreath": "Dragon Breath",
+            "spells": "Spells"
+        },
+        "spells": {
+            "self": "Spells",
+            "info": {
+                "reversible": "Reversible spells are marked with an asterisk (*)"
+            },
+            "charmPerson": "Charm Person",
+            "detectMagic": "Detect Magic",
+            "floatingDisc": "Floating Disc",
+            "holdPortal": "Hold Portal",
+            "light": "Light",
+            "magicMissile": "Magic Missile",
+            "magicMouth": "Magic Mouth",
+            "protectionFromEvil": "Protection from Evil",
+            "readLanguages": "Read Languages",
+            "shield": "Shield",
+            "sleep": "Sleep",
+            "ventriloquism": "Ventriloquism",
+            "continualLight": "Continual Light",
+            "detectEvil": "Detect Evil",
+            "detectInvisible": "Detect Invisible",
+            "esp": "ESP",
+            "invisibility": "Invisibility",
+            "knock": "Knock",
+            "levitate": "Levitate",
+            "locateObject": "Locate Object",
+            "mirrorImage": "Mirror Image",
+            "phantasmalForce": "Phantasmal Force",
+            "web": "Web",
+            "wizardLock": "Wizard Lock",
+            "clairvoyance": "Clairvoyance",
+            "darkvision": "Darkvision",
+            "dispelMagic": "Dispel Magic",
+            "fireball": "Fireball",
+            "fly": "Fly",
+            "haste": "Haste",
+            "holdPerson": "Hold Person",
+            "invisibilityRadius10": "Invisibility 10’ radius",
+            "lightningBolt": "Lightning Bolt",
+            "protectionFromEvilRadius10": "Protection from Evil 10’ radius",
+            "protectionFromNormalMissiles": "Protection from Normal Missiles",
+            "waterBreathing": "Water Breathing",
+            "charmMonster": "Charm Monster",
+            "confusion": "Confusion",
+            "dimensionDoor": "Dimension Door",
+            "growthOfPlants": "Growth of Plants",
+            "hallucinatoryTerrain": "Hallucinatory Terrain",
+            "iceStorm": "Ice Storm",
+            "massmorph": "Massmorph",
+            "polymorphOther": "Polymorph Other",
+            "polymorphSelf": "Polymorph Self",
+            "removeCurse": "Remove Curse",
+            "wallOfFire": "Wall of Fire",
+            "wizardEye": "Wizard Eye",
+            "animateDead": "Animate Dead",
+            "cloudkill": "Cloudkill",
+            "conjureElemental": "Conjure Elemental",
+            "feeblemind": "Feeblemind",
+            "holdMonster": "Hold Monster",
+            "magicJar": "Magic Jar",
+            "passwall": "Passwall",
+            "telekinesis": "Telekinesis",
+            "teleport": "Teleport",
+            "wallOfStone": "Wall of Stone",
+            "antiMagicShell": "Anti-Magic Shell",
+            "deathSpell": "Death Spell",
+            "disintegrate": "Disintegrate",
+            "fleshToStone": "Flesh to Stone",
+            "geas": "Geas",
+            "invisibleStalker": "Invisible Stalker",
+            "lowerWater": "Lower Water",
+            "projectedImage": "Projected Image",
+            "reincarnate": "Reincarnate",
+            "wallOfIron": "Wall of Iron",
+            "cureLightWounds": "Cure Light Wounds",
+            "purifyFoodAndWater": "Purify Food and Water",
+            "removeFear": "Remove Fear",
+            "resistCold": "Resist Cold",
+            "bless": "Bless",
+            "charmAnimal": "Charm Animal",
+            "findTraps": "Find Traps",
+            "resistFire": "Resist Fire",
+            "silenceRadius15": "Silence 15’ radius",
+            "speakWithAnimals": "Speak with Animals",
+            "spiritualHammer": "Spiritual Hammer",
+            "cureBlindness": "Cure Blindness",
+            "cureDisease": "Cure Disease",
+            "growthOfAnimals": "Growth of Animals",
+            "speakWithDead": "Speak with Dead",
+            "striking": "Striking",
+            "createWater": "Create Water",
+            "cureSeriousWounds": "Cure Serious Wounds",
+            "neutralizePoison": "Neutralize Poison",
+            "speakWithPlants": "Speak with Plants",
+            "sticksToSnakes": "Sticks to Snakes",
+            "commune": "Commune",
+            "createFood": "Create Food",
+            "dispelEvil": "Dispel Evil",
+            "insectPlague": "Insect Plague",
+            "quest": "Quest",
+            "raiseDead": "Raise Dead",
+            "trueSeeing": "True Seeing",
+            "animateObjects": "Animate Objects",
+            "bladeBarrier": "Blade Barrier",
+            "findThePath": "Find the Path",
+            "heal": "Heal",
+            "regenerate": "Regenerate",
+            "restoration": "Restoration",
+            "speakWithMonsters": "Speak with Monsters",
+            "wordOfRecall": "Word of Recall"
+        }
+    },
+
+    "func": {
+        "generateRandomName": "Generate random name",
+        "reroll": "Reroll",
+        "print": "Print"
+    }
+}
