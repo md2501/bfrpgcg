@@ -1,5 +1,5 @@
 <div class="content-sheet" *transloco="let t">
-  <form class="noprint" [formGroup]="langForm">
+  <form style="float:right; margin-bottom: .5em;" class="noprint" [formGroup]="langForm">
     <select formControlName="langSelect">
       <option 
         *ngFor="let lang of langs"
@@ -9,7 +9,7 @@
       </option>
     </select>
   </form>
-  <h1 class="noprint">{{ t('app.description') }}</h1>
+  <h1 style="clear: both" class="noprint">{{ t('app.description') }}</h1>
   <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
     <label class="noprint" for="useRandomName">
       {{ t('func.generateRandomName') }}
@@ -19,7 +19,7 @@
       {{ t('func.reroll').toLowerCase() }}
     </button>
   </div>
-  <div class="noprint" style="float: right; margin-right: 3%">
+  <div class="noprint" style="float: right; margin-right: .4em">
     <button id="dl-button" (click)="genPDF()">
       {{ t('func.print').toLowerCase() }}
     </button>
