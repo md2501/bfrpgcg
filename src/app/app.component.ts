@@ -249,6 +249,8 @@ export class AppComponent implements OnInit {
     if (!characterClass) {
       let possibleClasses = this.getCharacterClasses(race);
       characterClass = possibleClasses[Math.floor(Math.random() * possibleClasses.length)];
+      // set characterClass in View just to be sure (wouldn't be set if race genCharacter was called by race selection)
+      this.characterForm.get('classFC')?.setValue(characterClass, { emitViewToModelChange: false });
     }
 
     // Use a random name?
