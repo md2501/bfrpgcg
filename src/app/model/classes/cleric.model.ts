@@ -18,7 +18,17 @@ export class Cleric implements IClass {
     hd = 6;
     ab = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
     weaponRestrictions = ["may only use blunt weapons"];
-    classAbilities = { "Turn the Undead": "" };
+    classAbilities = {
+            "Skeleton (1HD)": [13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"],
+            "Zombie (2HD)": [17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D", "D", "D"],
+            "Ghoul (3HD)": [19, 18, 17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D"],
+            "Wight (4HD)": ["No", 20, 19, 18, 17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D"],
+            "Wraith (5HD)": ["No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D"],
+            "Mummy (6HD)": ["No", "No", "No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T"],
+            "Spectre (7HD)": ["No", "No", "No", "No", "No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7, 5, 3, 2, "T"],
+            "Vampire (8HD)": ["No", "No", "No", "No", "No", "No", "No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7, 5, 3],
+            "Ghost (9+HD)": ["No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7]
+    };
     // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
     spellProgression = {
         1: [],
