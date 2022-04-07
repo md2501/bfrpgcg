@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   spellArray!: FormArray;
 
   // preserve original order in *ngFor
-  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
     return 0;
   }
 

@@ -11,7 +11,7 @@ export default interface IClass {
     abilityRequirements: { [ability in AbilityName as string]: number };
     weaponRestrictions: string[];
     savingThrow: ISavingThrows;
-    classAbilities?: { [ability: string]: (number| string)[]};
+    classAbilities?: {[ability: string] : { [category: string]: (number| string)[]}};
     spellProgression?: {[characterlevel: number]: number[]};
     spells?: Spell[][];
 }
