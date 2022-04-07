@@ -13,6 +13,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsM
 import { magicUserSpells, Spell } from './model/spells';
 import { LANGS } from './transloco-root.module';
 import { TranslocoService } from '@ngneat/transloco';
+import { KeyValue } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,12 @@ export class AppComponent implements OnInit {
   characterForm!: FormGroup;
   spellForm!: FormGroup;
   spellArray!: FormArray;
+
+  // preserve original order in *ngFor
+  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+    return 0;
+  }
+
   @ViewChild('exportcontent') exportcontent!: ElementRef;
 
   constructor(private fb: FormBuilder, private langService: TranslocoService) { }
