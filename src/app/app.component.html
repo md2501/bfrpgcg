@@ -151,10 +151,11 @@
 
         <!-- CLASS ABILITIES -->
         <div *ngIf="character.characterClass.classAbilities">
-          <h3>{{ t('game.class') }} {{ t('game.abilities.self') }}</h3>
-          <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue">
-            <b>{{ability.key}}</b>
-            {{ability.value[character.level-1]}}
+          <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue: originalOrder; index as i">
+          <h3>{{ ability.key }}</h3>
+          <div *ngFor="let category of ability.value | keyvalue: originalOrder">
+            <b>{{category.key}}: </b>
+            {{category.value[character.level-1]}}
           </div>
         </div>
       </div>

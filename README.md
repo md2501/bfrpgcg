@@ -16,7 +16,7 @@ Made with Angular.
 - [x] proper pdf export  
 - [x] implement generating characters of specific level
 - [x] allow full hp at first level
-- [ ] add turn undead stats
+- [x] add turn undead stats
 - [ ] cleaner code
 - [ ] optional start equipment  
 - [ ] guide on how to add new races/classes  
