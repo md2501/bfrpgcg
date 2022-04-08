@@ -18,7 +18,8 @@ Made with Angular.
 - [x] allow full hp at first level
 - [x] add turn undead stats
 - [ ] cleaner code
-- [ ] optional start equipment  
+- [ ] 4d6 for abilities house rule as an option
+- [ ] optional equipment  
 - [ ] guide on how to add new races/classes  
 - [ ] option to preselect random spells
 - [x] multilanguage support  
