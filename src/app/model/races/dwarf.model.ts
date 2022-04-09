@@ -8,7 +8,7 @@ import { SavingThrowName } from "../isaving-throws.interface";
 const DWARF_SPECIFICS_KEY = "game.races.dwarf.specifics"
 
 export class Dwarf implements IRace {
-    raceName = RaceName.Dwarf;
+    raceName = RaceName.DWARF;
     // specialAbilities = ["darkvision 60'", "detect slanting passages, traps, shifting walls, new construction: 2/6"];
     specialAbilities = [
         { 

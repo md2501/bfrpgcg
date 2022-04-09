@@ -5,7 +5,7 @@ import { RaceName } from "./racename.enum";
 const HUMAN_SPECIFICS_KEY = "game.races.human.specifics"
 
 export class Human implements IRace {
-    raceName = RaceName.Human;
+    raceName = RaceName.HUMAN;
     abilityRequirements = {};
     classes = [ClassName.THIEF, ClassName.CLERIC, ClassName.FIGHTER, ClassName.MAGICUSER];
     weaponRestrictions = [];

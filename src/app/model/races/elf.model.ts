@@ -8,7 +8,7 @@ import { SavingThrowName } from "../isaving-throws.interface";
 const ELF_SPECIFICS_KEY = "game.races.elf.specifics"
 
 export class Elf implements IRace {
-    raceName = RaceName.Elf;
+    raceName = RaceName.ELF;
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9, [AbilityName.CONSTITUTION]: -17 };
     classes = [ClassName.CLERIC, ClassName.FIGHTER, ClassName.MAGICUSER, ClassName.THIEF, ClassName.MAGICUSERTHIEF, ClassName.MAGICUSERFIGHTER]
     weaponRestrictions = [];

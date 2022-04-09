@@ -258,7 +258,7 @@ export class AppComponent implements OnInit {
     }
 
     // Use class hd for HP generation, but cap halfling hd at 6
-    let hd = race.raceName == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
+    let hd = race.raceName == RaceName.HALFLING && characterClass.hd > 6 ? 6 : characterClass.hd
 
     // Get amount of hd rolled and hp class bonus for hp gen
     // if firstLevelFullHp is set: replace one roll with a full hd worth of hpBonus
