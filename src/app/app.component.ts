@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   langs = LANGS;
   langForm!: FormGroup;
 
-  abilities!: IAbilities;
+  private abilities!: IAbilities;
   character!: ICharacter;
   spells!: Spell[][] | null;
   name: string = '';

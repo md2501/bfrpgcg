@@ -98,10 +98,11 @@
       </div>
 
       <div class="grid-container">
+
         <!-- ABILITIES -->
         <div>
           <h3>{{ t('game.abilities.self') }}</h3>
-          <div *ngFor="let ability of abilities | keyvalue: originalOrder">
+          <div *ngFor="let ability of character.abilities | keyvalue: originalOrder">
             <b>{{ t('game.abilities.' + ability.key.toLowerCase()) }}: </b>{{ ability.value.score }}
             <span *ngIf="ability.value.mod > 0">+</span>{{ ability.value.mod }}
           </div>
