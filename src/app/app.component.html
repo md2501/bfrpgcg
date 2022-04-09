@@ -129,14 +129,14 @@
 
       <!-- SPELLS (checkboxes)-->
       <div class="noprint" *ngIf="character.characterClass.spellProgression 
-          && character.characterClass.spellProgression[character.level].length > 0">
+          && character.characterClass.spellProgression[character.level-1].length > 0">
         <h3>{{ t('game.spells.self') }}</h3>
         <div [formGroup]="spellForm">
           <div class="grid-container">
             <div formArrayName="spellArray" class="spell-level"
               *ngFor="let spellLevel of spellForm.controls.spellArray.controls; index as i">
               <b>{{ t('game.level') }} {{i+1}}</b>
-              ({{character.characterClass.spellProgression[character.level][i]}})<br>
+              ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
               <ng-container class="spell-container" [formArrayName]="i"
                 *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
                 <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()"

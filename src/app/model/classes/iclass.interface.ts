@@ -12,6 +12,6 @@ export default interface IClass {
     readonly weaponRestrictions: string[];
     readonly savingThrow: ISavingThrows;
     readonly classAbilities?: {[ability: string] : { [category: string]: (number| string)[]}};
-    readonly spellProgression?: {[characterlevel: number]: number[]};
+    readonly spellProgression?: number[][];
     readonly spells?: Spell[][];
 }
