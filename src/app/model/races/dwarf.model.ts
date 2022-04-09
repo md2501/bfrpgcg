@@ -8,9 +8,9 @@ import { SavingThrowName } from "../isaving-throws.interface";
 const DWARF_SPECIFICS_KEY = "game.races.dwarf.specifics"
 
 export class Dwarf implements IRace {
-    name = RaceName.Dwarf;
+    readonly raceName = RaceName.Dwarf;
     // specialAbilities = ["darkvision 60'", "detect slanting passages, traps, shifting walls, new construction: 2/6"];
-    specialAbilities = [
+    readonly specialAbilities = [
         { 
             translationKey: `${DWARF_SPECIFICS_KEY}.specialAbilities.darkvision`, 
             params: { VALUE: 60 }
@@ -20,14 +20,14 @@ export class Dwarf implements IRace {
             params: { VALUE: "2/6" }
         }
     ];
-    abilityRequirements = { [AbilityName.CONSTITUTION]: 9, [AbilityName.CHARISMA]: -17 };
-    classes = [ClassName.Cleric, ClassName.Fighter, ClassName.Thief];
+    readonly abilityRequirements = { [AbilityName.CONSTITUTION]: 9, [AbilityName.CHARISMA]: -17 };
+    readonly classes = [ClassName.Cleric, ClassName.Fighter, ClassName.Thief];
     // weaponRestrictions = ["may not use Large weapons more than four feet in length"];
-    weaponRestrictions = [
+    readonly weaponRestrictions = [
         `${DWARF_SPECIFICS_KEY}.weaponRestrictions.noLargeWeapons`
     ];
-    savingThrowMods = { [SavingThrowName.POISON]: 4, [SavingThrowName.WANDS]: 4, [SavingThrowName.PARALYSIS]: 4, [SavingThrowName.SPELLS]: 4, [SavingThrowName.DRAGONBREATH]: 3 };
-    names = ["Jakwohilda Redstone",
+    readonly savingThrowMods = { [SavingThrowName.POISON]: 4, [SavingThrowName.WANDS]: 4, [SavingThrowName.PARALYSIS]: 4, [SavingThrowName.SPELLS]: 4, [SavingThrowName.DRAGONBREATH]: 3 };
+    readonly names = ["Jakwohilda Redstone",
         "Doudmeaginn Dimbrand",
         "Rutobera Coalmantle",
         "Nobrela Hammergranite",
