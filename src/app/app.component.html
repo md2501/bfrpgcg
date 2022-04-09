@@ -63,7 +63,7 @@
             character.level
           )" formControlName="raceFC">
           <option *ngFor="let race of getRaces()" [ngValue]="race">
-            {{ t('game.races.' + race.name.toLowerCase() + '.self') }}
+            {{ t('game.races.' + race.raceName.toLowerCase() + '.self') }}
           </option>
         </select>
       </div>
