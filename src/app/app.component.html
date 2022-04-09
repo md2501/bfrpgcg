@@ -77,7 +77,7 @@
             character.level
           )" formControlName="classFC">
           <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">
-            {{class.name}}
+            {{class.className}}
           </option>
         </select>
       </div>

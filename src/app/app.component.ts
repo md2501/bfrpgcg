@@ -189,7 +189,7 @@ export class AppComponent implements OnInit {
   getCharacterClasses(race: IRace): IClass[] {
     let possibleClasses: IClass[] = [];
     for (let cc of classes) {
-      if (race.classes.includes(cc.name)) {
+      if (race.classes.includes(cc.className)) {
         let valid = true;
         for (let req in cc.abilityRequirements) {
           // check if requirements are met: a positive requirement value means the score needs to be higher or equal
