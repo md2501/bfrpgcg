@@ -1,7 +1,7 @@
 export enum SavingThrowName {
-    POISON = "Death Ray or Poison",
+    POISON = "Death Ray Or Poison",
     WANDS = "Magic Wands",
-    PARALYSIS = "Paralysis or Petrify",
+    PARALYSIS = "Paralysis Or Petrify",
     DRAGONBREATH = "Dragon Breath",
     SPELLS = "Spells"
 }

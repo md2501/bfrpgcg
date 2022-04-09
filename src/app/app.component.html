@@ -107,23 +107,11 @@
           </div>
         </div>
 
-        <!-- SAVING THROWS -->
+        <!-- Saving Throws -->
         <div>
           <h3>{{ t('game.savingThrows.self') }}</h3>
-          <div>
-            <b>{{ t('game.savingThrows.deathRayOrPoison') }}: </b>{{character.savingThrows["Death Ray or Poison"]}}
-          </div>
-          <div>
-            <b>{{ t('game.savingThrows.magicWands') }}: </b>{{character.savingThrows["Magic Wands"]}}
-          </div>
-          <div>
-            <b>{{ t('game.savingThrows.paralysisOrPetrify') }}: </b>{{character.savingThrows["Paralysis or Petrify"]}}
-          </div>
-          <div>
-            <b>{{ t('game.savingThrows.dragonBreath') }}: </b>{{character.savingThrows["Dragon Breath"]}}
-          </div>
-          <div>
-            <b>{{ t('game.savingThrows.spells') }}: </b>{{character.savingThrows["Spells"]}}
+          <div *ngFor="let save of character.savingThrows | keyvalue: originalOrder">
+            <b>{{ t('game.savingThrows.' + this.removeWhitespaces(save.key[0].toLowerCase() + save.key.slice(1))) }}: </b>{{ save.value}}
           </div>
         </div>
 

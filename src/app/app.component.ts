@@ -234,6 +234,11 @@ export class AppComponent implements OnInit {
     return sum
   }
 
+  // helper function to remove whitespaces in template
+  removeWhitespaces(text: string): string {
+    return text.replace(/\s+/g, '');
+  }
+
   // generate and set a full character
   genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
 
