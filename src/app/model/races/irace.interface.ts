@@ -38,11 +38,11 @@ interface SpecialAbility {
 }
 
 export interface IRace {
-    name: RaceName;
-    classes: ClassName[];
-    abilityRequirements: {[ability in AbilityName as string]: number};
-    weaponRestrictions: string[];
-    specialAbilities: SpecialAbility[]; // TODO: Find appropriate type for translations
-    savingThrowMods: {[save in SavingThrowName as string]: number};
-    names: string[];
+    readonly raceName: RaceName;
+    readonly classes: ClassName[];
+    readonly abilityRequirements: {[ability in AbilityName as string]: number};
+    readonly weaponRestrictions: string[];
+    readonly specialAbilities: SpecialAbility[]; // TODO: Find appropriate type for translations
+    readonly savingThrowMods: {[save in SavingThrowName as string]: number};
+    readonly names: string[];
 }
