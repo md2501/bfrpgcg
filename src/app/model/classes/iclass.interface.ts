@@ -4,14 +4,14 @@ import { Spell } from "../spells";
 import { ClassName } from "./classname.enum";
 
 export default interface IClass {
-    name: ClassName;
-    hd: number;
-    hpBonus: {[characterLevel: number]: number};
-    ab: number[];
-    abilityRequirements: { [ability in AbilityName as string]: number };
-    weaponRestrictions: string[];
-    savingThrow: ISavingThrows;
-    classAbilities?: {[ability: string] : { [category: string]: (number| string)[]}};
-    spellProgression?: {[characterlevel: number]: number[]};
-    spells?: Spell[][];
+    readonly name: ClassName;
+    readonly hd: number;
+    readonly hpBonus: {[characterLevel: number]: number};
+    readonly ab: number[];
+    readonly abilityRequirements: { [ability in AbilityName as string]: number };
+    readonly weaponRestrictions: string[];
+    readonly savingThrow: ISavingThrows;
+    readonly classAbilities?: {[ability: string] : { [category: string]: (number| string)[]}};
+    readonly spellProgression?: {[characterlevel: number]: number[]};
+    readonly spells?: Spell[][];
 }
