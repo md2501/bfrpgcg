@@ -100,10 +100,6 @@ export class AppComponent implements OnInit {
     return this.dieRoll(3, 6) * 10;
   }
 
-  /*setAbilities(abilities: IAbilities): void {
-    this.abilities = abilities;
-  }*/
-
   private genName(race: IRace): void {
     this.name = race.names[Math.floor(Math.random() * race.names.length)];
   }
@@ -152,10 +148,6 @@ export class AppComponent implements OnInit {
         }
       }
     }
-  }
-
-  private createNewSpellSelect(): FormControl {
-    return new FormControl({ spellSelect: [''] });
   }
 
   // get all possible races for the rolled abilities
