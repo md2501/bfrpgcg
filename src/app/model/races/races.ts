@@ -3,7 +3,6 @@ import { Elf } from "./elf.model";
 import { Halfling } from "./halfling.model";
 import { Human } from "./human.model";
 import { IRace } from "./irace.interface";
-import { RaceName } from "./racename.enum";
 
 const dwarf = new Dwarf;
 const elf = new Elf;
