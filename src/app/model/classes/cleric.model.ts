@@ -17,7 +17,7 @@ export class Cleric implements IClass {
     abilityRequirements = { [AbilityName.WISDOM]: 9 };
     hd = 6;
     ab = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
-    weaponRestrictions = ["may only use blunt weapons"];
+    weaponRestrictions = ["May only use blunt weapons"];
     classAbilities = {"Turn the Undead": {
             "Skeleton (1HD)": [13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"],
             "Zombie (2HD)": [17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D", "D", "D"],

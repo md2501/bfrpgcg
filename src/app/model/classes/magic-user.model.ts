@@ -18,7 +18,7 @@ export class MagicUser implements IClass {
     };
     hd = 4;
     ab = [1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7 ];
-    weaponRestrictions = ["may not wear armor nor use a shield", "may use no weapon besides dagger, staff or cudgel"];
+    weaponRestrictions = ["May not wear armor nor use a shield", "May use no weapon besides dagger, staff or cudgel"];
     // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
     spellProgression = {
         1: [1],
