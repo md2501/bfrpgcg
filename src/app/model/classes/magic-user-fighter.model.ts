@@ -18,7 +18,7 @@ export class MagicUserFighter implements IClass {
         [SavingThrowName.DRAGONBREATH]: [15, 15, 14, 14, 13, 12, 12, 11, 10, 10, 9],
         [SavingThrowName.SPELLS]: [15, 14, 13, 13, 12, 11, 11, 10, 9, 9, 8]
     };
-    // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
+    // characterlevel is the index, the value array represents the amount of spells with the index representing spell level
      spellProgression = [
         [1],
         [2],

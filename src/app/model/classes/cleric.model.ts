@@ -29,7 +29,7 @@ export class Cleric implements IClass {
             "Vampire (8HD)": ["No", "No", "No", "No", "No", "No", "No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7, 5, 3],
             "Ghost (9+HD)": ["No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7]
     }};
-    // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
+    // characterlevel is the index, the value array represents the amount of spells with the index representing spell level
     spellProgression = [
         [],
         [1],

@@ -27,7 +27,7 @@ export class MagicUserThief implements IClass {
         "Hide": [10, 15, 20, 25, 30, 35, 40, 45, 50, 53, 56, 59, 62, 65, 68, 69, 70, 71, 72, 73],
         "Listen": [30, 34, 38, 42, 46, 50, 54, 58, 62, 65, 68, 71, 74, 77, 80, 83, 86, 89, 92, 95]
     }};
-    // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
+    // characterlevel is the index, the value array represents the amount of spells with the index representing spell level
     spellProgression = [
         [1],
         [2],
