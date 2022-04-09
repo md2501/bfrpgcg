@@ -7,16 +7,16 @@ import { SavingThrowName } from "../isaving-throws.interface";
 const HALFLING_SPECIFICS_KEY = "game.races.halfling.specifics"
 
 export class Halfling implements IRace {
-    readonly raceName = RaceName.Halfling;
-    readonly abilityRequirements = { [AbilityName.DEXTERITY]: 9, [AbilityName.STRENGTH]: -17 };
-    readonly classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter];
+    raceName = RaceName.Halfling;
+    abilityRequirements = { [AbilityName.DEXTERITY]: 9, [AbilityName.STRENGTH]: -17 };
+    classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter];
     // weaponRestrictions = ["may not use large weapons", "must wield medium weapons with both hands"];
-    readonly weaponRestrictions = [
+    weaponRestrictions = [
         `${HALFLING_SPECIFICS_KEY}.weaponRestrictions.noLargeWeapons`,
         `${HALFLING_SPECIFICS_KEY}.weaponRestrictions.mediumWeaponsTwoHanded`,
     ];
     // specialAbilities = ["+1 attack bonus on ranged weapons", "+2 armor class when attacked in melee by creatures larger than man-sized", "+1 initiative", "hide outdoors: 90", "hide indoors: 70"];
-    readonly specialAbilities = [
+    specialAbilities = [
         { 
             translationKey: `${HALFLING_SPECIFICS_KEY}.specialAbilities.rangedWeaponBonus`,
             params: { VALUE: 1 }

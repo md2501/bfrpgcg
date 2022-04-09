@@ -5,20 +5,20 @@ import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class Cleric implements IClass {
-    readonly name = ClassName.Cleric;
-    readonly hpBonus = { 10: 1, 11: 2, 12: 3, 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 18: 9, 19: 10, 20: 11 };
-    readonly savingThrow = {
+    className = ClassName.Cleric;
+    hpBonus = { 10: 1, 11: 2, 12: 3, 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 18: 9, 19: 10, 20: 11 };
+    savingThrow = {
         [SavingThrowName.POISON]: [11, 10, 9, 9, 8, 8, 7, 7, 6, 6, 5],
         [SavingThrowName.WANDS]: [12, 11, 10, 10, 9, 9, 8, 8, 7, 7, 6],
         [SavingThrowName.PARALYSIS]: [14, 13, 13, 12, 12, 11, 11, 10, 10, 9, 9],
         [SavingThrowName.DRAGONBREATH]: [16, 15, 15, 14, 14, 13, 13, 12, 12, 11, 11],
         [SavingThrowName.SPELLS]: [15, 14, 14, 13, 13, 12, 12, 11, 11, 10, 10]
     };
-    readonly abilityRequirements = { [AbilityName.WISDOM]: 9 };
-    readonly hd = 6;
-    readonly ab = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
-    readonly weaponRestrictions = ["may only use blunt weapons"];
-    readonly classAbilities = {"Turn the Undead": {
+    abilityRequirements = { [AbilityName.WISDOM]: 9 };
+    hd = 6;
+    ab = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
+    weaponRestrictions = ["may only use blunt weapons"];
+    classAbilities = {"Turn the Undead": {
             "Skeleton (1HD)": [13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"],
             "Zombie (2HD)": [17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D", "D", "D"],
             "Ghoul (3HD)": [19, 18, 17, 15, 13, 11, 9, 7, 5, 3, 2, "T", "T", "T", "D", "D", "D", "D", "D", "D"],
@@ -30,7 +30,7 @@ export class Cleric implements IClass {
             "Ghost (9+HD)": ["No", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No", 20, 19, 18, 17, 15, 13, 11, 9, 7]
     }};
     // characterlevel is the key, the value array represents the amount of spells with the index representing spell level
-    readonly spellProgression = {
+    spellProgression = {
         1: [],
         2: [1],
         3: [2],
@@ -52,5 +52,5 @@ export class Cleric implements IClass {
         19: [6, 5, 4, 4, 3, 3],
         20: [6, 5, 5, 4, 3, 3]
     };
-    readonly spells = clericSpells;
+    spells = clericSpells;
 }

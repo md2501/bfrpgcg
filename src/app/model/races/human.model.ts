@@ -5,19 +5,19 @@ import { RaceName } from "./racename.enum";
 const HUMAN_SPECIFICS_KEY = "game.races.human.specifics"
 
 export class Human implements IRace {
-    readonly raceName = RaceName.Human;
-    readonly abilityRequirements = {};
-    readonly classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter, ClassName.MagicUser];
-    readonly weaponRestrictions = [];
+    raceName = RaceName.Human;
+    abilityRequirements = {};
+    classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter, ClassName.MagicUser];
+    weaponRestrictions = [];
     // specialAbilities = ["+10% XP"];
-    readonly specialAbilities = [
+    specialAbilities = [
         { 
             translationKey: `${HUMAN_SPECIFICS_KEY}.specialAbilities.extraXp`, 
             params: { VALUE: 10 } 
         }
     ];
-    readonly savingThrowMods = {};
-    readonly names = ["Gatugha Helbeard",
+    savingThrowMods = {};
+    names = ["Gatugha Helbeard",
         "Abeoh Longrobe",
         "Tiobaid GilleChrìost",
         "Raibeart MacIlleGhlais",

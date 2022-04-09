@@ -4,7 +4,7 @@ import { Spell } from "../spells";
 import { ClassName } from "./classname.enum";
 
 export default interface IClass {
-    readonly name: ClassName;
+    readonly className: ClassName;
     readonly hd: number;
     readonly hpBonus: {[characterLevel: number]: number};
     readonly ab: number[];
