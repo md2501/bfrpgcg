@@ -5,7 +5,7 @@ import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class MagicUserFighter implements IClass {
-    className = ClassName.MagicUserFighter;
+    className = ClassName.MAGICUSERFIGHTER;
     hpBonus = { 10: 2, 11: 4, 12: 6, 13: 8, 14: 10, 15: 12, 16: 14, 17: 16, 18: 18, 19: 20, 20: 22 };
     hd = 6;
     ab = [1, 2, 2, 3, 4, 4, 5, 6, 6, 6, 7, 7, 8, 8, 8, 9, 9, 10, 10, 10];

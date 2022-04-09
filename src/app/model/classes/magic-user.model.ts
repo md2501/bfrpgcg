@@ -5,7 +5,7 @@ import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class MagicUser implements IClass {
-    className = ClassName.MagicUser;
+    className = ClassName.MAGICUSER;
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9 };
     hpBonus = { 10: 1, 11: 2, 12: 3, 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 18: 9, 19: 10, 20: 11 };
     savingThrow = {

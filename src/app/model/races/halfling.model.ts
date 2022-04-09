@@ -9,7 +9,7 @@ const HALFLING_SPECIFICS_KEY = "game.races.halfling.specifics"
 export class Halfling implements IRace {
     raceName = RaceName.Halfling;
     abilityRequirements = { [AbilityName.DEXTERITY]: 9, [AbilityName.STRENGTH]: -17 };
-    classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter];
+    classes = [ClassName.THIEF, ClassName.CLERIC, ClassName.FIGHTER];
     // weaponRestrictions = ["may not use large weapons", "must wield medium weapons with both hands"];
     weaponRestrictions = [
         `${HALFLING_SPECIFICS_KEY}.weaponRestrictions.noLargeWeapons`,

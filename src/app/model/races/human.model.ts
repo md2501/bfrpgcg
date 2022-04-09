@@ -7,7 +7,7 @@ const HUMAN_SPECIFICS_KEY = "game.races.human.specifics"
 export class Human implements IRace {
     raceName = RaceName.Human;
     abilityRequirements = {};
-    classes = [ClassName.Thief, ClassName.Cleric, ClassName.Fighter, ClassName.MagicUser];
+    classes = [ClassName.THIEF, ClassName.CLERIC, ClassName.FIGHTER, ClassName.MAGICUSER];
     weaponRestrictions = [];
     // specialAbilities = ["+10% XP"];
     specialAbilities = [

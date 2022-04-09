@@ -21,7 +21,7 @@ export class Dwarf implements IRace {
         }
     ];
     abilityRequirements = { [AbilityName.CONSTITUTION]: 9, [AbilityName.CHARISMA]: -17 };
-    classes = [ClassName.Cleric, ClassName.Fighter, ClassName.Thief];
+    classes = [ClassName.CLERIC, ClassName.FIGHTER, ClassName.THIEF];
     // weaponRestrictions = ["may not use Large weapons more than four feet in length"];
     weaponRestrictions = [
         `${DWARF_SPECIFICS_KEY}.weaponRestrictions.noLargeWeapons`

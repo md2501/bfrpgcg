@@ -5,7 +5,7 @@ import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class Cleric implements IClass {
-    className = ClassName.Cleric;
+    className = ClassName.CLERIC;
     hpBonus = { 10: 1, 11: 2, 12: 3, 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 18: 9, 19: 10, 20: 11 };
     savingThrow = {
         [SavingThrowName.POISON]: [11, 10, 9, 9, 8, 8, 7, 7, 6, 6, 5],
