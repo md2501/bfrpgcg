@@ -182,7 +182,7 @@
       <h3>{{ t('game.notes') }}</h3>
       <div *ngFor="let note of character.race.specialAbilities">{{ t(note.translationKey, note.params) }}</div>
       <div *ngFor="let restriction of character.race.weaponRestrictions">{{ t(restriction) }}</div>
-      <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
+      <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{ t(restriction) }}</div>
     </div>
   </div>
 </div>

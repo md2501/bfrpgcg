@@ -28,5 +28,5 @@ Made with Angular.
   - [x] add translations (en, de) for race specifics like (weapon restrictions and special abilities)
   - [ ] add translations (en, de) for class specifics (class restrictions and abilities) NOTE: This will be a bit harder
   - [x] add translations (en, de) for races
-  - [x] add translations (en,de) for classes
+  - [x] add translations (en, de) for classes
 - [ ] add some portraits

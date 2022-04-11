@@ -3,6 +3,8 @@ import { SavingThrowName } from "../isaving-throws.interface";
 import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
+const THIEF_SPECIFICS_KEY = "game.classes.thief.specifics"
+
 export class Thief implements IClass {
 
     private constructor() { }
@@ -36,5 +38,5 @@ export class Thief implements IClass {
     }};
     hd = 4;
     ab = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
-    weaponRestrictions = ["May not use metal armor or shields"];
+    weaponRestrictions = [`${THIEF_SPECIFICS_KEY}.weaponRestrictions.noMetalArmor`];
 }

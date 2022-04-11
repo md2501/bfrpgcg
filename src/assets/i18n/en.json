@@ -6,7 +6,6 @@
             "de": "Deutsch"
         }
     },
-
     "game": {
         "name": "Name",
         "level": "Level",
@@ -37,7 +36,7 @@
                     "specialAbilities": {
                         "darkvision": "Darkvision {VALUE}’",
                         "findSecretDoors": "Find secret doors more often than normal ({VALUE1}, {VALUE2})",
-                        "immuneToGhoulAcid": "Immune to paralyzing acid of ghouls", 
+                        "immuneToGhoulAcid": "Immune to paralyzing acid of ghouls",
                         "surprise": "Reduced chance of surprise: {VALUE}"
                     },
                     "weaponRestrictions": {}
@@ -71,22 +70,49 @@
         },
         "classes": {
             "magicUser": {
-                "self": "Magic-User"
+                "self": "Magic-User",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noArmor": "May use no weapon besides dagger, staff or cudgel",
+                        "onlyMagicUserWeapons": "May not wear armor nor use a shield"
+                    }
+                }
             },
             "fighter": {
-                "self": "Fighter"
+                "self": "Fighter",
+                "specifics": {
+                    "weaponRestrictions": {}
+                }
             },
             "fighterMagicUser": {
-                "self": "Fighter/Magic-User"
+                "self": "Fighter/Magic-User",
+                "specifics": {
+                    "weaponRestrictions": {}
+                }
             },
             "magicUserThief": {
-                "self": "Magic-User/Thief"
+                "self": "Magic-User/Thief",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "May not use metal armor or shields"
+                    }
+                }
             },
             "cleric": {
-                "self": "Cleric"
+                "self": "Cleric",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "onlyBluntWeapons": "May only use blunt weapons"
+                    }
+                }
             },
             "thief": {
-                "self": "Dieb"
+                "self": "Thief",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "May not use metal armor or shields"
+                    }
+                }
             }
         },
         "abilities": {
@@ -217,7 +243,6 @@
             "wordOfRecall": "Word of Recall"
         }
     },
-
     "func": {
         "generateRandomName": "Generate random name",
         "reroll": "Reroll",

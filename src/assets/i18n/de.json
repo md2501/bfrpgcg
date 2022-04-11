@@ -70,22 +70,45 @@
         },
         "classes": {
             "magicUser": {
-                "self": "Magiekundiger"
+                "self": "Magiekundiger",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noArmor": "Lernen nur den Umgang mit Dolch und Stab (Schlagstock)",
+                        "onlyMagicUserWeapons": "Darf weder Rüstung tragen noch einen Schild führen"
+                    }
+                }
             },
             "fighter": {
-                "self": "Kämpfer"
+                "self": "Kämpfer",
+                "specifics": {}
             },
             "fighterMagicUser": {
-                "self": "Kämpfer/Magiekundiger"
+                "self": "Kämpfer/Magiekundiger",
+                "specifics": {}
             },
             "magicUserThief": {
-                "self": "Magiekundiger/Dieb"
+                "self": "Magiekundiger/Dieb",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
+                    }
+                }
             },
             "cleric": {
-                "self": "Kleriker"
+                "self": "Kleriker",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "onlyBluntWeapons": "Darf nur stumpfe Waffen verwenden"
+                    }
+                }
             },
             "thief": {
-                "self": "Dieb"
+                "self": "Dieb",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
+                    }
+                }
             }
         },
         "abilities": {
