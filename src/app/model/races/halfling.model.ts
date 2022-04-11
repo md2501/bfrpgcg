@@ -7,6 +7,17 @@ import { SavingThrowName } from "../isaving-throws.interface";
 const HALFLING_SPECIFICS_KEY = "game.races.halfling.specifics"
 
 export class Halfling implements IRace {
+
+    private constructor() { }
+    private static instance: Halfling;
+    public static getInstance(): Halfling {
+        if (!Halfling.instance) {
+            Halfling.instance = new Halfling();
+        }
+
+        return Halfling.instance;
+    }
+
     raceName = RaceName.HALFLING;
     abilityRequirements = { [AbilityName.DEXTERITY]: 9, [AbilityName.STRENGTH]: -17 };
     classes = [ClassName.THIEF, ClassName.CLERIC, ClassName.FIGHTER];

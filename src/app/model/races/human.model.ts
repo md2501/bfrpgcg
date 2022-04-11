@@ -5,15 +5,26 @@ import { RaceName } from "./racename.enum";
 const HUMAN_SPECIFICS_KEY = "game.races.human.specifics"
 
 export class Human implements IRace {
+
+    private constructor() { }
+    private static instance: Human;
+    public static getInstance(): Human {
+        if (!Human.instance) {
+            Human.instance = new Human();
+        }
+
+        return Human.instance;
+    }
+
     raceName = RaceName.HUMAN;
     abilityRequirements = {};
     classes = [ClassName.THIEF, ClassName.CLERIC, ClassName.FIGHTER, ClassName.MAGICUSER];
     weaponRestrictions = [];
     // specialAbilities = ["+10% XP"];
     specialAbilities = [
-        { 
-            translationKey: `${HUMAN_SPECIFICS_KEY}.specialAbilities.extraXp`, 
-            params: { VALUE: 10 } 
+        {
+            translationKey: `${HUMAN_SPECIFICS_KEY}.specialAbilities.extraXp`,
+            params: { VALUE: 10 }
         }
     ];
     savingThrowMods = {};
