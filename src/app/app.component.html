@@ -82,12 +82,12 @@
         </select>
       </div>
 
-      <!-- Attack Bonus -->
+      <!-- ATTACK BONUS -->
       <div>
         <b>{{ t('game.attackBonus', { IN: 'short' }) }}: </b>{{character.ab}}
       </div>
 
-      <!-- Heath Points -->
+      <!-- HEALTH POINTS -->
       <div>
         <b>{{ t('game.healthPoints', { IN: 'short' }) }}: </b>{{character.hp}}
       </div>
@@ -112,7 +112,8 @@
         <div>
           <h3>{{ t('game.savingThrows.self') }}</h3>
           <div *ngFor="let save of character.savingThrows | keyvalue: originalOrder">
-            <b>{{ t('game.savingThrows.' + this.removeWhitespaces(save.key[0].toLowerCase() + save.key.slice(1))) }}: </b>{{ save.value}}
+            <b>{{ t('game.savingThrows.' + this.removeWhitespaces(save.key[0].toLowerCase() + save.key.slice(1))) }}:
+            </b>{{ save.value}}
           </div>
         </div>
 
@@ -184,3 +185,4 @@
       <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
     </div>
   </div>
+</div>
