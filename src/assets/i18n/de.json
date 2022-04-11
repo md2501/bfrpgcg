@@ -6,7 +6,6 @@
             "de": "Deutsch"
         }
     },
-
     "game": {
         "name": "Name",
         "level": "Level",
@@ -37,7 +36,7 @@
                     "specialAbilities": {
                         "darkvision": "Dunkelsicht {VALUE}’",
                         "findSecretDoors": "Finde geheime Türen häufiger als normal ({VALUE1}, {VALUE2})",
-                        "immuneToGhoulAcid": "Immun gegen den paralysierenden Angriff von Ghulen", 
+                        "immuneToGhoulAcid": "Immun gegen den paralysierenden Angriff von Ghulen",
                         "surprise": "Reduzierte Chance auf Überraschung: {VALUE}"
                     },
                     "weaponRestrictions": {}
@@ -67,6 +66,23 @@
                     },
                     "weaponRestrictions": {}
                 }
+            }
+        },
+        "classes": {
+            "magicUser": {
+                "self": "Magiekundiger"
+            },
+            "figher": {
+                "self": "Kämpfer"
+            },
+            "magicUserFighter": {
+                "self": "Kämpfer/Magiekundiger"
+            },
+            "magicUserThief": {
+                "self": "Magiekundiger/Dieb"
+            },
+            "cleric": {
+                "self": "Kleriker"
             }
         },
         "abilities": {
@@ -197,7 +213,6 @@
             "wordOfRecall": "Wort der Zuflucht"
         }
     },
-
     "func": {
         "generateRandomName": "Zufälligen Namen generieren",
         "reroll": "Würfeln",

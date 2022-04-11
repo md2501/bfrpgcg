@@ -69,6 +69,23 @@
                 }
             }
         },
+        "classes": {
+            "magicUser": {
+                "self": "Magic-User"
+            },
+            "figher": {
+                "self": "Fighter"
+            },
+            "magicUserFighter": {
+                "self": "Fighter/Magic-User"
+            },
+            "magicUserThief": {
+                "self": "Magic-User/Thief"
+            },
+            "cleric": {
+                "self": "Cleric"
+            }
+        },
         "abilities": {
             "self": "Abilities",
             "strength": "Strength",
