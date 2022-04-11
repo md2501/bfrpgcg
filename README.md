@@ -24,9 +24,5 @@ Made with Angular.
 - [ ] guide on how to add new races/classes  
 - [x] multilanguage support  
   - [x] add drop down to select language
-  - [x] add german translations
-  - [x] add translations (en, de) for race specifics like (weapon restrictions and special abilities)
-  - [ ] add translations (en, de) for class specifics (class restrictions and abilities) NOTE: This will be a bit harder
-  - [x] add translations (en, de) for races
-  - [x] add translations (en, de) for classes
+  - [x] add complete german translations
 - [ ] add some portraits
