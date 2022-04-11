@@ -4,7 +4,18 @@ import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class Fighter implements IClass {
-    name= ClassName.Fighter;
+
+    private constructor() { }
+    private static instance: Fighter;
+    public static getInstance(): Fighter {
+        if (!Fighter.instance) {
+            Fighter.instance = new Fighter();
+        }
+
+        return Fighter.instance;
+    }
+
+    className= ClassName.FIGHTER;
     hpBonus = {10: 2, 11: 4, 12: 6, 13: 8, 14: 10, 15: 12, 16: 14, 17: 16, 18: 18, 19: 20, 20: 22};
     savingThrow= { 
         [SavingThrowName.POISON]: [12, 11, 11, 10, 9, 9, 8, 7, 7, 6, 5],

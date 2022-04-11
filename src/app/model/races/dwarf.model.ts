@@ -8,7 +8,18 @@ import { SavingThrowName } from "../isaving-throws.interface";
 const DWARF_SPECIFICS_KEY = "game.races.dwarf.specifics"
 
 export class Dwarf implements IRace {
-    name = RaceName.Dwarf;
+
+    private constructor() { }
+    private static instance: Dwarf;
+    public static getInstance(): Dwarf {
+        if (!Dwarf.instance) {
+            Dwarf.instance = new Dwarf();
+        }
+
+        return Dwarf.instance;
+    }
+
+    raceName = RaceName.DWARF;
     // specialAbilities = ["darkvision 60'", "detect slanting passages, traps, shifting walls, new construction: 2/6"];
     specialAbilities = [
         { 
@@ -21,7 +32,7 @@ export class Dwarf implements IRace {
         }
     ];
     abilityRequirements = { [AbilityName.CONSTITUTION]: 9, [AbilityName.CHARISMA]: -17 };
-    classes = [ClassName.Cleric, ClassName.Fighter, ClassName.Thief];
+    classes = [ClassName.CLERIC, ClassName.FIGHTER, ClassName.THIEF];
     // weaponRestrictions = ["may not use Large weapons more than four feet in length"];
     weaponRestrictions = [
         `${DWARF_SPECIFICS_KEY}.weaponRestrictions.noLargeWeapons`

@@ -8,9 +8,20 @@ import { SavingThrowName } from "../isaving-throws.interface";
 const ELF_SPECIFICS_KEY = "game.races.elf.specifics"
 
 export class Elf implements IRace {
-    name = RaceName.Elf;
+
+    private constructor() { }
+    private static instance: Elf;
+    public static getInstance(): Elf {
+        if (!Elf.instance) {
+            Elf.instance = new Elf();
+        }
+
+        return Elf.instance;
+    }
+
+    raceName = RaceName.ELF;
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9, [AbilityName.CONSTITUTION]: -17 };
-    classes = [ClassName.Cleric, ClassName.Fighter, ClassName.MagicUser, ClassName.Thief, ClassName.MagicUserThief, ClassName.MagicUserFighter]
+    classes = [ClassName.CLERIC, ClassName.FIGHTER, ClassName.MAGICUSER, ClassName.THIEF, ClassName.MAGICUSERTHIEF, ClassName.MAGICUSERFIGHTER]
     weaponRestrictions = [];
     // specialAbilities = ["darkvision 60'", "find secret doors 2/6, 1/6 without searching", "immune to paralyzing acid of ghouls", "surprise 1/6"]
     specialAbilities = [

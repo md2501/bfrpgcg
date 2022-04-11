@@ -1,6 +1,6 @@
 export enum RaceName {
-    Dwarf = "Dwarf",
-    Elf = "Elf",
-    Halfling = "Halfling",
-    Human = "Human"
+    DWARF = "Dwarf",
+    ELF = "Elf",
+    HALFLING = "Halfling",
+    HUMAN = "Human"
 }

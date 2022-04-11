@@ -17,11 +17,11 @@ Made with Angular.
 - [x] implement generating characters of specific level
 - [x] allow full hp at first level
 - [x] add turn undead stats
-- [ ] cleaner code
+- [x] cleaner code
 - [ ] 4d6 for abilities house rule as an option
+- [ ] option to preselect random spells
 - [ ] optional equipment  
 - [ ] guide on how to add new races/classes  
-- [ ] option to preselect random spells
 - [x] multilanguage support  
   - [x] add drop down to select language
   - [x] add german translations
