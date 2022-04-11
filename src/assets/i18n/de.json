@@ -72,10 +72,10 @@
             "magicUser": {
                 "self": "Magiekundiger"
             },
-            "figher": {
+            "fighter": {
                 "self": "Kämpfer"
             },
-            "magicUserFighter": {
+            "fighterMagicUser": {
                 "self": "Kämpfer/Magiekundiger"
             },
             "magicUserThief": {
@@ -83,6 +83,9 @@
             },
             "cleric": {
                 "self": "Kleriker"
+            },
+            "thief": {
+                "self": "Dieb"
             }
         },
         "abilities": {

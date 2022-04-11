@@ -220,9 +220,10 @@ export class AppComponent implements OnInit {
     return sum
   }
 
-  // helper function to remove whitespaces in template
-  removeWhitespaces(text: string): string {
-    return text.replace(/\s+/g, '');
+  // helper function to remove whitespaces, dashes and make the first letter lowercase in template
+  convertStringToI18nKey(text: string): string {
+    let filteredText = text.replace(/\s+|-|\//g, '');
+    return filteredText[0].toLocaleLowerCase() + filteredText.slice(1);
   }
 
   // generate and set a full character

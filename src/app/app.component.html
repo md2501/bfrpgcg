@@ -77,7 +77,7 @@
             character.level
           )" formControlName="classFC">
           <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">
-            {{class.className}}
+            {{ t('game.classes.' + this.convertStringToI18nKey(class.className) + '.self') }}
           </option>
         </select>
       </div>
@@ -112,7 +112,7 @@
         <div>
           <h3>{{ t('game.savingThrows.self') }}</h3>
           <div *ngFor="let save of character.savingThrows | keyvalue: originalOrder">
-            <b>{{ t('game.savingThrows.' + this.removeWhitespaces(save.key[0].toLowerCase() + save.key.slice(1))) }}:
+            <b>{{ t('game.savingThrows.' + this.convertStringToI18nKey(save.key)) }}:
             </b>{{ save.value}}
           </div>
         </div>
