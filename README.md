@@ -20,8 +20,9 @@ Made with Angular.
 - [x] cleaner code
 - [ ] 4d6 for abilities house rule as an option
 - [ ] option to preselect random spells
-- [ ] optional equipment  
-- [ ] guide on how to add new races/classes  
+- [ ] optional equipment
+- [ ] add some optional class/race supplements from the official [downloads page](https://basicfantasy.org/downloads.html).
+- [ ] guide on how to contribute  
 - [x] multilanguage support  
   - [x] add drop down to select language
   - [x] add complete german translations
