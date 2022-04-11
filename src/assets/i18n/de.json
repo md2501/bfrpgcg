@@ -6,7 +6,6 @@
             "de": "Deutsch"
         }
     },
-
     "game": {
         "name": "Name",
         "level": "Level",
@@ -37,7 +36,7 @@
                     "specialAbilities": {
                         "darkvision": "Dunkelsicht {VALUE}’",
                         "findSecretDoors": "Finde geheime Türen häufiger als normal ({VALUE1}, {VALUE2})",
-                        "immuneToGhoulAcid": "Immun gegen den paralysierenden Angriff von Ghulen", 
+                        "immuneToGhoulAcid": "Immun gegen den paralysierenden Angriff von Ghulen",
                         "surprise": "Reduzierte Chance auf Überraschung: {VALUE}"
                     },
                     "weaponRestrictions": {}
@@ -66,6 +65,87 @@
                         "extraXp": "+{VALUE}% EP"
                     },
                     "weaponRestrictions": {}
+                }
+            }
+        },
+        "classes": {
+            "magicUser": {
+                "self": "Magiekundiger",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noArmor": "Lernen nur den Umgang mit Dolch und Stab (Schlagstock)",
+                        "onlyMagicUserWeapons": "Darf weder Rüstung tragen noch einen Schild führen"
+                    }
+                }
+            },
+            "fighter": {
+                "self": "Kämpfer",
+                "specifics": {}
+            },
+            "fighterMagicUser": {
+                "self": "Kämpfer/Magiekundiger",
+                "specifics": {}
+            },
+            "magicUserThief": {
+                "self": "Magiekundiger/Dieb",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Diebesfertigkeiten",
+                            "openLocks": "Schlösser Öffnen",
+                            "removeTraps": "Fallen Stellen",
+                            "pickPockets": "Taschendiebstahl",
+                            "moveSilently": "Schleichen",
+                            "climbWalls": "Fassadenklettern",
+                            "hide": "Verstecken",
+                            "listen": "Lauschen"
+                        }
+                    }
+                }
+            },
+            "cleric": {
+                "self": "Kleriker",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "onlyBluntWeapons": "Darf nur stumpfe Waffen verwenden"
+                    },
+                    "specialAbilities": {
+                        "turntheUndead": {
+                            "self": "Untote Vertreiben",
+                            "skeleton1HD": "Skelett (1TW)",
+                            "zombie2HD": "Zombie (2TW)",
+                            "ghoul3HD": "Ghul (3TW)",
+                            "wight4HD": "Wicht (4TW)",
+                            "wraith5HD": "Geist (5TW)",
+                            "mummy6HD": "Mumie (6TW)",
+                            "spectre7HD": "Spukgestalt (7TW)",
+                            "vampire8HD": "Vampir (8TW)",
+                            "ghost9HD": "Gespenst (9TW+)"
+                        }
+                    }
+                }
+            },
+            "thief": {
+                "self": "Dieb",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Diebesfertigkeiten",
+                            "openLocks": "Schlösser Öffnen",
+                            "removeTraps": "Fallen Stellen",
+                            "pickPockets": "Taschendiebstahl",
+                            "moveSilently": "Schleichen",
+                            "climbWalls": "Fassadenklettern",
+                            "hide": "Verstecken",
+                            "listen": "Lauschen"
+                        }
+                    }
                 }
             }
         },
@@ -197,7 +277,6 @@
             "wordOfRecall": "Wort der Zuflucht"
         }
     },
-
     "func": {
         "generateRandomName": "Zufälligen Namen generieren",
         "reroll": "Würfeln",

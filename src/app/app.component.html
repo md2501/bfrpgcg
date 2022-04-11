@@ -77,7 +77,7 @@
             character.level
           )" formControlName="classFC">
           <option *ngFor="let class of getCharacterClasses(character.race)" [ngValue]="class">
-            {{class.className}}
+            {{ t('game.classes.' + this.cleanString(class.className) + '.self') }}
           </option>
         </select>
       </div>
@@ -112,7 +112,7 @@
         <div>
           <h3>{{ t('game.savingThrows.self') }}</h3>
           <div *ngFor="let save of character.savingThrows | keyvalue: originalOrder">
-            <b>{{ t('game.savingThrows.' + this.removeWhitespaces(save.key[0].toLowerCase() + save.key.slice(1))) }}:
+            <b>{{ t('game.savingThrows.' + this.cleanString(save.key)) }}:
             </b>{{ save.value}}
           </div>
         </div>
@@ -120,9 +120,9 @@
         <!-- CLASS ABILITIES -->
         <div *ngIf="character.characterClass.classAbilities">
           <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue: originalOrder; index as i">
-            <h3>{{ ability.key }}</h3>
+            <h3>{{ t('game.classes.' + this.cleanString(character.characterClass.className) + '.specifics.specialAbilities.' + this.cleanString(ability.key) + '.self') }}</h3>
             <div *ngFor="let category of ability.value | keyvalue: originalOrder">
-              <b>{{category.key}}: </b>
+              <b>{{t('game.classes.' + this.cleanString(character.characterClass.className) + '.specifics.specialAbilities' + '.' + this.cleanString(ability.key) + '.' + this.cleanString(category.key)) }}: </b>
               {{category.value[character.level-1]}}
             </div>
           </div>
@@ -182,7 +182,7 @@
       <h3>{{ t('game.notes') }}</h3>
       <div *ngFor="let note of character.race.specialAbilities">{{ t(note.translationKey, note.params) }}</div>
       <div *ngFor="let restriction of character.race.weaponRestrictions">{{ t(restriction) }}</div>
-      <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{restriction}}</div>
+      <div *ngFor="let restriction of character.characterClass.weaponRestrictions">{{ t(restriction) }}</div>
     </div>
   </div>
 </div>

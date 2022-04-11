@@ -6,7 +6,6 @@
             "de": "Deutsch"
         }
     },
-
     "game": {
         "name": "Name",
         "level": "Level",
@@ -37,7 +36,7 @@
                     "specialAbilities": {
                         "darkvision": "Darkvision {VALUE}’",
                         "findSecretDoors": "Find secret doors more often than normal ({VALUE1}, {VALUE2})",
-                        "immuneToGhoulAcid": "Immune to paralyzing acid of ghouls", 
+                        "immuneToGhoulAcid": "Immune to paralyzing acid of ghouls",
                         "surprise": "Reduced chance of surprise: {VALUE}"
                     },
                     "weaponRestrictions": {}
@@ -66,6 +65,91 @@
                         "extraXp": "+{VALUE}% XP"
                     },
                     "weaponRestrictions": {}
+                }
+            }
+        },
+        "classes": {
+            "magicUser": {
+                "self": "Magic-User",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noArmor": "May use no weapon besides dagger, staff or cudgel",
+                        "onlyMagicUserWeapons": "May not wear armor nor use a shield"
+                    }
+                }
+            },
+            "fighter": {
+                "self": "Fighter",
+                "specifics": {
+                    "weaponRestrictions": {}
+                }
+            },
+            "fighterMagicUser": {
+                "self": "Fighter/Magic-User",
+                "specifics": {
+                    "weaponRestrictions": {}
+                }
+            },
+            "magicUserThief": {
+                "self": "Magic-User/Thief",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "May not use metal armor or shields"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Thief Abilities",
+                            "openLocks": "Open Locks",
+                            "removeTraps": "Remove Traps",
+                            "pickPockets": "Pick Pockets",
+                            "moveSilently": "Move Silently",
+                            "climbWalls": "Climb Walls",
+                            "hide": "Hide",
+                            "listen": "Listen"
+                        }
+                    }
+                }
+            },
+            "cleric": {
+                "self": "Cleric",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "onlyBluntWeapons": "May only use blunt weapons"
+                    },
+                    "specialAbilities": {
+                        "turntheUndead": {
+                            "self": "Turn the Undead",
+                            "skeleton1HD": "Skeleton (1HD)",
+                            "zombie2HD": "Zombie (2HD)",
+                            "ghoul3HD": "Ghoul (3HD)",
+                            "wight4HD": "Wight (4HD)",
+                            "wraith5HD": "Wraith (5HD)",
+                            "mummy6HD": "Mummy (6HD)",
+                            "spectre7HD": "Spectre (7HD)",
+                            "vampire8HD": "Vampire (8HD)",
+                            "ghost9HD": "Ghost (9HD+)"
+                        }
+                    }
+                }
+            },
+            "thief": {
+                "self": "Thief",
+                "specifics": {
+                    "weaponRestrictions": {
+                        "noMetalArmor": "May not use metal armor or shields"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Thief Abilities",
+                            "openLocks": "Open Locks",
+                            "removeTraps": "Remove Traps",
+                            "pickPockets": "Pick Pockets",
+                            "moveSilently": "Move Silently",
+                            "climbWalls": "Climb Walls",
+                            "hide": "Hide",
+                            "listen": "Listen"
+                        }
+                    }
                 }
             }
         },
@@ -197,7 +281,6 @@
             "wordOfRecall": "Word of Recall"
         }
     },
-
     "func": {
         "generateRandomName": "Generate random name",
         "reroll": "Reroll",
