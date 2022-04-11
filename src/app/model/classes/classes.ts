@@ -6,12 +6,12 @@ import { MagicUserFighter } from "./magic-user-fighter.model";
 import { MagicUserThief } from "./magic-user-thief.model";
 import { Thief } from "./thief.model";
 
-const cleric = new Cleric;
-const fighter = new Fighter;
-const magicUser = new MagicUser;
-const thief = new Thief;
-const magicUserFighter = new MagicUserFighter;
-const magicUserThief = new MagicUserThief;
+const cleric = Cleric.getInstance();
+const fighter = Fighter.getInstance();
+const magicUser = MagicUser.getInstance();
+const thief = Thief.getInstance();
+const magicUserFighter = MagicUserFighter.getInstance();
+const magicUserThief = MagicUserThief.getInstance();
 
 export const classes: IClass[] = [
     cleric,

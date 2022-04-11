@@ -4,7 +4,18 @@ import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class Thief implements IClass {
-    name = ClassName.Thief;
+
+    private constructor() { }
+    private static instance: Thief;
+    public static getInstance(): Thief{
+        if (!Thief.instance) {
+            Thief.instance = new Thief();
+        }
+
+        return Thief.instance;
+    }
+
+    className = ClassName.THIEF;
     hpBonus = { 10: 2, 11: 4, 12: 6, 13: 8, 14: 10, 15: 12, 16: 14, 17: 16, 18: 18, 19: 20, 20: 22 };
     abilityRequirements = { [AbilityName.DEXTERITY]: 9 };
     savingThrow = {
@@ -25,5 +36,5 @@ export class Thief implements IClass {
     }};
     hd = 4;
     ab = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
-    weaponRestrictions = ["may not use metal armor or shields"];
+    weaponRestrictions = ["May not use metal armor or shields"];
 }

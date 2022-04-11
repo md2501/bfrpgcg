@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   langs = LANGS;
   langForm!: FormGroup;
 
-  abilities!: IAbilities;
+  private abilities!: IAbilities;
   character!: ICharacter;
   spells!: Spell[][] | null;
   name: string = '';
@@ -100,18 +100,8 @@ export class AppComponent implements OnInit {
     return this.dieRoll(3, 6) * 10;
   }
 
-  /*setAbilities(abilities: IAbilities): void {
-    this.abilities = abilities;
-  }*/
-
   private genName(race: IRace): void {
     this.name = race.names[Math.floor(Math.random() * race.names.length)];
-  }
-
-  setStarterSpell(e: any): void {
-    if (this.character.characterClass.spellProgression) {
-      this.character.characterClass.spellProgression[1] = e.target.value;
-    }
   }
 
   onSetSpells(): void {
@@ -122,7 +112,7 @@ export class AppComponent implements OnInit {
     if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
 
       // add empty array for each spell level the character can have spells of
-      for (let i = 0; i < this.character.characterClass.spellProgression[this.character.level].length; i++) {
+      for (let i = 0; i < this.character.characterClass.spellProgression[this.character.level-1].length; i++) {
         this.spells.push([]);
       }
 
@@ -146,7 +136,7 @@ export class AppComponent implements OnInit {
       let selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
 
       // disable all unselected checkboxes if max amount of spells for spelllevel has been selected
-      if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level][i]) {
+      if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level-1][i]) {
         for (let fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
           if (!fc.value) {
             fc.disable();
@@ -158,10 +148,6 @@ export class AppComponent implements OnInit {
         }
       }
     }
-  }
-
-  private createNewSpellSelect(): FormControl {
-    return new FormControl({ spellSelect: [''] });
   }
 
   // get all possible races for the rolled abilities
@@ -189,7 +175,7 @@ export class AppComponent implements OnInit {
   getCharacterClasses(race: IRace): IClass[] {
     let possibleClasses: IClass[] = [];
     for (let cc of classes) {
-      if (race.classes.includes(cc.name)) {
+      if (race.classes.includes(cc.className)) {
         let valid = true;
         for (let req in cc.abilityRequirements) {
           // check if requirements are met: a positive requirement value means the score needs to be higher or equal
@@ -234,6 +220,11 @@ export class AppComponent implements OnInit {
     return sum
   }
 
+  // helper function to remove whitespaces in template
+  removeWhitespaces(text: string): string {
+    return text.replace(/\s+/g, '');
+  }
+
   // generate and set a full character
   genCharacter(race?: IRace, characterClass?: IClass, level: number = 1): void {
 
@@ -259,7 +250,7 @@ export class AppComponent implements OnInit {
     }
 
     // Use class hd for HP generation, but cap halfling hd at 6
-    let hd = race.name == RaceName.Halfling && characterClass.hd > 6 ? 6 : characterClass.hd
+    let hd = race.raceName == RaceName.HALFLING && characterClass.hd > 6 ? 6 : characterClass.hd
 
     // Get amount of hd rolled and hp class bonus for hp gen
     // if firstLevelFullHp is set: replace one roll with a full hd worth of hpBonus
@@ -275,7 +266,7 @@ export class AppComponent implements OnInit {
     // Prepare Spellform if needed
     this.spellForm.controls['spellArray'] = this.fb.array([]);
     if (characterClass.spellProgression && characterClass.spells) {
-      for (let i = 0; i < characterClass.spellProgression[level].length; i++) {
+      for (let i = 0; i < characterClass.spellProgression[level-1].length; i++) {
         (this.spellForm.get('spellArray') as FormArray).push(new FormArray([]));
         for (let spell of characterClass.spells[i])
           ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).push(new FormControl());
