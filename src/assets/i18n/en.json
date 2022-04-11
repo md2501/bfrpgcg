@@ -95,6 +95,18 @@
                 "specifics": {
                     "weaponRestrictions": {
                         "noMetalArmor": "May not use metal armor or shields"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Thief Abilities",
+                            "openLocks": "Open Locks",
+                            "removeTraps": "Remove Traps",
+                            "pickPockets": "Pick Pockets",
+                            "moveSilently": "Move Silently",
+                            "climbWalls": "Climb Walls",
+                            "hide": "Hide",
+                            "listen": "Listen"
+                        }
                     }
                 }
             },
@@ -103,6 +115,20 @@
                 "specifics": {
                     "weaponRestrictions": {
                         "onlyBluntWeapons": "May only use blunt weapons"
+                    },
+                    "specialAbilities": {
+                        "turntheUndead": {
+                            "self": "Turn the Undead",
+                            "skeleton1HD": "Skeleton (1HD)",
+                            "zombie2HD": "Zombie (2HD)",
+                            "ghoul3HD": "Ghoul (3HD)",
+                            "wight4HD": "Wight (4HD)",
+                            "wraith5HD": "Wraith (5HD)",
+                            "mummy6HD": "Mummy (6HD)",
+                            "spectre7HD": "Spectre (7HD)",
+                            "vampire8HD": "Vampire (8HD)",
+                            "ghost9HD": "Ghost (9HD+)"
+                        }
                     }
                 }
             },
@@ -111,6 +137,18 @@
                 "specifics": {
                     "weaponRestrictions": {
                         "noMetalArmor": "May not use metal armor or shields"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Thief Abilities",
+                            "openLocks": "Open Locks",
+                            "removeTraps": "Remove Traps",
+                            "pickPockets": "Pick Pockets",
+                            "moveSilently": "Move Silently",
+                            "climbWalls": "Climb Walls",
+                            "hide": "Hide",
+                            "listen": "Listen"
+                        }
                     }
                 }
             }

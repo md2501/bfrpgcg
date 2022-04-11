@@ -91,6 +91,18 @@
                 "specifics": {
                     "weaponRestrictions": {
                         "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Diebesfertigkeiten",
+                            "openLocks": "Schlösser Öffnen",
+                            "removeTraps": "Fallen Stellen",
+                            "pickPockets": "Taschendiebstahl",
+                            "moveSilently": "Schleichen",
+                            "climbWalls": "Fassadenklettern",
+                            "hide": "Verstecken",
+                            "listen": "Lauschen"
+                        }
                     }
                 }
             },
@@ -99,6 +111,20 @@
                 "specifics": {
                     "weaponRestrictions": {
                         "onlyBluntWeapons": "Darf nur stumpfe Waffen verwenden"
+                    },
+                    "specialAbilities": {
+                        "turntheUndead": {
+                            "self": "Untote Vertreiben",
+                            "skeleton1HD": "Skelett (1TW)",
+                            "zombie2HD": "Zombie (2TW)",
+                            "ghoul3HD": "Ghul (3TW)",
+                            "wight4HD": "Wicht (4TW)",
+                            "wraith5HD": "Geist (5TW)",
+                            "mummy6HD": "Mumie (6TW)",
+                            "spectre7HD": "Spukgestalt (7TW)",
+                            "vampire8HD": "Vampir (8TW)",
+                            "ghost9HD": "Gespenst (9TW+)"
+                        }
                     }
                 }
             },
@@ -107,6 +133,18 @@
                 "specifics": {
                     "weaponRestrictions": {
                         "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
+                    },
+                    "specialAbilities": {
+                        "thiefAbilities": {
+                            "self": "Diebesfertigkeiten",
+                            "openLocks": "Schlösser Öffnen",
+                            "removeTraps": "Fallen Stellen",
+                            "pickPockets": "Taschendiebstahl",
+                            "moveSilently": "Schleichen",
+                            "climbWalls": "Fassadenklettern",
+                            "hide": "Verstecken",
+                            "listen": "Lauschen"
+                        }
                     }
                 }
             }
