@@ -5,6 +5,17 @@ import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
 export class MagicUserFighter implements IClass {
+
+    private constructor() { }
+    private static instance: MagicUserFighter;
+    public static getInstance(): MagicUserFighter {
+        if (!MagicUserFighter.instance) {
+            MagicUserFighter.instance = new MagicUserFighter();
+        }
+
+        return MagicUserFighter.instance;
+    }
+
     className = ClassName.MAGICUSERFIGHTER;
     hpBonus = { 10: 2, 11: 4, 12: 6, 13: 8, 14: 10, 15: 12, 16: 14, 17: 16, 18: 18, 19: 20, 20: 22 };
     hd = 6;
@@ -19,7 +30,7 @@ export class MagicUserFighter implements IClass {
         [SavingThrowName.SPELLS]: [15, 14, 13, 13, 12, 11, 11, 10, 9, 9, 8]
     };
     // characterlevel is the index, the value array represents the amount of spells with the index representing spell level
-     spellProgression = [
+    spellProgression = [
         [1],
         [2],
         [2, 1],
