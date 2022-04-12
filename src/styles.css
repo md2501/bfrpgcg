@@ -79,20 +79,23 @@ hr {
     position: relative;
 }
 
-hr:before, hr:after {
-    content:'';
+hr:before,
+hr:after {
+    content: '';
     display: block;
     position: absolute;
     background: ghostwhite;
     height: 1px;
     top: 1.5em;
 }
+
 hr:before {
     left: 0;
     right: 50%;
     margin-right: 6em;
     background-color: #252525;
 }
+
 hr:after {
     right: 0;
     left: 50%;
@@ -139,4 +142,12 @@ select {
     grid-template-columns: auto auto auto;
     column-gap: 1em;
     row-gap: 1em;
+}
+
+#gh-mark {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
 }
