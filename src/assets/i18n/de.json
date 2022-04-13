@@ -69,29 +69,24 @@
             }
         },
         "classes": {
+            "weaponRestrictions": {
+                "noArmor": "Lernen nur den Umgang mit Dolch und Stab (Schlagstock)",
+                "onlyMagicUserWeapons": "Darf weder Rüstung tragen noch einen Schild führen",
+                "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden",
+                "onlyBluntWeapons": "Darf nur stumpfe Waffen verwenden"
+            },
             "magicUser": {
-                "self": "Magiekundiger",
-                "specifics": {
-                    "weaponRestrictions": {
-                        "noArmor": "Lernen nur den Umgang mit Dolch und Stab (Schlagstock)",
-                        "onlyMagicUserWeapons": "Darf weder Rüstung tragen noch einen Schild führen"
-                    }
-                }
+                "self": "Magiekundiger"
             },
             "fighter": {
-                "self": "Kämpfer",
-                "specifics": {}
+                "self": "Kämpfer"
             },
             "fighterMagicUser": {
-                "self": "Kämpfer/Magiekundiger",
-                "specifics": {}
+                "self": "Kämpfer/Magiekundiger"
             },
             "magicUserThief": {
                 "self": "Magiekundiger/Dieb",
                 "specifics": {
-                    "weaponRestrictions": {
-                        "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
-                    },
                     "specialAbilities": {
                         "thiefAbilities": {
                             "self": "Diebesfertigkeiten",
@@ -109,9 +104,6 @@
             "cleric": {
                 "self": "Kleriker",
                 "specifics": {
-                    "weaponRestrictions": {
-                        "onlyBluntWeapons": "Darf nur stumpfe Waffen verwenden"
-                    },
                     "specialAbilities": {
                         "turntheUndead": {
                             "self": "Untote Vertreiben",
@@ -131,9 +123,6 @@
             "thief": {
                 "self": "Dieb",
                 "specifics": {
-                    "weaponRestrictions": {
-                        "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden"
-                    },
                     "specialAbilities": {
                         "thiefAbilities": {
                             "self": "Diebesfertigkeiten",

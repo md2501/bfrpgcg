@@ -69,33 +69,24 @@
             }
         },
         "classes": {
+            "weaponRestrictions": {
+                "noArmor": "May use no weapon besides dagger, staff or cudgel",
+                "onlyMagicUserWeapons": "May not wear armor nor use a shield",
+                "noMetalArmor": "May not use metal armor or shields",
+                "onlyBluntWeapons": "May only use blunt weapons"
+            },
             "magicUser": {
-                "self": "Magic-User",
-                "specifics": {
-                    "weaponRestrictions": {
-                        "noArmor": "May use no weapon besides dagger, staff or cudgel",
-                        "onlyMagicUserWeapons": "May not wear armor nor use a shield"
-                    }
-                }
+                "self": "Magic-User"
             },
             "fighter": {
-                "self": "Fighter",
-                "specifics": {
-                    "weaponRestrictions": {}
-                }
+                "self": "Fighter"
             },
             "fighterMagicUser": {
-                "self": "Fighter/Magic-User",
-                "specifics": {
-                    "weaponRestrictions": {}
-                }
+                "self": "Fighter/Magic-User"
             },
             "magicUserThief": {
                 "self": "Magic-User/Thief",
                 "specifics": {
-                    "weaponRestrictions": {
-                        "noMetalArmor": "May not use metal armor or shields"
-                    },
                     "specialAbilities": {
                         "thiefAbilities": {
                             "self": "Thief Abilities",
@@ -113,9 +104,7 @@
             "cleric": {
                 "self": "Cleric",
                 "specifics": {
-                    "weaponRestrictions": {
-                        "onlyBluntWeapons": "May only use blunt weapons"
-                    },
+                    "weaponRestrictions": {},
                     "specialAbilities": {
                         "turntheUndead": {
                             "self": "Turn the Undead",
@@ -135,9 +124,6 @@
             "thief": {
                 "self": "Thief",
                 "specifics": {
-                    "weaponRestrictions": {
-                        "noMetalArmor": "May not use metal armor or shields"
-                    },
                     "specialAbilities": {
                         "thiefAbilities": {
                             "self": "Thief Abilities",

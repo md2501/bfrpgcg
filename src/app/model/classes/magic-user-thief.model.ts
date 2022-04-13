@@ -4,8 +4,7 @@ import { magicUserSpells } from "../spells";
 import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
-const MUTHIEF_SPECIFICS_KEY = "game.classes.magicUserThief.specifics"
-
+const WEAPON_RESTRICTIONS_KEY = "game.classes.weaponRestrictions"
 export class MagicUserThief implements IClass {
 
     private constructor() { }
@@ -23,7 +22,7 @@ export class MagicUserThief implements IClass {
     hd = 4;
     ab = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
     abilityRequirements = { [AbilityName.INTELLIGENCE]: 9, [AbilityName.DEXTERITY]: 9 };
-    weaponRestrictions = [`${MUTHIEF_SPECIFICS_KEY}.weaponRestrictions.noMetalArmor`];
+    weaponRestrictions = [`${WEAPON_RESTRICTIONS_KEY}.noMetalArmor`];
     savingThrow = {
         [SavingThrowName.POISON]: [13, 12, 11, 11, 10, 9, 9, 8, 7, 7, 6],
         [SavingThrowName.WANDS]: [14, 14, 13, 12, 11, 10, 10, 9, 8, 7, 6],

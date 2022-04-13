@@ -4,7 +4,7 @@ import { magicUserSpells } from "../spells";
 import { ClassName } from "./classname.enum";
 import IClass from "./iclass.interface";
 
-const MU_SPECIFICS_KEY = "game.classes.magicUser.specifics"
+const WEAPON_RESTRICTIONS_KEY = "game.classes.weaponRestrictions"
 
 export class MagicUser implements IClass {
 
@@ -31,7 +31,7 @@ export class MagicUser implements IClass {
     };
     hd = 4;
     ab = [1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7];
-    weaponRestrictions = [`${MU_SPECIFICS_KEY}.weaponRestrictions.noArmor`, `${MU_SPECIFICS_KEY}.weaponRestrictions.onlyMagicUserWeapons`];
+    weaponRestrictions = [`${WEAPON_RESTRICTIONS_KEY}.noArmor`, `${WEAPON_RESTRICTIONS_KEY}.onlyMagicUserWeapons`];
     // characterlevel is the index, the value array represents the amount of spells with the index representing spell level
     spellProgression = [
         [1],
