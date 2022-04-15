@@ -10,24 +10,26 @@
 
   <div class="noprint" style="float: right;">
     <button id="reroll-button" (click)="genNewCharacter()">
-      {{ t('func.reroll').toLowerCase() }}
+      {{ t('func.reroll.self').toLowerCase() }}
     </button>
   </div>
   <div class="noprint" style="float: right; margin-right: .4em">
     <button id="dl-button" (click)="genPDF()">
-      {{ t('func.print').toLowerCase() }}
+      {{ t('func.print.self').toLowerCase() }}
     </button>
   </div>
   <div>
     <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
     <label class="noprint" for="useRandomName">
-      {{ t('func.generateRandomName') }}
+      {{ t('func.generateRandomName.self') }}
     </label>
   </div>
   <div>
     <input class="noprint" type="checkbox" name="firstLevelFullHp" [(ngModel)]="firstLevelFullHp">
-    <label class="noprint" for="firstLevelFullHp">
-      {{ t('func.fullHpOnFirstLevel') }}</label>
+    <span class="tooltip"><label class="noprint" for="firstLevelFullHp">
+        {{ t('func.fullHpOnFirstLevel.self') }}</label><span class="tooltiptext">{{ t('func.fullHpOnFirstLevel.tooltip')
+        }}</span></span>
+
   </div>
   <hr class="noprint">
   <div id="exportcontent">
@@ -120,9 +122,12 @@
         <!-- CLASS ABILITIES -->
         <div *ngIf="character.characterClass.classAbilities">
           <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue: originalOrder; index as i">
-            <h3>{{ t('game.classes.' + this.cleanString(character.characterClass.className) + '.specifics.specialAbilities.' + this.cleanString(ability.key) + '.self') }}</h3>
+            <h3>{{ t('game.classes.' + this.cleanString(character.characterClass.className) +
+              '.specifics.specialAbilities.' + this.cleanString(ability.key) + '.self') }}</h3>
             <div *ngFor="let category of ability.value | keyvalue: originalOrder">
-              <b>{{t('game.classes.' + this.cleanString(character.characterClass.className) + '.specifics.specialAbilities' + '.' + this.cleanString(ability.key) + '.' + this.cleanString(category.key)) }}: </b>
+              <b>{{t('game.classes.' + this.cleanString(character.characterClass.className) +
+                '.specifics.specialAbilities' + '.' + this.cleanString(ability.key) + '.' +
+                this.cleanString(category.key)) }}: </b>
               {{category.value[character.level-1]}}
             </div>
           </div>
@@ -186,4 +191,5 @@
     </div>
   </div>
 </div>
-<a class="noprint" id="gh-mark" href="https://github.com/md2501/bfrpgcg" target="_blank"><img src="../assets/imgs/GitHub-Mark-Light-32px.png" alt="github-mark"></a>
+<a class="noprint" id="gh-mark" href="https://github.com/md2501/bfrpgcg" target="_blank"><img
+    src="../assets/imgs/GitHub-Mark-Light-32px.png" alt="github-mark"></a>

@@ -268,9 +268,21 @@
         }
     },
     "func": {
-        "generateRandomName": "Generate random name",
-        "reroll": "Reroll",
-        "print": "Print",
-        "fullHpOnFirstLevel": "Full HP at first level"
+        "generateRandomName": {
+            "self": "Generate random name",
+            "tooltip": "Generate a random name based on race."
+        },
+        "reroll": {
+            "self": "Reroll",
+            "tooltip": "Roll new Ability Scores."
+        },
+        "print": {
+            "self": "Print",
+            "tooltip": "Generate a printable character sheet (works on Computers and iOS)."
+        },
+        "fullHpOnFirstLevel": {
+            "self": "Full HP on first level",
+            "tooltip": "Use a full HD for HP on the first level (CON modifier still applies)."
+        }
     }
 }
