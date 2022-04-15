@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   langForm!: FormGroup;
 
   private abilities!: IAbilities;
+  is4d6!: false;
   character!: ICharacter;
   spells!: Spell[][] | null;
   name: string = '';
@@ -92,7 +93,22 @@ export class AppComponent implements OnInit {
   // generate and set all 6 abilities and make sure we are eligible for at least one class
   genAbilities(): void {
     do {
-      this.abilities = { [AbilityName.STRENGTH]: new Ability(this.dieRoll(3, 6)), [AbilityName.INTELLIGENCE]: new Ability(this.dieRoll(3, 6)), [AbilityName.WISDOM]: new Ability(this.dieRoll(3, 6)), [AbilityName.DEXTERITY]: new Ability(this.dieRoll(3, 6)), [AbilityName.CONSTITUTION]: new Ability(this.dieRoll(3, 6)), [AbilityName.CHARISMA]: new Ability(this.dieRoll(3, 6)) };
+      if (!this.is4d6) {
+        this.abilities = { [AbilityName.STRENGTH]: new Ability(this.dieRoll(3, 6)), [AbilityName.INTELLIGENCE]: new Ability(this.dieRoll(3, 6)), [AbilityName.WISDOM]: new Ability(this.dieRoll(3, 6)), [AbilityName.DEXTERITY]: new Ability(this.dieRoll(3, 6)), [AbilityName.CONSTITUTION]: new Ability(this.dieRoll(3, 6)), [AbilityName.CHARISMA]: new Ability(this.dieRoll(3, 6)) };
+      } else {
+        for (let ability in AbilityName) {
+          let rolls = [];
+          for (let i = 0; i < 4; i++) {
+            rolls.push(this.dieRoll(1,6));
+          }
+          console.log("rolls 1: " + [...rolls]);
+          rolls = rolls.sort((a, b) => a > b ? a : b)
+          rolls.pop();
+          console.log("rolls 2: " + [...rolls]);
+          this.abilities[ability] = new Ability(rolls.reduce((a,b) => a + b, 0));
+          console.log(ability + " " + this.abilities[ability]);
+        }
+      }
     } while (this.abilities[AbilityName.STRENGTH].score < 9 && this.abilities[AbilityName.WISDOM].score < 9 && this.abilities[AbilityName.INTELLIGENCE].score < 9 && this.abilities[AbilityName.DEXTERITY].score < 9)
   }
 
@@ -112,7 +128,7 @@ export class AppComponent implements OnInit {
     if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
 
       // add empty array for each spell level the character can have spells of
-      for (let i = 0; i < this.character.characterClass.spellProgression[this.character.level-1].length; i++) {
+      for (let i = 0; i < this.character.characterClass.spellProgression[this.character.level - 1].length; i++) {
         this.spells.push([]);
       }
 
@@ -136,7 +152,7 @@ export class AppComponent implements OnInit {
       let selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
 
       // disable all unselected checkboxes if max amount of spells for spelllevel has been selected
-      if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level-1][i]) {
+      if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level - 1][i]) {
         for (let fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
           if (!fc.value) {
             fc.disable();
@@ -267,7 +283,7 @@ export class AppComponent implements OnInit {
     // Prepare Spellform if needed
     this.spellForm.controls['spellArray'] = this.fb.array([]);
     if (characterClass.spellProgression && characterClass.spells) {
-      for (let i = 0; i < characterClass.spellProgression[level-1].length; i++) {
+      for (let i = 0; i < characterClass.spellProgression[level - 1].length; i++) {
         (this.spellForm.get('spellArray') as FormArray).push(new FormArray([]));
         for (let spell of characterClass.spells[i])
           ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).push(new FormControl());

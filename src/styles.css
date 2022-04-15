@@ -144,6 +144,13 @@ select {
     row-gap: 1em;
 }
 
+.grid-container-options {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1em;
+    row-gap: 1em;
+}
+
 #gh-mark {
     position: fixed;
     right: 0;

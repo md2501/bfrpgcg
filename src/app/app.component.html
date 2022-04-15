@@ -18,18 +18,29 @@
       {{ t('func.print.self').toLowerCase() }}
     </button>
   </div>
-  <div>
-    <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
-    <label class="noprint" for="useRandomName">
-      {{ t('func.generateRandomName.self') }}
-    </label>
-  </div>
-  <div>
-    <input class="noprint" type="checkbox" name="firstLevelFullHp" [(ngModel)]="firstLevelFullHp">
-    <span class="tooltip"><label class="noprint" for="firstLevelFullHp">
-        {{ t('func.fullHpOnFirstLevel.self') }}</label><span class="tooltiptext">{{ t('func.fullHpOnFirstLevel.tooltip')
-        }}</span></span>
+  <div class="grid-container-options">
+    <div>
+      <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
+      <label class="noprint" for="useRandomName">
+        {{ t('func.generateRandomName.self') }}
+      </label>
+    </div>
+    <div>
+      <div>
+        <input class="noprint" type="checkbox" name="firstLevelFullHp" [(ngModel)]="firstLevelFullHp">
+        <span class="tooltip"><label class="noprint" for="firstLevelFullHp">
+            {{ t('func.fullHpOnFirstLevel.self') }}</label><span class="tooltiptext">{{
+            t('func.fullHpOnFirstLevel.tooltip')
+            }}</span></span>
 
+      </div>
+      <div>
+        <input class="noprint" type="checkbox" name="4d6" [(ngModel)]="is4d6">
+        <span class="tooltip"><label class="noprint" for="4d6">
+            {{ t('func.is4d6.self') }}</label><span class="tooltiptext">{{ t('func.is4d6.tooltip') }}</span>
+        </span>
+      </div>
+    </div>
   </div>
   <hr class="noprint">
   <div id="exportcontent">

@@ -282,6 +282,10 @@
         "fullHpOnFirstLevel": {
             "self": "Volle TP auf Level 1",
             "tooltip": "Verwende den vollen TW für TP auf Level 1 (KON Modifikator wird angewendet)."
+        },
+        "is4d6": {
+            "self": "Eigenschaften mit 4w6 würfeln",
+            "tooltip": "Statt 3w6, würfle die Eigenschaften mit 4w6 und streiche den niedrigsten Wurf."
         }
     }
 }
