@@ -90,24 +90,24 @@ export class AppComponent implements OnInit {
     return res;
   }
 
+  // roll 4d6, drop the lowest die, return the sum of the remaining 3
+  private roll4d6(): number {
+    let rolls = [];
+    for (let i = 0; i < 4; i++) {
+      rolls.push(this.dieRoll(1, 6));
+    }
+    rolls = rolls.sort((a, b) => b - a)
+    rolls.pop();
+    return rolls.reduce((a, b) => a + b, 0)
+  }
+
   // generate and set all 6 abilities and make sure we are eligible for at least one class
   genAbilities(): void {
     do {
       if (!this.is4d6) {
         this.abilities = { [AbilityName.STRENGTH]: new Ability(this.dieRoll(3, 6)), [AbilityName.INTELLIGENCE]: new Ability(this.dieRoll(3, 6)), [AbilityName.WISDOM]: new Ability(this.dieRoll(3, 6)), [AbilityName.DEXTERITY]: new Ability(this.dieRoll(3, 6)), [AbilityName.CONSTITUTION]: new Ability(this.dieRoll(3, 6)), [AbilityName.CHARISMA]: new Ability(this.dieRoll(3, 6)) };
       } else {
-        for (let ability in AbilityName) {
-          let rolls = [];
-          for (let i = 0; i < 4; i++) {
-            rolls.push(this.dieRoll(1,6));
-          }
-          console.log("rolls 1: " + [...rolls]);
-          rolls = rolls.sort((a, b) => a > b ? a : b)
-          rolls.pop();
-          console.log("rolls 2: " + [...rolls]);
-          this.abilities[ability] = new Ability(rolls.reduce((a,b) => a + b, 0));
-          console.log(ability + " " + this.abilities[ability]);
-        }
+        this.abilities = { [AbilityName.STRENGTH]: new Ability(this.roll4d6()), [AbilityName.INTELLIGENCE]: new Ability(this.roll4d6()), [AbilityName.WISDOM]: new Ability(this.roll4d6()), [AbilityName.DEXTERITY]: new Ability(this.roll4d6()), [AbilityName.CONSTITUTION]: new Ability(this.roll4d6()), [AbilityName.CHARISMA]: new Ability(this.roll4d6()) };
       }
     } while (this.abilities[AbilityName.STRENGTH].score < 9 && this.abilities[AbilityName.WISDOM].score < 9 && this.abilities[AbilityName.INTELLIGENCE].score < 9 && this.abilities[AbilityName.DEXTERITY].score < 9)
   }
