@@ -105,11 +105,28 @@ export class AppComponent implements OnInit {
   genAbilities(): void {
     do {
       if (!this.is4d6) {
-        this.abilities = { [AbilityName.STRENGTH]: new Ability(this.dieRoll(3, 6)), [AbilityName.INTELLIGENCE]: new Ability(this.dieRoll(3, 6)), [AbilityName.WISDOM]: new Ability(this.dieRoll(3, 6)), [AbilityName.DEXTERITY]: new Ability(this.dieRoll(3, 6)), [AbilityName.CONSTITUTION]: new Ability(this.dieRoll(3, 6)), [AbilityName.CHARISMA]: new Ability(this.dieRoll(3, 6)) };
+        this.abilities = {
+          [AbilityName.STRENGTH]: new Ability(this.dieRoll(3, 6)),
+          [AbilityName.INTELLIGENCE]: new Ability(this.dieRoll(3, 6)),
+          [AbilityName.WISDOM]: new Ability(this.dieRoll(3, 6)),
+          [AbilityName.DEXTERITY]: new Ability(this.dieRoll(3, 6)),
+          [AbilityName.CONSTITUTION]: new Ability(this.dieRoll(3, 6)),
+          [AbilityName.CHARISMA]: new Ability(this.dieRoll(3, 6))
+        };
       } else {
-        this.abilities = { [AbilityName.STRENGTH]: new Ability(this.roll4d6()), [AbilityName.INTELLIGENCE]: new Ability(this.roll4d6()), [AbilityName.WISDOM]: new Ability(this.roll4d6()), [AbilityName.DEXTERITY]: new Ability(this.roll4d6()), [AbilityName.CONSTITUTION]: new Ability(this.roll4d6()), [AbilityName.CHARISMA]: new Ability(this.roll4d6()) };
+        this.abilities = {
+          [AbilityName.STRENGTH]: new Ability(this.roll4d6()),
+          [AbilityName.INTELLIGENCE]: new Ability(this.roll4d6()),
+          [AbilityName.WISDOM]: new Ability(this.roll4d6()),
+          [AbilityName.DEXTERITY]: new Ability(this.roll4d6()),
+          [AbilityName.CONSTITUTION]: new Ability(this.roll4d6()),
+          [AbilityName.CHARISMA]: new Ability(this.roll4d6())
+        };
       }
-    } while (this.abilities[AbilityName.STRENGTH].score < 9 && this.abilities[AbilityName.WISDOM].score < 9 && this.abilities[AbilityName.INTELLIGENCE].score < 9 && this.abilities[AbilityName.DEXTERITY].score < 9)
+    } while (this.abilities[AbilityName.STRENGTH].score < 9
+    && this.abilities[AbilityName.WISDOM].score < 9
+    && this.abilities[AbilityName.INTELLIGENCE].score < 9
+      && this.abilities[AbilityName.DEXTERITY].score < 9)
   }
 
   private genGold(): number {
