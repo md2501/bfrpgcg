@@ -27,12 +27,13 @@ export class AppComponent implements OnInit {
   langForm!: FormGroup;
 
   private abilities!: IAbilities;
-  is4d6!: false;
   character!: ICharacter;
   spells!: Spell[][] | null;
   name: string = '';
   genRandomName: boolean = true;
   firstLevelFullHp: boolean = false;
+  is4d6: boolean = false;
+  preselectSpells: boolean = false;
   characterForm!: FormGroup;
   spellForm!: FormGroup;
   spellArray!: FormArray;
@@ -77,6 +78,7 @@ export class AppComponent implements OnInit {
   genNewCharacter(): void {
     this.genAbilities();
     this.genCharacter(undefined, undefined, this.characterForm.get('levelFC')?.value);
+
     this.characterForm.get('raceFC')?.setValue(this.character.race, { emitViewToModelChange: false });
     this.characterForm.get('classFC')?.setValue(this.character.characterClass, { emitViewToModelChange: false });
   }
@@ -91,7 +93,7 @@ export class AppComponent implements OnInit {
   }
 
   // roll 4d6, drop the lowest die, return the sum of the remaining 3
-  private roll4d6(): number {
+  private roll4d6dropLowest(): number {
     let rolls = [];
     for (let i = 0; i < 4; i++) {
       rolls.push(this.dieRoll(1, 6));
@@ -115,12 +117,12 @@ export class AppComponent implements OnInit {
         };
       } else {
         this.abilities = {
-          [AbilityName.STRENGTH]: new Ability(this.roll4d6()),
-          [AbilityName.INTELLIGENCE]: new Ability(this.roll4d6()),
-          [AbilityName.WISDOM]: new Ability(this.roll4d6()),
-          [AbilityName.DEXTERITY]: new Ability(this.roll4d6()),
-          [AbilityName.CONSTITUTION]: new Ability(this.roll4d6()),
-          [AbilityName.CHARISMA]: new Ability(this.roll4d6())
+          [AbilityName.STRENGTH]: new Ability(this.roll4d6dropLowest()),
+          [AbilityName.INTELLIGENCE]: new Ability(this.roll4d6dropLowest()),
+          [AbilityName.WISDOM]: new Ability(this.roll4d6dropLowest()),
+          [AbilityName.DEXTERITY]: new Ability(this.roll4d6dropLowest()),
+          [AbilityName.CONSTITUTION]: new Ability(this.roll4d6dropLowest()),
+          [AbilityName.CHARISMA]: new Ability(this.roll4d6dropLowest())
         };
       }
     } while (this.abilities[AbilityName.STRENGTH].score < 9
@@ -137,15 +139,15 @@ export class AppComponent implements OnInit {
     this.name = race.names[Math.floor(Math.random() * race.names.length)];
   }
 
-  onSetSpells(): void {
-    this.checkSpells();
+  onSetSpells(cc: IClass, level: number): void {
+    this.checkSpells(cc, level);
 
     this.spells = [];
 
-    if (this.character.characterClass.spells && this.character.characterClass.spellProgression) {
+    if (cc.spells && cc.spellProgression) {
 
       // add empty array for each spell level the character can have spells of
-      for (let i = 0; i < this.character.characterClass.spellProgression[this.character.level - 1].length; i++) {
+      for (let i = 0; i < cc.spellProgression[level - 1].length; i++) {
         this.spells.push([]);
       }
 
@@ -156,20 +158,39 @@ export class AppComponent implements OnInit {
 
         for (let j = 0; j < selected.length; j++) {
           if (selected[j].value) {
-            this.spells[i].push(this.character.characterClass.spells[i][j]);
+            this.spells[i].push(cc.spells[i][j]);
           }
         }
       }
     }
   }
 
-  private checkSpells(): void {
+  private selectRandomSpells(cc: IClass, level: number): void {
+    console.log(cc.className)
+    // preselect random spells
+    if (cc.spellProgression && cc.spells && cc.spellProgression[level - 1][0]) {
+      console.log("hi2")
+      for (let i = 0; i < cc.spellProgression[level - 1].length; i++) {
+        do {
+          let randSpell: number = Math.floor(Math.random() * cc.spells[i].length);
+          console.log(cc.spellProgression[level - 1][i])
+          console.log(randSpell);
+          ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls[randSpell].setValue(true, { emitViewToModelChange: false });
+        } while (cc.spellProgression
+          && ((this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[]).reduce((a, v) => (v == true ? a + 1 : a), 0) < cc.spellProgression[level - 1][i]);
+      }
+    }
+
+    this.onSetSpells(cc, level);
+  }
+
+  private checkSpells(cc: IClass, level: number): void {
     for (let i = 0; i < (this.spellForm.get('spellArray') as FormArray).controls.length; i++) {
 
       let selected = (this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[];
 
       // disable all unselected checkboxes if max amount of spells for spelllevel has been selected
-      if (this.character.characterClass.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= this.character.characterClass.spellProgression[this.character.level - 1][i]) {
+      if (cc.spellProgression && selected.reduce((a, v) => (v == true ? a + 1 : a), 0) >= cc.spellProgression[level - 1][i]) {
         for (let fc of ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray)['controls']) {
           if (!fc.value) {
             fc.disable();
@@ -241,7 +262,7 @@ export class AppComponent implements OnInit {
     window.print();
   }
 
-  // this rolls each hd individually, applies the Constitution Modifier and ensures the total is at least 1
+  // roll each hd individually, applies the Constitution Modifier and ensures the total is at least 1
   private rollHp(rolls: number, hd: number, conMod: number): number {
     let sum = 0;
 
@@ -253,7 +274,7 @@ export class AppComponent implements OnInit {
     return sum
   }
 
-  // helper function to remove whitespaces, dashes, parentheses, forward slashes and plus-symbols and make the first letter lowercase in template
+  // helper function to remove whitespaces, some special characters (-, /, +, (, )) from a string and make the first letter lowercase
   cleanString(text: string): string {
     let filteredText = text.replace(/\s+|-|\/|\(|\)|\+/g, '');
     return filteredText[0].toLocaleLowerCase() + filteredText.slice(1);
@@ -302,9 +323,17 @@ export class AppComponent implements OnInit {
     if (characterClass.spellProgression && characterClass.spells) {
       for (let i = 0; i < characterClass.spellProgression[level - 1].length; i++) {
         (this.spellForm.get('spellArray') as FormArray).push(new FormArray([]));
+
         for (let spell of characterClass.spells[i])
           ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).push(new FormControl());
       }
+
+
+    }
+
+    if (this.preselectSpells) {
+      this.selectRandomSpells(characterClass, level);
+      this.checkSpells(characterClass, level);
     }
 
     this.character = {
@@ -319,5 +348,6 @@ export class AppComponent implements OnInit {
       savingThrows: this.calcSavingThrows(characterClass, race, level),
       gold: this.genGold(),
     }
+
   }
 }

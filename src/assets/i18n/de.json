@@ -286,6 +286,9 @@
         "is4d6": {
             "self": "Eigenschaften mit 4w6 würfeln",
             "tooltip": "Statt 3w6, würfle die Eigenschaften mit 4w6 und streiche den niedrigsten Wurf."
+        },
+        "preselectSpells": {
+            "self": "Wähle zufällige Zaubersprüche"
         }
     }
 }

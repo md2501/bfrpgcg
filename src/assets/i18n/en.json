@@ -287,6 +287,9 @@
         "is4d6": {
             "self": "Roll 4d6 for abilities",
             "tooltip": "Instead of 3d6, roll 4d6 for the ability scores and drop the lowest die."
+        },
+        "preselectSpells": {
+            "self": "Preselect random spells"
         }
     }
 }

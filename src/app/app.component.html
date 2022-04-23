@@ -20,10 +20,18 @@
   </div>
   <div class="grid-container-options">
     <div>
-      <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
-      <label class="noprint" for="useRandomName">
-        {{ t('func.generateRandomName.self') }}
-      </label>
+      <div>
+        <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
+        <label class="noprint" for="useRandomName">
+          {{ t('func.generateRandomName.self') }}
+        </label>
+      </div>
+      <div>
+        <input class="noprint" type="checkbox" name="preselectSpells" [(ngModel)]="preselectSpells">
+        <label class="noprint" for="preselectSpells">
+          {{ t('func.preselectSpells.self') }}
+        </label>
+      </div>
     </div>
     <div>
       <div>
@@ -157,7 +165,7 @@
               ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
               <ng-container class="spell-container" [formArrayName]="i"
                 *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-                <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()"
+                <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells(this.character.characterClass, this.character.level)"
                   [formControlName]="j">
                 <span class="spell-span">
                   {{ t('game.spells.' + character.characterClass.spells[i][j].name) }}
@@ -177,7 +185,7 @@
         <h3>{{ t('game.spells.self') }}</h3>
         <div class="grid-container">
           <div *ngFor="let spellLevel of spells; index as i">
-            <b>{{ t('game.level') }} {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
+            <b>{{ t('game.level') }} {{i+1}}</b> ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
             <ng-container *ngFor="let selSpell of spellLevel">
               <span>
                 <!-- {{selSpell}} -->
