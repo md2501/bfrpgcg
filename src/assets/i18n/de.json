@@ -127,7 +127,7 @@
                         "thiefAbilities": {
                             "self": "Diebesfertigkeiten",
                             "openLocks": "Schlösser Öffnen",
-                            "removeTraps": "Fallen Stellen",
+                            "removeTraps": "Fallen Entfernen",
                             "pickPockets": "Taschendiebstahl",
                             "moveSilently": "Schleichen",
                             "climbWalls": "Fassadenklettern",
