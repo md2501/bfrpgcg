@@ -159,7 +159,7 @@ export class AppComponent implements OnInit {
 
     this.spells = [];
 
-    if (cc.spells && cc.spellProgression) {
+    if (cc.spells && cc.spellProgression && cc.spellProgression[level - 1][0]) {
 
       // add empty array for each spell level the character can have spells of
       for (let i = 0; i < cc.spellProgression[level - 1].length; i++) {
@@ -181,22 +181,19 @@ export class AppComponent implements OnInit {
   }
 
   private selectRandomSpells(cc: IClass, level: number): void {
-    console.log(cc.className)
     // preselect random spells
     if (cc.spellProgression && cc.spells && cc.spellProgression[level - 1][0]) {
-      console.log("hi2")
       for (let i = 0; i < cc.spellProgression[level - 1].length; i++) {
         do {
           let randSpell: number = Math.floor(Math.random() * cc.spells[i].length);
-          console.log(cc.spellProgression[level - 1][i])
-          console.log(randSpell);
           ((this.spellForm.get('spellArray') as FormArray).controls[i] as FormArray).controls[randSpell].setValue(true, { emitViewToModelChange: false });
         } while (cc.spellProgression
           && ((this.spellForm.get('spellArray') as FormArray).controls[i].value as boolean[]).reduce((a, v) => (v == true ? a + 1 : a), 0) < cc.spellProgression[level - 1][i]);
       }
+
+      this.onSetSpells(cc, level);
     }
 
-    this.onSetSpells(cc, level);
   }
 
   private checkSpells(cc: IClass, level: number): void {
