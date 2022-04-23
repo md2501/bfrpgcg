@@ -7,7 +7,7 @@ Try it [here](https://md2501.github.io/bfrpgcg). 🐉
 Made with Angular.
 
 ## Functionality
- - Randomly generate a character of a chosen level according to the core rules
+ - Randomly generate a character of a chosen level according to the core rules (names mostly provided by https://www.fantasynamegenerators.com/)
  - Choose name, level, race, class and spells for the character
  - Print a formatted character sheet on computers and iOS
  - Support for several house rules and flipping the ability scores
@@ -19,4 +19,4 @@ Made with Angular.
  - Guide on how to contribute to the project 
  - Support generating a character backstory
  - Better support for mobile devices
- - Optional character Portraits
+ - Optional character portraits
