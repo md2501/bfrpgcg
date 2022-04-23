@@ -133,6 +133,15 @@ select {
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
+#flip-abilities {
+    font-weight: normal;
+    border: none;
+    background-color: whitesmoke;
+    color: #252525;
+    cursor: pointer;
+    height: auto;
+}
+
 .onlyprint {
     display: none;
 }
@@ -144,10 +153,44 @@ select {
     row-gap: 1em;
 }
 
+.grid-container-options {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1em;
+    row-gap: 1em;
+}
+
 #gh-mark {
     position: fixed;
     right: 0;
     bottom: 0;
     margin-right: 1em;
     margin-bottom: 1em;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    width: 12em;
+    border-bottom: 1px dotted black;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #252525dc;
+    color: whitesmoke;
+    text-align: center;
+    padding: .3em;
+    border-radius: 6px;
+
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -50%;
+    /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

@@ -10,24 +10,44 @@
 
   <div class="noprint" style="float: right;">
     <button id="reroll-button" (click)="genNewCharacter()">
-      {{ t('func.reroll').toLowerCase() }}
+      {{ t('func.reroll.self').toLowerCase() }}
     </button>
   </div>
   <div class="noprint" style="float: right; margin-right: .4em">
     <button id="dl-button" (click)="genPDF()">
-      {{ t('func.print').toLowerCase() }}
+      {{ t('func.print.self').toLowerCase() }}
     </button>
   </div>
-  <div>
-    <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
-    <label class="noprint" for="useRandomName">
-      {{ t('func.generateRandomName') }}
-    </label>
-  </div>
-  <div>
-    <input class="noprint" type="checkbox" name="firstLevelFullHp" [(ngModel)]="firstLevelFullHp">
-    <label class="noprint" for="firstLevelFullHp">
-      {{ t('func.fullHpOnFirstLevel') }}</label>
+  <div class="grid-container-options">
+    <div>
+      <div>
+        <input class="noprint" type="checkbox" name="useRandomName" [(ngModel)]="genRandomName">
+        <label class="noprint" for="useRandomName">
+          {{ t('func.generateRandomName.self') }}
+        </label>
+      </div>
+      <div>
+        <input class="noprint" type="checkbox" name="preselectSpells" [(ngModel)]="preselectSpells">
+        <label class="noprint" for="preselectSpells">
+          {{ t('func.preselectSpells.self') }}
+        </label>
+      </div>
+    </div>
+    <div>
+      <div>
+        <input class="noprint" type="checkbox" name="firstLevelFullHp" [(ngModel)]="firstLevelFullHp">
+        <span class="tooltip"><label class="noprint" for="firstLevelFullHp">
+            {{ t('func.fullHpOnFirstLevel.self') }}</label><span class="tooltiptext">{{
+            t('func.fullHpOnFirstLevel.tooltip')
+            }}</span></span>
+      </div>
+      <div>
+        <input class="noprint" type="checkbox" name="4d6" [(ngModel)]="is4d6">
+        <span class="tooltip"><label class="noprint" for="4d6">
+            {{ t('func.is4d6.self') }}</label><span class="tooltiptext">{{ t('func.is4d6.tooltip') }}</span>
+        </span>
+      </div>
+    </div>
   </div>
   <hr class="noprint">
   <div id="exportcontent">
@@ -101,7 +121,7 @@
 
         <!-- ABILITIES -->
         <div>
-          <h3>{{ t('game.abilities.self') }}</h3>
+          <h3>{{ t('game.abilities.self') }} <button [title]="t('func.flipAbilities.tooltip')" id="flip-abilities" (click)="onFlipAbilities()">⇅</button></h3>
           <div *ngFor="let ability of character.abilities | keyvalue: originalOrder">
             <b>{{ t('game.abilities.' + ability.key.toLowerCase()) }}: </b>{{ ability.value.score }}
             <span *ngIf="ability.value.mod > 0">+</span>{{ ability.value.mod }}
@@ -120,9 +140,12 @@
         <!-- CLASS ABILITIES -->
         <div *ngIf="character.characterClass.classAbilities">
           <div *ngFor="let ability of character.characterClass.classAbilities | keyvalue: originalOrder; index as i">
-            <h3>{{ t('game.classes.' + this.cleanString(character.characterClass.className) + '.specifics.specialAbilities.' + this.cleanString(ability.key) + '.self') }}</h3>
+            <h3>{{ t('game.classes.' + this.cleanString(character.characterClass.className) +
+              '.specifics.specialAbilities.' + this.cleanString(ability.key) + '.self') }}</h3>
             <div *ngFor="let category of ability.value | keyvalue: originalOrder">
-              <b>{{t('game.classes.' + this.cleanString(character.characterClass.className) + '.specifics.specialAbilities' + '.' + this.cleanString(ability.key) + '.' + this.cleanString(category.key)) }}: </b>
+              <b>{{t('game.classes.' + this.cleanString(character.characterClass.className) +
+                '.specifics.specialAbilities' + '.' + this.cleanString(ability.key) + '.' +
+                this.cleanString(category.key)) }}: </b>
               {{category.value[character.level-1]}}
             </div>
           </div>
@@ -141,7 +164,7 @@
               ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
               <ng-container class="spell-container" [formArrayName]="i"
                 *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-                <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells()"
+                <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells(this.character.characterClass, this.character.level)"
                   [formControlName]="j">
                 <span class="spell-span">
                   {{ t('game.spells.' + character.characterClass.spells[i][j].name) }}
@@ -161,7 +184,7 @@
         <h3>{{ t('game.spells.self') }}</h3>
         <div class="grid-container">
           <div *ngFor="let spellLevel of spells; index as i">
-            <b>{{ t('game.level') }} {{i+1}}</b> ({{character.characterClass.spellProgression[character.level][i]}})<br>
+            <b>{{ t('game.level') }} {{i+1}}</b> ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
             <ng-container *ngFor="let selSpell of spellLevel">
               <span>
                 <!-- {{selSpell}} -->
