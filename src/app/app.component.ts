@@ -131,6 +131,21 @@ export class AppComponent implements OnInit {
       && this.abilities[AbilityName.DEXTERITY].score < 9)
   }
 
+  onFlipAbilities(): void {
+    this.abilities = {
+      [AbilityName.STRENGTH]: new Ability(21 - this.abilities[AbilityName.STRENGTH].score),
+      [AbilityName.INTELLIGENCE]: new Ability(21 - this.abilities[AbilityName.INTELLIGENCE].score),
+      [AbilityName.WISDOM]: new Ability(21 - this.abilities[AbilityName.WISDOM].score),
+      [AbilityName.DEXTERITY]: new Ability(21 - this.abilities[AbilityName.DEXTERITY].score),
+      [AbilityName.CONSTITUTION]: new Ability(21 - this.abilities[AbilityName.CONSTITUTION].score),
+      [AbilityName.CHARISMA]: new Ability(21 - this.abilities[AbilityName.CHARISMA].score)
+    }
+    this.genCharacter(undefined, undefined, this.characterForm.get('levelFC')?.value);
+
+    this.characterForm.get('raceFC')?.setValue(this.character.race, { emitViewToModelChange: false });
+    this.characterForm.get('classFC')?.setValue(this.character.characterClass, { emitViewToModelChange: false });
+  }
+
   private genGold(): number {
     return this.dieRoll(3, 6) * 10;
   }

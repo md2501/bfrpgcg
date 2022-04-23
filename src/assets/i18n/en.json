@@ -289,7 +289,12 @@
             "tooltip": "Instead of 3d6, roll 4d6 for the ability scores and drop the lowest die."
         },
         "preselectSpells": {
-            "self": "Preselect random spells"
+            "self": "Preselect random spells",
+            "tooltip": ""
+        },
+        "flipAbilities": {
+            "self":"",
+            "tooltip": "Flip Ability scores"
         }
     }
 }

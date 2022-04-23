@@ -288,7 +288,12 @@
             "tooltip": "Statt 3w6, würfle die Eigenschaften mit 4w6 und streiche den niedrigsten Wurf."
         },
         "preselectSpells": {
-            "self": "Wähle zufällige Zaubersprüche"
+            "self": "Wähle zufällige Zaubersprüche",
+            "tooltip": ""
+        },
+        "flipAbilities": {
+            "self":"",
+            "tooltip": "Drehe Eigenschaftswerte um"
         }
     }
 }

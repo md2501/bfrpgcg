@@ -133,6 +133,15 @@ select {
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
+#flip-abilities {
+    font-weight: normal;
+    border: none;
+    background-color: whitesmoke;
+    color: #252525;
+    cursor: pointer;
+    height: auto;
+}
+
 .onlyprint {
     display: none;
 }
@@ -168,7 +177,7 @@ select {
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-    visibility:hidden;
+    visibility: hidden;
     background-color: #252525dc;
     color: whitesmoke;
     text-align: center;
@@ -178,7 +187,8 @@ select {
     position: absolute;
     bottom: 100%;
     left: 50%;
-    margin-left: -50%; /* Use half of the width (120/2 = 60), to center the tooltip */
+    margin-left: -50%;
+    /* Use half of the width (120/2 = 60), to center the tooltip */
 }
 
 .tooltip:hover .tooltiptext {
