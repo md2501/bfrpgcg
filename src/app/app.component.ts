@@ -14,6 +14,7 @@ import { magicUserSpells, Spell } from './model/spells';
 import { LANGS } from './transloco-root.module';
 import { TranslocoService } from '@ngneat/transloco';
 import { KeyValue } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   // Array of languages
   langs = LANGS;
   langForm!: FormGroup;
+  environment = environment;
 
   private abilities!: IAbilities;
   character!: ICharacter;
