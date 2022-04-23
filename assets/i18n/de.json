@@ -127,7 +127,7 @@
                         "thiefAbilities": {
                             "self": "Diebesfertigkeiten",
                             "openLocks": "Schlösser Öffnen",
-                            "removeTraps": "Fallen Stellen",
+                            "removeTraps": "Fallen Entfernen",
                             "pickPockets": "Taschendiebstahl",
                             "moveSilently": "Schleichen",
                             "climbWalls": "Fassadenklettern",
@@ -267,9 +267,33 @@
         }
     },
     "func": {
-        "generateRandomName": "Zufälligen Namen generieren",
-        "reroll": "Würfeln",
-        "print": "Drucken",
-        "fullHpOnFirstLevel": "Volle TP auf Level 1"
+        "generateRandomName": {
+            "self": "Zufälligen Namen generieren",
+            "tooltip": "Generiere einen zufälligen Namen basierend auf der Rasse."
+        },
+        "reroll": {
+            "self": "Würfeln",
+            "tooltip": "Neue Eigenschaften auswürfeln."
+        },
+        "print": {
+            "self": "Drucken",
+            "tooltip": "Generiert ein druckbares Charakterblatt (Funktioniert auf Computern und iOS)."
+        },
+        "fullHpOnFirstLevel": {
+            "self": "Volle TP auf Level 1",
+            "tooltip": "Verwende den vollen TW für TP auf Level 1 (KON Modifikator wird angewendet)."
+        },
+        "is4d6": {
+            "self": "Eigenschaften mit 4w6 würfeln",
+            "tooltip": "Statt 3w6, würfle die Eigenschaften mit 4w6 und streiche den niedrigsten Wurf."
+        },
+        "preselectSpells": {
+            "self": "Wähle zufällige Zaubersprüche",
+            "tooltip": ""
+        },
+        "flipAbilities": {
+            "self":"",
+            "tooltip": "Drehe Eigenschaftswerte um"
+        }
     }
 }
