@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider; ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "export NODE_OPTIONS=--openssl-legacy-provider; ng deploy --base-href=/bfrpgcg/"
   },
   "private": true,
   "dependencies": {
