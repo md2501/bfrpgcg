@@ -70,8 +70,8 @@
         },
         "classes": {
             "weaponRestrictions": {
-                "noArmor": "Lernen nur den Umgang mit Dolch und Stab (Schlagstock)",
-                "onlyMagicUserWeapons": "Darf weder Rüstung tragen noch einen Schild führen",
+                "noArmor": "Darf weder Rüstung tragen noch einen Schild führen",
+                "onlyMagicUserWeapons": "Lernen nur den Umgang mit Dolch und Stab (Schlagstock)",
                 "noMetalArmor": "Darf keine Metallrüstung und kein Schild verwenden",
                 "onlyBluntWeapons": "Darf nur stumpfe Waffen verwenden"
             },
