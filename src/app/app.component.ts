@@ -15,6 +15,7 @@ import { LANGS } from './transloco-root.module';
 import { TranslocoService } from '@ngneat/transloco';
 import { KeyValue } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import packageJson from '../../package.json';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +42,8 @@ export class AppComponent implements OnInit {
   characterForm!: FormGroup;
   spellForm!: FormGroup;
   spellArray!: FormArray;
+
+  version: string = "v" + packageJson.version;
 
   // preserve original order in *ngFor
   originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {

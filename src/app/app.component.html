@@ -96,7 +96,8 @@
             $event,
             character.level
           )" formControlName="classFC">
-          <option *ngFor="let class of classes" [ngValue]="class" [disabled]="!getCharacterClasses(character.race).includes(class)">
+          <option *ngFor="let class of classes" [ngValue]="class"
+            [disabled]="!getCharacterClasses(character.race).includes(class)">
             {{ t('game.classes.' + this.cleanString(class.className) + '.self') }}
           </option>
         </select>
@@ -121,7 +122,8 @@
 
         <!-- ABILITIES -->
         <div>
-          <h3>{{ t('game.abilities.self') }} <button [title]="t('func.flipAbilities.tooltip')" id="flip-abilities" (click)="onFlipAbilities()">⇅</button></h3>
+          <h3>{{ t('game.abilities.self') }} <button [title]="t('func.flipAbilities.tooltip')" id="flip-abilities"
+              (click)="onFlipAbilities()">⇅</button></h3>
           <div *ngFor="let ability of character.abilities | keyvalue: originalOrder">
             <b>{{ t('game.abilities.' + ability.key.toLowerCase()) }}: </b>{{ ability.value.score }}
             <span *ngIf="ability.value.mod > 0">+</span>{{ ability.value.mod }}
@@ -164,8 +166,8 @@
               ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
               <ng-container class="spell-container" [formArrayName]="i"
                 *ngFor="let spellCheckbox of spellForm.controls.spellArray.controls[i].controls; index as j">
-                <input name="spell-box" class="spell-box" type="checkbox" (change)="onSetSpells(this.character.characterClass, this.character.level)"
-                  [formControlName]="j">
+                <input name="spell-box" class="spell-box" type="checkbox"
+                  (change)="onSetSpells(this.character.characterClass, this.character.level)" [formControlName]="j">
                 <span class="spell-span">
                   {{ t('game.spells.' + character.characterClass.spells[i][j].name) }}
                   {{ character.characterClass.spells[i][j].reversible ? "*" : "" }}
@@ -184,7 +186,8 @@
         <h3>{{ t('game.spells.self') }}</h3>
         <div class="grid-container">
           <div *ngFor="let spellLevel of spells; index as i">
-            <b>{{ t('game.level') }} {{i+1}}</b> ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
+            <b>{{ t('game.level') }} {{i+1}}</b>
+            ({{character.characterClass.spellProgression[character.level-1][i]}})<br>
             <ng-container *ngFor="let selSpell of spellLevel">
               <span>
                 <!-- {{selSpell}} -->
@@ -209,4 +212,6 @@
     </div>
   </div>
 </div>
-<a class="noprint" id="gh-mark" href="https://github.com/md2501/bfrpgcg" target="_blank"><img src="{{environment.ghPagesPathPrefix}}/assets/imgs/GitHub-Mark-Light-32px.png" alt="github-mark"></a>
+<div class=noprint id="version">{{version}}</div>
+<a class="noprint" id="gh-mark" href="https://github.com/md2501/bfrpgcg" target="_blank"><img
+    src="{{environment.ghPagesPathPrefix}}/assets/imgs/GitHub-Mark-Light-32px.png" alt="github-mark"></a>
