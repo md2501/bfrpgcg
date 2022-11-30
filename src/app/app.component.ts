@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
   private abilities!: IAbilities;
   character!: ICharacter;
   classes: IClass[] = classes;
+  races: IRace[] = races;
   spells!: Spell[][] | null;
   name: string = '';
   genRandomName: boolean = true;
