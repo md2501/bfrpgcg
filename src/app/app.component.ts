@@ -244,6 +244,11 @@ export class AppComponent implements OnInit {
     return possibleRaces;
   }
 
+  // get all classes that a given race can have, no matter the abilites
+  getCharacterClassesOfRace(race: IRace): IClass[] {
+    return classes.filter(c => race.classes.includes(c.className));
+  }
+
   // get all possible character classes for the rolled abilites and given race
   getCharacterClasses(race: IRace): IClass[] {
     let possibleClasses: IClass[] = [];
@@ -307,7 +312,7 @@ export class AppComponent implements OnInit {
     // get a random race suitable for the abilities if none given
     if (!race) {
       let possibleRaces = this.getRaces();
-      race = possibleRaces[Math.floor(Math.random() * possibleRaces.length)];
+      race = this.getRaces()[Math.floor(Math.random() * possibleRaces.length)];
     }
 
     // get a random characterClass suitable for the abilities and race if none given

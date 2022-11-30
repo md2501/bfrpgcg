@@ -96,7 +96,7 @@
             $event,
             character.level
           )" formControlName="classFC">
-          <option *ngFor="let class of classes" [ngValue]="class"
+          <option *ngFor="let class of getCharacterClassesOfRace(character.race)" [ngValue]="class"
             [disabled]="!getCharacterClasses(character.race).includes(class)">
             {{ t('game.classes.' + this.cleanString(class.className) + '.self') }}
           </option>
