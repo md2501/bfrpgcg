@@ -10,6 +10,17 @@ import { Mace } from "./hammers/mace.model";
 import { Maul } from "./hammers/maul.model";
 import { Warhammer } from "./hammers/warhammer.model";
 import { IWeapon } from "./iweapon.interface";
+import { Club } from "./other/club.model";
+import { Cudgel } from "./other/cudgel.model";
+import { PoleArm } from "./other/pole-arm.model";
+import { Quarterstaff } from "./other/quarterstaff.model";
+import { Sling } from "./other/sling.model";
+import { Spear } from "./other/spear.model";
+import { WalkingStaff } from "./other/walking-staff.model";
+import { Longsword } from "./swords/longsword.model";
+import { Scimitar } from "./swords/scimitar.copy";
+import { Shortsword } from "./swords/shortsword.model";
+import { TwoHandedSword } from "./swords/two-handed-sword.model";
 
 const handAxe = HandAxe.getInstance();
 const battleAxe = BattleAxe.getInstance();
@@ -26,6 +37,18 @@ const warhammer = Warhammer.getInstance();
 const mace = Mace.getInstance();
 const maul = Maul.getInstance();
 
+const shortsword = Shortsword.getInstance();
+const longsword = Longsword.getInstance();
+const scimitar = Scimitar.getInstance();
+const twoHandedSword = TwoHandedSword.getInstance();
+
+const club = Club.getInstance();
+const cudgel = Cudgel.getInstance();
+const walkingStaff = WalkingStaff.getInstance();
+const quarterstaff = Quarterstaff.getInstance();
+const poleArm = PoleArm.getInstance();
+const spear = Spear.getInstance();
+const sling = Sling.getInstance();
 
 export const weapons: IWeapon[] = [
     // Axes
@@ -42,5 +65,18 @@ export const weapons: IWeapon[] = [
     // Hammers and Maces
     warhammer,
     mace,
-    maul
+    maul,
+    // Swords
+    shortsword,
+    longsword,
+    scimitar,
+    twoHandedSword,
+    // Other
+    club,
+    cudgel,
+    walkingStaff,
+    quarterstaff,
+    poleArm,
+    spear,
+    sling
 ]
