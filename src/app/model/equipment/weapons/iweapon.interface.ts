@@ -1,10 +1,11 @@
+import IClass from "../../classes/iclass.interface";
+import { IEquipment } from "../iequipment.interface";
 import { WeaponSize } from "./weapon-size.enum";
-import { WeaponType } from "./weapon-type.enum";
 
-export interface IWeapon {
+export interface IWeapon extends IEquipment {
     name: string;
     power: number;
     size: WeaponSize;
-    type: WeaponType;
+    possibleClasses: IClass[];
     weight: number;
 }

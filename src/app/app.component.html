@@ -122,7 +122,7 @@
 
         <!-- ABILITIES -->
         <div>
-          <h3>{{ t('game.abilities.self') }} <button [title]="t('func.flipAbilities.tooltip')" id="flip-abilities"
+          <h3>{{ t('game.abilities.self') }} <button class="noprint" [title]="t('func.flipAbilities.tooltip')" id="flip-abilities"
               (click)="onFlipAbilities()">⇅</button></h3>
           <div *ngFor="let ability of character.abilities | keyvalue: originalOrder">
             <b>{{ t('game.abilities.' + ability.key.toLowerCase()) }}: </b>{{ ability.value.score }}

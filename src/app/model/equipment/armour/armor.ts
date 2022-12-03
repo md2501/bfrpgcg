@@ -1,8 +1,8 @@
 import { ChainMail } from "./chain-mail.model";
 import { IArmor } from "./iarmor.interface";
 import { LeatherArmor } from "./leather-armor.model";
-import { Shield } from "./plate-mail.model";
-import { PlateMail } from "./plate-mail.model copy";
+import { Shield } from "./shield.model";
+import { PlateMail } from "./plate-mail.model";
 
 const leatherArmor = LeatherArmor.getInstance();
 const chainMail = ChainMail.getInstance();

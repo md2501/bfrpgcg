@@ -16,6 +16,8 @@ import { TranslocoService } from '@ngneat/transloco';
 import { KeyValue } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import packageJson from '../../package.json';
+import { IEquipment } from './model/equipment/iequipment.interface';
+import { weapons } from './model/equipment/weapons/weapons';
 
 @Component({
   selector: 'app-root',
@@ -298,6 +300,13 @@ export class AppComponent implements OnInit {
     return sum
   }
 
+  // get some gear
+  private getEquipment(level: number, race: IRace, characterClass: IClass): IEquipment[] {
+    let equipment: IEquipment[] = [];
+    //let possibleWeapons = weapons.filter(w => w.)
+    return equipment;
+  }
+
   // helper function to remove whitespaces, some special characters (-, /, +, (, )) from a string and make the first letter lowercase
   cleanString(text: string): string {
     let filteredText = text.replace(/\s+|-|\/|\(|\)|\+/g, '');
@@ -312,7 +321,8 @@ export class AppComponent implements OnInit {
     // get a random race suitable for the abilities if none given
     if (!race) {
       let possibleRaces = this.getRaces();
-      race = this.getRaces()[Math.floor(Math.random() * possibleRaces.length)];
+      //race = this.getRaces()[Math.floor(Math.random() * possibleRaces.length)];
+      race = possibleRaces[Math.floor(Math.random() * possibleRaces.length)];
     }
 
     // get a random characterClass suitable for the abilities and race if none given

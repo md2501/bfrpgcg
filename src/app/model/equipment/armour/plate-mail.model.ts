@@ -1,18 +1,22 @@
+import { Cleric } from "../../classes/cleric.model";
+import { Fighter } from "../../classes/fighter.model";
+import { MagicUserFighter } from "../../classes/magic-user-fighter.model";
 import { IArmor } from "./iarmor.interface";
 
-export class Shield implements IArmor {
+export class PlateMail implements IArmor {
 
     private constructor() { }
-    private static instance: Shield;
-    public static getInstance(): Shield {
-        if (!Shield.instance) {
-            Shield.instance = new Shield();
+    private static instance: PlateMail;
+    public static getInstance(): PlateMail {
+        if (!PlateMail.instance) {
+            PlateMail.instance = new PlateMail();
         }
 
-        return Shield.instance;
+        return PlateMail.instance;
     }
 
-    ac = 5;
-    weight = 5;
-    isShield = true;
+    ac = 17;
+    weight = 50;
+    isShield = false;
+    possibleClasses = [Fighter.getInstance(), MagicUserFighter.getInstance(), Cleric.getInstance()];
 }
