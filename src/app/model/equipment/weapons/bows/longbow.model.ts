@@ -19,4 +19,5 @@ export class Longbow implements IMissileWeapon {
     power = 8;
     size = WeaponSize.V;
     type = WeaponType.UNRESTRICTED;
+    weight = 3;
 }

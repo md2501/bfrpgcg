@@ -18,4 +18,5 @@ export class BattleAxe implements IWeapon {
     power = 8;
     size = WeaponSize.M;
     type = WeaponType.UNRESTRICTED;
+    weight = 7;
 }

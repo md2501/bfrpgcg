@@ -18,4 +18,5 @@ export class HandAxe implements IWeapon {
     power = 6;
     size = WeaponSize.S;
     type = WeaponType.UNRESTRICTED;
+    weight = 5;
 }

@@ -18,4 +18,5 @@ export class GreatAxe implements IWeapon {
     power = 10;
     size = WeaponSize.L;
     type = WeaponType.UNRESTRICTED;
+    weight = 15;
 }

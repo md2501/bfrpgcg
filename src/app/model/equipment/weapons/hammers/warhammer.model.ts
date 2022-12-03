@@ -18,4 +18,5 @@ export class Warhammer implements IWeapon {
     power = 6;
     size = WeaponSize.S;
     type = WeaponType.BLUNT;
+    weight = 6;
 }

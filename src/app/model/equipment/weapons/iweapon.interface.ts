@@ -6,4 +6,5 @@ export interface IWeapon {
     power: number;
     size: WeaponSize;
     type: WeaponType;
+    weight: number;
 }

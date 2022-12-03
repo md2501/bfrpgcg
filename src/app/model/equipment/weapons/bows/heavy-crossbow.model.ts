@@ -19,4 +19,5 @@ export class HeavyCrossbow implements IMissileWeapon {
     power = 8;
     size = WeaponSize.L;
     type = WeaponType.UNRESTRICTED;
+    weight = 14;
 }

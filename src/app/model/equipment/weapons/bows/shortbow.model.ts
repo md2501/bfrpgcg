@@ -19,4 +19,5 @@ export class Shortbow implements IMissileWeapon {
     power = 6;
     size = WeaponSize.M;
     type = WeaponType.UNRESTRICTED;
+    weight = 2;
 }

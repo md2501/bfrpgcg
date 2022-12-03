@@ -18,4 +18,5 @@ export class Dagger implements IWeapon {
     power = 4;
     size = WeaponSize.S;
     type = WeaponType.MU;
+    weight = 1;
 }

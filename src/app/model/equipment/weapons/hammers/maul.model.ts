@@ -18,4 +18,5 @@ export class Maul implements IWeapon {
     power = 10;
     size = WeaponSize.L;
     type = WeaponType.BLUNT;
+    weight = 16;
 }
